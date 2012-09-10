@@ -1,7 +1,4 @@
 
-script(type="text/javascript")
-
-
 div.container
     header.hdr
         h1= title
@@ -11,5 +8,17 @@ div.container
     //a#send(href="#") Send
     //p#cnt.m-chat This is gonna be replaced
 
-    #game.m-board
-    a#js-newgame.m-button(href="#") New Game
+    .content
+        .m-zone.l-left Red Zone
+        .m-zone.l-right Black Zone
+        #game.m-board
+        a#js-generate-board.m-button(href="#") New Game
+
+    div#modal-new-game.modal.fade.hide
+        .modal-header 
+            h1 Create a new game
+        .modal-body This is my modal 
+            p
+                //a#js-generate-board.m-button(href="#") New Game
+        .modal-footer
+            button(data-dismiss="modal") Close modal

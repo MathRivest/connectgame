@@ -11,38 +11,49 @@ CNT4.settings = {
 
 
 $(function() {
-    CNT4.init();
-    CNT4.createBoard(5,8);
+    CNT4.ui.init();
 });
 
 
-CNT4.init = function(){
+CNT4.ui = {
     //CNT4.connect();
+    init : function(){
+
+        //$('#modal-new-game').modal({backdrop:'static'});
+        $('#js-generate-board').on('click', function(){
+            CNT4.board.create(5,6);
+        });
+        //CNT4.board.create(5,6);
+    }
 }
 
+CNT4.board = {
+    $boardContainer : $('#game'),
+    create : function(columns, rows){
+ 
+        CNT4.settings.board.columns = columns; //update the settings with the new values
+        CNT4.settings.board.rows = rows; //update the settings with the new values
 
-CNT4.createBoard = function(columns, rows){
+        var columnsNb = columns,
+            rowsNb = rows,
+            board = '',
+            zones = '';
 
-    this.settings.board.columns = columns; //update the settings with the new values
-    this.settings.board.rows = rows; //update the settings with the new values
-
-    var columns = columns,
-        rows = rows,
-        board = '',
-        zones = '';
-
-    zones = '<ul class="zones">';
-    for (i=0; i<columns; i++){
-        zones += '<li data-zone="'+i+'">'+i+'</li>';
-        board += '<ul class="column" data-col="'+i+'"">';
-        console.log(board);
-        for (j=0; j<rows; j++){
-            board+= '<li class="row" data-row="'+j+'">'+j+'</li>';
+        zones = '<ul class="zones">';
+        for (i=0; i<columnsNb; i++){
+            zones += '<li class="zone" data-zone="'+i+'"></li>';
+            board += '<ul class="column" data-col="'+i+'"">';
+            for (j=0; j<rowsNb; j++){
+                board+= '<li class="row" data-row="'+j+'"></li>';
+            }
+            board += '</ul>';
         }
-        board += '</ul>';
+        zones += '</ul>';
+
+        this.$boardContainer.html(board).prepend(zones);
+        boardWidth = this.$boardContainer.find("ul.column").width() * columnsNb;
+        this.$boardContainer.width(boardWidth).fadeIn(200)
     }
-    zones += '</ul>';
-    $('#game').html(board).prepend(zones);
 }
 
 CNT4.connect = function(){
@@ -73,3 +84,4 @@ CNT4.connect = function(){
     });
 
 }
+

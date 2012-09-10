@@ -1,16 +1,86 @@
 
+
+$colwidth:102px;
 .m-board{
+    display:none;
     overflow:hidden;
+    margin:0 auto;
     .column{
         float:left;
-        width: 102px;
-        padding-left:0;
+        width:$colwidth;
+        padding:0;
+        margin:0;
+        .row{
+            margin-bottom:2px;
+            margin-right:2px;
+            height:50px;
+            border:1px solid red;
+            list-style:none;
+        }
     }
-    .row{
-        height:50px;
-        list-style:none;
-        border:1px solid red;
-        margin-bottom:2px;
-        margin-right:2px;
+    .zones{
+        @include clearfix;
+        padding:0;
+        margin:0;
+        .zone{
+            float:left;
+            margin-bottom:2px;
+            margin-right:2px;
+            width:$colwidth - 4px;
+            height:50px;
+            border:1px solid blue;
+            list-style:none;
+        }
     }
+}
+
+
+
+
+
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000000;
+    &.fade{opacity: 0;}
+}
+.modal-backdrop, .modal-backdrop.fade.in {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1050;
+    width: 800px;
+    padding:20px;
+    margin: -250px 0 0 -420px;
+    overflow: auto;
+    background:#fff;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    @include box-shadow(rgba(0, 0, 0, 0.3) 0 3px 7px);
+    -webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;
+    
+    .modal-header{
+        width:100%;
+        margin:0 auto;
+    }
+    .modal-footer{
+        @extend .modal-header;
+    }
+    .modal-body {
+        overflow-y: auto;
+        height:230px;
+        max-height: 400px;
+    }
+    small{font-size:12px;}
 }

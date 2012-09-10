@@ -1,0 +1,7 @@
+.hdr{
+    padding:20px;
+    @include box-shadow(rgba(0, 0, 0, 0.3) 0 3px 7px);
+}
+.content{
+    padding:20px;
+}
