@@ -409,7 +409,37 @@ h1 {
   list-style: none;
 }
 
-/* line 42, sass/inc/_modules.scss */
+/* line 38, sass/inc/_modules.scss */
+.m-zone {
+  background: red;
+  width: 20%;
+}
+/* line 41, sass/inc/_modules.scss */
+.m-zone.l-left {
+  float: left;
+}
+/* line 44, sass/inc/_modules.scss */
+.m-zone.l-right {
+  float: right;
+}
+
+/* line 49, sass/inc/_modules.scss */
+.m-disc {
+  background: blue;
+  padding: 15px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  -webkit-border-radius: 4em;
+  -moz-border-radius: 4em;
+  -ms-border-radius: 4em;
+  -o-border-radius: 4em;
+  border-radius: 4em;
+  color: #fff;
+  text-align: center;
+}
+
+/* line 63, sass/inc/_modules.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -419,18 +449,18 @@ h1 {
   z-index: 1040;
   background-color: #000000;
 }
-/* line 50, sass/inc/_modules.scss */
+/* line 71, sass/inc/_modules.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 52, sass/inc/_modules.scss */
+/* line 73, sass/inc/_modules.scss */
 .modal-backdrop, .modal-backdrop.fade.in {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
 
-/* line 57, sass/inc/_modules.scss */
+/* line 78, sass/inc/_modules.scss */
 .modal {
   position: fixed;
   top: 50%;
@@ -449,23 +479,29 @@ h1 {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 73, sass/inc/_modules.scss */
+/* line 94, sass/inc/_modules.scss */
 .modal .modal-header, .modal .modal-footer {
   width: 100%;
   margin: 0 auto;
 }
-/* line 80, sass/inc/_modules.scss */
+/* line 101, sass/inc/_modules.scss */
 .modal .modal-body {
   overflow-y: auto;
   height: 230px;
   max-height: 400px;
 }
-/* line 85, sass/inc/_modules.scss */
+/* line 106, sass/inc/_modules.scss */
 .modal small {
   font-size: 12px;
 }
 
 /* -States Rules ----------------------------------------------------- */
+/* line 1, sass/inc/_states.scss */
+[data-draggable="true"] {
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
 /* -Animations Rules ------------------------------------------------- */
 /* line 1, sass/inc/_anim.scss */
 .fade {

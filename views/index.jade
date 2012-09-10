@@ -9,9 +9,18 @@ div.container
     //p#cnt.m-chat This is gonna be replaced
 
     .content
-        .m-zone.l-left Red Zone
-        .m-zone.l-right Black Zone
+
+        .m-zone.l-left.l-red Red Zone
+            .m-disc(data-draggable="true") Drag
+            .m-disc(data-draggable="false") Drag
+            .m-disc(data-draggable="true") Drag
+        .m-zone.l-right.l-black Black Zone
+            .m-disc(data-draggable="true") Drag
+            .m-disc(data-draggable="true") Drag
+            .m-disc(data-draggable="true") Drag
+
         #game.m-board
+
         a#js-generate-board.m-button(href="#") New Game
 
     div#modal-new-game.modal.fade.hide

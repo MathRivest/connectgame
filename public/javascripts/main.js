@@ -12,18 +12,21 @@ CNT4.settings = {
 
 $(function() {
     CNT4.ui.init();
+    CNT4.ui.enableDrag();
 });
 
 
 CNT4.ui = {
     //CNT4.connect();
     init : function(){
-
         //$('#modal-new-game').modal({backdrop:'static'});
         $('#js-generate-board').on('click', function(){
             CNT4.board.create(5,6);
         });
-        //CNT4.board.create(5,6);
+        CNT4.board.create(5,6);
+    },
+    enableDrag : function(){
+        $('.m-disc[data-draggable="true"]').draggable();
     }
 }
 
