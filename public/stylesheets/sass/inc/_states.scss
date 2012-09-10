@@ -1,0 +1,7 @@
+
+.s-connected{
+    @include single-box-shadow(green);
+}
+.s-error{
+    @include single-box-shadow(red);
+}

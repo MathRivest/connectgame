@@ -1,0 +1,16 @@
+
+.m-board{
+    overflow:hidden;
+    .column{
+        float:left;
+        width: 102px;
+        padding-left:0;
+    }
+    .row{
+        height:50px;
+        list-style:none;
+        border:1px solid red;
+        margin-bottom:2px;
+        margin-right:2px;
+    }
+}
