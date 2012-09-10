@@ -1,72 +1,602 @@
-/*
-Syntax error: Invalid CSS after "}": expected selector or at-rule, was "<<<<<<< HEAD"
-        on line 38 of /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss
-        from line 18 of /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/main.scss
+/* -Normalize -------------------------------------------------------- */
+/* normalize.css v1.0.1 | MIT License | git.io/normalize */
+/* line 2, sass/inc/_normalize.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+  display: block;
+}
 
-Backtrace:
-/home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss:38
-/home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/main.scss:18
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/scss/parser.rb:928:in `expected'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/scss/parser.rb:874:in `expected'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/scss/parser.rb:28:in `parse'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/engine.rb:326:in `_to_tree'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/engine.rb:258:in `to_tree'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:144:in `visit_import'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/root_node.rb:20:in `render'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/engine.rb:299:in `_render'
-/var/lib/gems/1.9.1/gems/sass-3.1.15/lib/sass/engine.rb:246:in `render'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:126:in `timed'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:139:in `block in compile'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/logger.rb:45:in `red'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:138:in `compile'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:118:in `compile_if_required'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:101:in `each'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:101:in `block in run'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:126:in `timed'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/compiler.rb:100:in `run'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/commands/watch_project.rb:147:in `recompile'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/path.rb:73:in `call'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/path.rb:73:in `run_callback'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/path.rb:55:in `callback_action'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/path.rb:35:in `update'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:39:in `block in modified'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:37:in `each'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:37:in `modified'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/state/directory.rb:18:in `refresh'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `each'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:17:in `block in run'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:15:in `loop'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/backends/polling.rb:15:in `run'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm/monitor.rb:26:in `run'
-/var/lib/gems/1.9.1/gems/fssm-0.2.8.1/lib/fssm.rb:70:in `monitor'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/commands/watch_project.rb:87:in `perform'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/commands/base.rb:18:in `execute'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/commands/project_base.rb:19:in `execute'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/bin/compass:29:in `block in <top (required)>'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/bin/compass:43:in `call'
-/var/lib/gems/1.9.1/gems/compass-0.12.1/bin/compass:43:in `<top (required)>'
-/var/lib/gems/1.9.1/bin/compass:19:in `load'
-/var/lib/gems/1.9.1/bin/compass:19:in `<main>'
-*/
-body:before {
+/* line 3, sass/inc/_normalize.scss */
+audio, canvas, video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/* line 4, sass/inc/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/* line 5, sass/inc/_normalize.scss */
+[hidden] {
+  display: none;
+}
+
+/* line 6, sass/inc/_normalize.scss */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* line 7, sass/inc/_normalize.scss */
+html, button, input, select, textarea {
+  font-family: sans-serif;
+}
+
+/* line 8, sass/inc/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* line 9, sass/inc/_normalize.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/* line 10, sass/inc/_normalize.scss */
+a:active, a:hover {
+  outline: 0;
+}
+
+/* line 11, sass/inc/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+/* line 12, sass/inc/_normalize.scss */
+h2 {
+  font-size: 1.5em;
+  margin: .83em 0;
+}
+
+/* line 13, sass/inc/_normalize.scss */
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
+
+/* line 14, sass/inc/_normalize.scss */
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0;
+}
+
+/* line 15, sass/inc/_normalize.scss */
+h5 {
+  font-size: .83em;
+  margin: 1.67em 0;
+}
+
+/* line 16, sass/inc/_normalize.scss */
+h6 {
+  font-size: .75em;
+  margin: 2.33em 0;
+}
+
+/* line 17, sass/inc/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/* line 18, sass/inc/_normalize.scss */
+b, strong {
+  font-weight: bold;
+}
+
+/* line 19, sass/inc/_normalize.scss */
+blockquote {
+  margin: 1em 40px;
+}
+
+/* line 20, sass/inc/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/* line 21, sass/inc/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/* line 22, sass/inc/_normalize.scss */
+p, pre {
+  margin: 1em 0;
+}
+
+/* line 23, sass/inc/_normalize.scss */
+code, kbd, pre, samp {
+  font-family: monospace,serif;
+  _font-family: 'courier new',monospace;
+  font-size: 1em;
+}
+
+/* line 24, sass/inc/_normalize.scss */
+pre {
   white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"}\": expected selector or at-rule, was \"<<<<<<< HEAD\"\A         on line 38 of /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss\A         from line 18 of /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/main.scss"; }
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* line 25, sass/inc/_normalize.scss */
+q {
+  quotes: none;
+}
+
+/* line 26, sass/inc/_normalize.scss */
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 27, sass/inc/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/* line 28, sass/inc/_normalize.scss */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 29, sass/inc/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 30, sass/inc/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* line 31, sass/inc/_normalize.scss */
+dl, menu, ol, ul {
+  margin: 1em 0;
+}
+
+/* line 32, sass/inc/_normalize.scss */
+dd {
+  margin: 0 0 0 40px;
+}
+
+/* line 33, sass/inc/_normalize.scss */
+menu, ol, ul {
+  padding: 0 0 0 40px;
+}
+
+/* line 34, sass/inc/_normalize.scss */
+nav ul, nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+
+/* line 35, sass/inc/_normalize.scss */
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 36, sass/inc/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* line 37, sass/inc/_normalize.scss */
+figure {
+  margin: 0;
+}
+
+/* line 38, sass/inc/_normalize.scss */
+form {
+  margin: 0;
+}
+
+/* line 39, sass/inc/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: .35em .625em .75em;
+}
+
+/* line 40, sass/inc/_normalize.scss */
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  *margin-left: -7px;
+}
+
+/* line 41, sass/inc/_normalize.scss */
+button, input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+
+/* line 42, sass/inc/_normalize.scss */
+button, input {
+  line-height: normal;
+}
+
+/* line 43, sass/inc/_normalize.scss */
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  *overflow: visible;
+}
+
+/* line 44, sass/inc/_normalize.scss */
+button[disabled], input[disabled] {
+  cursor: default;
+}
+
+/* line 45, sass/inc/_normalize.scss */
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  *height: 13px;
+  *width: 13px;
+}
+
+/* line 46, sass/inc/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* line 47, sass/inc/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* line 48, sass/inc/_normalize.scss */
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* line 49, sass/inc/_normalize.scss */
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+
+/* line 50, sass/inc/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 57, sass/inc/_normalize.scss */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
+/* line 60, sass/inc/_normalize.scss */
+body {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* line 64, sass/inc/_normalize.scss */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 68, sass/inc/_normalize.scss */
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 72, sass/inc/_normalize.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 80, sass/inc/_normalize.scss */
+img {
+  vertical-align: middle;
+}
+
+/* line 83, sass/inc/_normalize.scss */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 88, sass/inc/_normalize.scss */
+textarea {
+  resize: vertical;
+}
+
+/* line 91, sass/inc/_normalize.scss */
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* -Base Rules ------------------------------------------------------- */
+/* line 1, sass/inc/_base.scss */
+h1 {
+  margin-top: 0;
+}
+
+/* -Buttons ---------------------------------------------------------- */
+/* -Layout Rules ----------------------------------------------------- */
+/* line 1, sass/inc/_layout.scss */
+.hdr {
+  padding: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px;
+}
+
+/* line 5, sass/inc/_layout.scss */
+.content {
+  padding: 20px;
+}
+
+/* -Modules Rules ---------------------------------------------------- */
+/* line 4, sass/inc/_modules.scss */
+.m-board {
+  display: none;
+  overflow: hidden;
+  margin: 0 auto;
+}
+/* line 8, sass/inc/_modules.scss */
+.m-board .column {
+  float: left;
+  width: 102px;
+  padding: 0;
+  margin: 0;
+}
+/* line 13, sass/inc/_modules.scss */
+.m-board .column .row {
+  margin-bottom: 2px;
+  margin-right: 2px;
+  height: 50px;
+  border: 1px solid red;
+  list-style: none;
+}
+/* line 21, sass/inc/_modules.scss */
+.m-board .zones {
+  overflow: hidden;
+  *zoom: 1;
+  padding: 0;
+  margin: 0;
+}
+/* line 25, sass/inc/_modules.scss */
+.m-board .zones .zone {
+  float: left;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  width: 98px;
+  height: 50px;
+  border: 1px solid blue;
+  list-style: none;
+}
+
+/* line 37, sass/inc/_modules.scss */
+.m-zone {
+  background: red;
+  width: 20%;
+}
+/* line 40, sass/inc/_modules.scss */
+.m-zone.l-left {
+  float: left;
+}
+/* line 43, sass/inc/_modules.scss */
+.m-zone.l-right {
+  float: right;
+}
+
+/* line 48, sass/inc/_modules.scss */
+.m-disc {
+  background: blue;
+  padding: 15px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  -webkit-border-radius: 4em;
+  -moz-border-radius: 4em;
+  -ms-border-radius: 4em;
+  -o-border-radius: 4em;
+  border-radius: 4em;
+  color: #fff;
+  text-align: center;
+}
+
+/* line 62, sass/inc/_modules.scss */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000;
+}
+/* line 70, sass/inc/_modules.scss */
+.modal-backdrop.fade {
+  opacity: 0;
+}
+
+/* line 72, sass/inc/_modules.scss */
+.modal-backdrop, .modal-backdrop.fade.in {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+/* line 77, sass/inc/_modules.scss */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1050;
+  width: 800px;
+  padding: 20px;
+  margin: -250px 0 0 -420px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 7px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
+/* line 93, sass/inc/_modules.scss */
+.modal .modal-header, .modal .modal-footer {
+  width: 100%;
+  margin: 0 auto;
+}
+/* line 100, sass/inc/_modules.scss */
+.modal .modal-body {
+  overflow-y: auto;
+  height: 230px;
+  max-height: 400px;
+}
+/* line 105, sass/inc/_modules.scss */
+.modal small {
+  font-size: 12px;
+}
+
+/* -States Rules ----------------------------------------------------- */
+/* line 1, sass/inc/_states.scss */
+[data-draggable="true"] {
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+/* -Animations Rules ------------------------------------------------- */
+/* line 1, sass/inc/_anim.scss */
+.fade {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -ms-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+/* line 6, sass/inc/_anim.scss */
+.fade.in {
+  opacity: 1;
+}
+
+/* -Responsivness ---------------------------------------------------- */
+/* -Helpers ---------------------------------------------------------- */
+/* line 2, sass/inc/_helpers.scss */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+}
+
+/* line 9, sass/inc/_helpers.scss */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%;
+}
+
+/* line 16, sass/inc/_helpers.scss */
+.hide {
+  display: none;
+}
+
+/* line 17, sass/inc/_helpers.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* line 22, sass/inc/_helpers.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* line 34, sass/inc/_helpers.scss */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* line 43, sass/inc/_helpers.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 48, sass/inc/_helpers.scss */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+/* line 53, sass/inc/_helpers.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 55, sass/inc/_helpers.scss */
+.clearfix {
+  *zoom: 1;
+}
