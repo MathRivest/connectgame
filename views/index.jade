@@ -1,31 +1,33 @@
-div.container
-    header.hdr
-        h1= title
-        p Welcome to #{title} TEST2
+extends layout
+block content
+    div.container
+        header.hdr
+            h1= title
+            p Welcome to #{title} TEST2
 
-    //input#myfield(type="text")
-    //a#send(href="#") Send
-    //p#cnt.m-chat This is gonna be replaced
+        //input#myfield(type="text")
+        //a#send(href="#") Send
+        //p#cnt.m-chat This is gonna be replaced
 
-    .content
+        .content
 
-        .m-zone.l-left.l-red Red Zone
-            .m-disc(data-draggable="true") Drag
-            .m-disc(data-draggable="false") Drag
-            .m-disc(data-draggable="true") Drag
-        .m-zone.l-right.l-black Black Zone
-            .m-disc(data-draggable="true") Drag
-            .m-disc(data-draggable="true") Drag
-            .m-disc(data-draggable="true") Drag
+            .m-zone.l-left.l-red Red Zone
+                .m-disc(data-draggable="true") Drag
+                .m-disc(data-draggable="false") Drag
+                .m-disc(data-draggable="true") Drag
+            .m-zone.l-right.l-black Black Zone
+                .m-disc(data-draggable="true") Drag
+                .m-disc(data-draggable="true") Drag
+                .m-disc(data-draggable="true") Drag
 
-        #game.m-board
+            #game.m-board
 
-        a#js-generate-board.m-button(href="#") New Game
+            a#js-generate-board.m-button(href="#") New Game
 
-    div#modal-new-game.modal.fade.hide
-        .modal-header 
-            h1 Create a new game
-        .modal-body This is my modal 
-            p
-                //a#js-generate-board.m-button(href="#") New Game
-        .modal-footer
+        div#modal-new-game.modal.fade.hide
+            .modal-header
+                h1 Create a new game
+            .modal-body This is my modal
+                p
+                    //a#js-generate-board.m-button(href="#") New Game
+            .modal-footer

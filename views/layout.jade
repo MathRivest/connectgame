@@ -10,5 +10,6 @@ html.no-js(lang='en')
   //<![endif]
   head
     include inc/head
-  body!= body
+  body
+    block content
     include inc/footer
