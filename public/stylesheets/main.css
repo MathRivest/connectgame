@@ -377,14 +377,14 @@ h1 {
   margin: 0 auto;
 }
 /* line 8, sass/inc/_modules.scss */
-.m-board .column {
+.m-board .m-column {
   float: left;
   width: 102px;
   padding: 0;
   margin: 0;
 }
 /* line 13, sass/inc/_modules.scss */
-.m-board .column .row {
+.m-board .m-column .m-row {
   margin-bottom: 2px;
   margin-right: 2px;
   height: 50px;
@@ -392,34 +392,33 @@ h1 {
   list-style: none;
 }
 /* line 21, sass/inc/_modules.scss */
-.m-board .zones {
+.m-board .m-zones {
   overflow: hidden;
   *zoom: 1;
   padding: 0;
   margin: 0;
 }
 /* line 25, sass/inc/_modules.scss */
-.m-board .zones .zone {
+.m-board .m-zones .m-zone {
   float: left;
   margin-bottom: 2px;
   margin-right: 2px;
   width: 98px;
   height: 50px;
-  border: 1px solid blue;
+  border: 1px solid black;
   list-style: none;
 }
 
 /* line 37, sass/inc/_modules.scss */
-.m-zone {
-  background: red;
+.m-player-zone {
   width: 20%;
 }
 /* line 40, sass/inc/_modules.scss */
-.m-zone.l-left {
+.m-player-zone.l-left {
   float: left;
 }
 /* line 43, sass/inc/_modules.scss */
-.m-zone.l-right {
+.m-player-zone.l-right {
   float: right;
 }
 
@@ -502,6 +501,15 @@ h1 {
   border: 2px solid #fff;
 }
 
+/* line 7, sass/inc/_states.scss */
+.m-zone.s-active {
+  background-color: #f5f566!important;
+}
+/* line 10, sass/inc/_states.scss */
+.m-zone.s-hover {
+  border-style: dotted!important;
+}
+
 /* -Animations Rules ------------------------------------------------- */
 /* line 1, sass/inc/_anim.scss */
 .fade {
@@ -525,6 +533,25 @@ h1 {
 /* line 6, sass/inc/_anim.scss */
 .fade.in {
   opacity: 1;
+}
+
+/* line 9, sass/inc/_anim.scss */
+.m-zone {
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -ms-transition-property: background-color;
+  -o-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
 }
 
 /* -Responsivness ---------------------------------------------------- */

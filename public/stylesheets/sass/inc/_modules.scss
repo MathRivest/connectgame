@@ -5,12 +5,12 @@ $colwidth:102px;
     display:none;
     overflow:hidden;
     margin:0 auto;
-    .column{
+    .m-column{
         float:left;
         width:$colwidth;
         padding:0;
         margin:0;
-        .row{
+        .m-row{
             margin-bottom:2px;
             margin-right:2px;
             height:50px;
@@ -18,24 +18,24 @@ $colwidth:102px;
             list-style:none;
         }
     }
-    .zones{
+    .m-zones{
         @include clearfix;
         padding:0;
         margin:0;
-        .zone{
+        .m-zone{
             float:left;
             margin-bottom:2px;
             margin-right:2px;
             width:$colwidth - 4px;
             height:50px;
-            border:1px solid blue;
+            border:1px solid black;
             list-style:none;
         }
     }
 }
 
-.m-zone{
-    background:red;
+.m-player-zone{
+    //background:red;
     width:20%;
     &.l-left{
         float:left;

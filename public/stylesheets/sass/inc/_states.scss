@@ -2,3 +2,12 @@
     cursor:pointer;
     border:2px solid #fff;
 }
+
+.m-zone{
+    &.s-active{
+        background-color:#f5f566!important;
+    }
+    &.s-hover{
+        border-style:dotted!important;
+    }
+}

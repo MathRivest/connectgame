@@ -2,7 +2,7 @@
 var CNT4 = CNT4 || {};
 
 CNT4.settings = {
-    board: {
+    board : {
         columns: "5",
         rows: "5"
     }
@@ -27,42 +27,73 @@ CNT4.ui = {
         CNT4.board.create(5,6);
     },
     enableDrag : function(){
-        $('.m-disc[data-draggable="true"]').draggable();
+        $('.m-disc[data-draggable="true"]').draggable({
+            revert : 'invalid',
+            revertDuration : 300,
+            drag: function(event, ui){
+                //console.log(ui);
+                $("#x").text(ui.position.top);
+                $("#y").text(ui.position.left);
+            }
+        });
+    },
+    enableDrop : function(){
+        $('.m-zone').droppable({
+            accept: '.m-disc[data-draggable="true"]',
+            activeClass: "s-active",
+            hoverClass: "s-hover"
+        });
     }
 }
 
 CNT4.board = {
     $boardContainer : $('#game'),
     create : function(columns, rows){
- 
+
         CNT4.settings.board.columns = columns; //update the settings with the new values
         CNT4.settings.board.rows = rows; //update the settings with the new values
 
-        var columnsNb = columns,
+        var columnsNb = columns, 
+            columnClass = 'm-column',
             rowsNb = rows,
+            rowClass = 'm-row'
             board = '',
-            zones = '';
+            zones = '',
+            zonesClass = 'm-zones'
+            zoneClass = 'm-zone',
 
-        zones = '<ul class="zones">';
+
+        zones = '<ul class="m-zones">';
         for (i=0; i<columnsNb; i++){
-            zones += '<li class="zone" data-zone="'+i+'"></li>';
-            board += '<ul class="column" data-col="'+i+'"">';
+            zones += '<li class="m-zone" data-zone="'+i+'"></li>';
+            board += '<ul class="'+columnClass+'" data-col="'+i+'"">';
             for (j=0; j<rowsNb; j++){
-                board+= '<li class="row" data-row="'+j+'"></li>';
+                board+= '<li class="'+rowClass+'" data-row="'+j+'"></li>';
             }
-            board += '</ul>';
+            board += '</ul>';  
         }
         zones += '</ul>';
 
         this.$boardContainer.html(board).prepend(zones);
-        boardWidth = this.$boardContainer.find("ul.column").width() * columnsNb;
-        this.$boardContainer.width(boardWidth).fadeIn(200)
+        boardWidth = this.$boardContainer.find('ul.'+columnClass+'').width() * columnsNb;
+        this.$boardContainer.width(boardWidth).fadeIn(200);
+        CNT4.ui.enableDrop();
     }
 }
 
+CNT4.game = {
+    move : function(){
+
+    },
+    check : function(){
+        
+    }
+}
+
+
 CNT4.connect = function(){
 
-    alert("test")
+    alert("We are trying to connect!")
     var socket = io.connect('/');
     socket.on('welcome', function (data) {
         //log the welcome message and replace the container message with it
@@ -76,7 +107,6 @@ CNT4.connect = function(){
             return false;
         });
     });
-
 
     socket.on('newresponse', function(data){
         console.log("Received: " + data.msg)

@@ -5,3 +5,9 @@
     @include transition-timing-function(ease-out);
     &.in{opacity: 1;} 
 }
+
+.m-zone{
+    @include transition-property(background-color);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-out);
+}
