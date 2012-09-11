@@ -1,11 +1,13 @@
-.container
-    header.hdr
-        h1= title
-        p Welcome to #{title} TEST2
+extends layout
+block content
+    .container
+        header.hdr
+            h1= title
+            p Welcome to #{title} TEST2
 
-    //input#myfield(type="text")
-    //a#send(href="#") Send
-    //p#cnt.m-chat This is gonna be replaced
+        //input#myfield(type="text")
+        //a#send(href="#") Send
+        //p#cnt.m-chat This is gonna be replaced
 
     .content
         .m-player-zone.l-left.l-red Red Zone
@@ -24,7 +26,7 @@
             span Y:
             #y
 
-        a#js-generate-board.m-button(href="#") New Game
+            a#js-generate-board.m-button(href="#") New Game
 
     #modal-new-game.modal.fade.hide
         .modal-header 
