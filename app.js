@@ -3,12 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes');
+var express = require("express")
+    , routes = require('./routes');
+var app = express()
+    , http = require('http')
+    , server = http.createServer(app)
+    , io = require('socket.io').listen(server);
 
-var app = module.exports = express.createServer();
-
-var io = require('socket.io').listen(app);
 
 // Configuration
 
@@ -33,8 +34,8 @@ app.configure('production', function(){
 
 app.get('/', routes.index);
 
-app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+app.listen(3001);
+console.log("Express server listening on port %d in %s mode", 3001, app.settings.env);
 
 io.configure(function (){
   io.set('authorization', function (handshakeData, callback) {
