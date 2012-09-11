@@ -10,14 +10,9 @@ block content
         //p#cnt.m-chat This is gonna be replaced
 
     .content
-        .m-player-zone.l-left.l-red Red Zone
-            .m-disc(data-draggable="true") Drag
-            .m-disc(data-draggable="true") Drag
-            .m-disc(data-draggable="true") Drag
-        .m-player-zone.l-right.l-black Black Zone
-            .m-disc(data-draggable="true") Drag
-            .m-disc(data-draggable="true") Drag
-            .m-disc(data-draggable="true") Drag
+        .m-player-zone.l-left.l-red(data-player="1") Red Zone
+
+        .m-player-zone.l-right.l-black(data-player="2") Black Zone
 
         #game.m-board
         #infos
