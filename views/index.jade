@@ -3,7 +3,9 @@ block content
     .container
         header.hdr
             h1= title
-            p Welcome to #{title} TEST2
+            p Welcome to #{title} TEST2 #{viewed}
+
+            p #{username}
 
         //input#myfield(type="text")
         //a#send(href="#") Send
@@ -24,6 +26,11 @@ block content
             #y
 
             a#js-generate-board.m-button(href="#") New Game
+
+            form(method='post', action='/username')
+                input(type='text', name='username')
+                input(type='submit', value='set username')
+
 
     #modal-new-game.modal.fade.hide
         .modal-header 
