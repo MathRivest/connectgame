@@ -148,16 +148,18 @@ CNT4.game = {
     },
     check : function(board, lastX, lastY, player){
         if(this.isWinnerVertical({x: lastX, y:lastY}, board, player)){
-            alert(player + "wins")
+            alert(player + "wins vertical")
+        }
+        if(this.isWinnerHorizontal({x: lastX, y:lastY}, board, player)){
+            alert(player + "wins horizontal")
         }
     },
-    isWinnerVertical : function( lastPiece, board, player ) {
+    isWinnerVertical : function(lastPiece, board, player) {
         var count = 0;
 
         // Top Bottom
         $.each(board[lastPiece.x], function(i, l){
             if(l === player){
-                console.log(l)
                 count++;
             }
         });
@@ -166,6 +168,18 @@ CNT4.game = {
             return true;
         }
         return false;
+    },
+    isWinnerHorizontal: function(lastPiece, board, player){
+        var count = 0;
+        $.each(board, function(i, l){
+            if(l[lastPiece.y] === player){
+                count++;
+            }
+        });
+        if(count>=4){
+            return true;
+        }
+        console.log(count)
     }
 }
 
