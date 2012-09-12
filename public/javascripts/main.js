@@ -1,4 +1,12 @@
 
+
+
+// Check if there is a winner
+// Work with Arnaud for real time stuff
+// 
+
+
+
 var CNT4 = CNT4 || {};
 
 CNT4.infos = {
@@ -36,7 +44,7 @@ CNT4.ui = {
         $('#js-generate-board').on('click', function(){
             CNT4.board.create(5,6);
         });
-        CNT4.board.create(7,6);
+        CNT4.board.create(6,6);
     },
     enableDrag : function(){
         $('.m-disc[data-draggable="true"]').draggable({
@@ -54,16 +62,16 @@ CNT4.ui = {
             accept : '.m-disc[data-draggable="true"]',
             activeClass : "s-active",
             hoverClass : "s-hover",
-            drop : function(event, ui){
-                $(this).addClass('s-dropped');
+            drop : function(event, ui){ // When the user drop the piece
+                $(this).addClass('s-dropped'); // Add do something to the drop zone
 
                 var x = $(this).data('zone'),
-                    y = CNT4.board.getLastRow($(this), x);
+                    elem = $(this);
 
                 ui.draggable.fadeOut(200, function(){
                     player = $(this).parent(".m-player-zone").data('player');
                     $(this).remove();
-                    CNT4.game.doMove(x, y, player);
+                    CNT4.game.doMove(elem, x, player);
                 });
             }
         });
@@ -82,25 +90,29 @@ CNT4.board = {
             zonesClass = 'm-zones',
             zoneClass = 'm-zone',
             game = new Array(columnsNb),
-            totalMoves = columnsNb * rowsNb,
+            totalMoves = columnsNb * rowsNb
+            playerMoves = totalMoves/2,
+            player = 0,
             pieces = '';
 
         /* Building the board HTML */
         for (i=0; i<columnsNb; i++){
-            zones += '<li class="m-zone" data-zone="'+i+'"></li>';
-            board += '<ul class="'+columnClass+'" data-col="'+i+'">';
+            zones += '<li class="m-zone" data-zone="' + i + '"></li>';
+            board += '<ul class="' + columnClass + '" data-col="' + i + '">';
             game[i] = new Array(rowsNb);
             for (j=0; j<rowsNb; j++){
-                board+= '<li class="'+rowClass+'" data-row="'+j+'">0</li>';
+                board+= '<li class="' + rowClass + '" data-row="' + j + '">0</li>';
                 game[i][j] = 0;
             }
             board += '</ul>';
         }
         zones += '</ul>';
 
-        $(".m-player-zone").each(function(){
-            for (x=0; x<totalMoves; x++){
-                pieces += '<div class="m-disc" data-draggable="true">Drag</div>';
+        $(".m-player-zone").each(function(){ // For each player zone, add a piece that is draggable
+            player ++;
+            pieces = '';
+            for (x=0; x<playerMoves; x++){
+                pieces += '<div class="m-disc" data-draggable="true" data-player="' + player + '" data-piece="' + x + '">Drag</div>';
             }
             $(this).append(pieces);
         });
@@ -110,38 +122,50 @@ CNT4.board = {
         CNT4.infos.state.board.map = game; // Update the game state with the game array representation
 
         this.$boardContainer.html(board).prepend(zones); // Add the HTML to the game
-        boardWidth = this.$boardContainer.find('ul.'+columnClass+'').width() * columnsNb; // Calculate the width of the board
+        boardWidth = this.$boardContainer.find('ul.' + columnClass + '').width() * columnsNb; // Calculate the width of the board
         this.$boardContainer.width(boardWidth).fadeIn(200); // Assign the width to the board and fade it in
 
         /* Enable everything for the UI here*/
         CNT4.ui.enableDrag();
         CNT4.ui.enableDrop();
-
-        console.log(CNT4);
     },
-    getLastRow : function(elem, x){
-        var lastRow = elem.parents('#game').find('[data-col="'+x+'"] [data-row]').not('[data-played]').filter(':last').data('row');
-        return lastRow;
+    getLastAvailRow : function(elem, x){
+        var lastAvailRow = elem.parents('#game').find('[data-col="' + x + '"] [data-row]').not('[data-played-by]').filter(':last').data('row'); // Select the column and then the last row that was not played and get the number
+        return lastAvailRow;
+    },
+    setLastRow : function(elem, x, player){
+        var lastAvailRow = elem.parents('#game').find('[data-col="' + x + '"] [data-row]').not('[data-played-by]').filter(':last');
+        lastAvailRow.attr('data-played-by', player).text(player);
     }
 }
 
 CNT4.game = {
-    doMove : function(x, y, player){
-        console.log(x);
-        console.log(y);
-        console.log(player);
-
-        //console.log(this.check());
+    doMove : function(elem, x, player){
+        var y = CNT4.board.getLastAvailRow(elem, x); // Get last row available to do the move
+        CNT4.board.setLastRow(elem, x, player); // Set the last available row as played
+        CNT4.infos.state.board.map[x][y] = player; // Update the game state
+        this.check(CNT4.infos.state.board.map, x, y, player);
     },
-    check : function(){
-        if(this.isValidVertical()){
-            return true;
-        }else{
-            return false;
+    check : function(board, lastX, lastY, player){
+        if(this.isWinnerVertical({x: lastX, y:lastY}, board, player)){
+            alert(player + "wins")
         }
     },
-    isValidVertical: function(){
-        return true;
+    isWinnerVertical : function( lastPiece, board, player ) {
+        var count = 0;
+
+        // Top Bottom
+        $.each(board[lastPiece.x], function(i, l){
+            if(l === player){
+                console.log(l)
+                count++;
+            }
+        });
+
+        if(count>=4){
+            return true;
+        }
+        return false;
     }
 }
 

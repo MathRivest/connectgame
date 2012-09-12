@@ -375,15 +375,18 @@ h1 {
   display: none;
   overflow: hidden;
   margin: 0 auto;
+  text-align: center;
+  font-size: 36px;
+  line-height: 50px;
 }
-/* line 8, sass/inc/_modules.scss */
+/* line 11, sass/inc/_modules.scss */
 .m-board .m-column {
   float: left;
   width: 102px;
   padding: 0;
   margin: 0;
 }
-/* line 13, sass/inc/_modules.scss */
+/* line 16, sass/inc/_modules.scss */
 .m-board .m-column .m-row {
   margin-bottom: 2px;
   margin-right: 2px;
@@ -391,14 +394,14 @@ h1 {
   border: 1px solid red;
   list-style: none;
 }
-/* line 21, sass/inc/_modules.scss */
+/* line 24, sass/inc/_modules.scss */
 .m-board .m-zones {
   overflow: hidden;
   *zoom: 1;
   padding: 0;
   margin: 0;
 }
-/* line 25, sass/inc/_modules.scss */
+/* line 28, sass/inc/_modules.scss */
 .m-board .m-zones .m-zone {
   float: left;
   margin-bottom: 2px;
@@ -409,20 +412,30 @@ h1 {
   list-style: none;
 }
 
-/* line 37, sass/inc/_modules.scss */
+/* line 40, sass/inc/_modules.scss */
 .m-player-zone {
   width: 20%;
 }
-/* line 40, sass/inc/_modules.scss */
+/* line 43, sass/inc/_modules.scss */
 .m-player-zone.l-left {
   float: left;
+  text-align: left;
 }
-/* line 43, sass/inc/_modules.scss */
+/* line 46, sass/inc/_modules.scss */
+.m-player-zone.l-left .m-disc {
+  float: left;
+}
+/* line 50, sass/inc/_modules.scss */
 .m-player-zone.l-right {
+  float: right;
+  text-align: right;
+}
+/* line 53, sass/inc/_modules.scss */
+.m-player-zone.l-right .m-disc {
   float: right;
 }
 
-/* line 48, sass/inc/_modules.scss */
+/* line 60, sass/inc/_modules.scss */
 .m-disc {
   background: blue;
   padding: 15px;
@@ -438,7 +451,7 @@ h1 {
   text-align: center;
 }
 
-/* line 62, sass/inc/_modules.scss */
+/* line 77, sass/inc/_modules.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -448,18 +461,18 @@ h1 {
   z-index: 1040;
   background-color: #000000;
 }
-/* line 70, sass/inc/_modules.scss */
+/* line 85, sass/inc/_modules.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 72, sass/inc/_modules.scss */
+/* line 87, sass/inc/_modules.scss */
 .modal-backdrop, .modal-backdrop.fade.in {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
 
-/* line 77, sass/inc/_modules.scss */
+/* line 92, sass/inc/_modules.scss */
 .modal {
   position: fixed;
   top: 50%;
@@ -478,18 +491,18 @@ h1 {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 93, sass/inc/_modules.scss */
+/* line 108, sass/inc/_modules.scss */
 .modal .modal-header, .modal .modal-footer {
   width: 100%;
   margin: 0 auto;
 }
-/* line 100, sass/inc/_modules.scss */
+/* line 115, sass/inc/_modules.scss */
 .modal .modal-body {
   overflow-y: auto;
   height: 230px;
   max-height: 400px;
 }
-/* line 105, sass/inc/_modules.scss */
+/* line 120, sass/inc/_modules.scss */
 .modal small {
   font-size: 12px;
 }

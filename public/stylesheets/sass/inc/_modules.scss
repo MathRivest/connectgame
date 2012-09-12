@@ -5,6 +5,9 @@ $colwidth:102px;
     display:none;
     overflow:hidden;
     margin:0 auto;
+    text-align:center;
+    font-size:36px;
+    line-height:50px;
     .m-column{
         float:left;
         width:$colwidth;
@@ -39,10 +42,19 @@ $colwidth:102px;
     width:20%;
     &.l-left{
         float:left;
+        text-align:left;
+        .m-disc{
+            float:left;
+        }
     }
     &.l-right{
         float:right;
+        text-align:right;
+        .m-disc{
+            float:right;
+        }
     }
+    h2{}
 }
 
 .m-disc{
@@ -54,6 +66,9 @@ $colwidth:102px;
     @include border-radius(4em);
     color:#fff;
     text-align:center;
+    &.ui-draggable-dragging{
+
+    }
 }
 
 
