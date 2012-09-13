@@ -7,7 +7,7 @@ $colwidth:102px;
     margin:0 auto;
     text-align:center;
     font-size:36px;
-    line-height:50px;
+    line-height:80px;
     .m-column{
         float:left;
         width:$colwidth;
@@ -16,7 +16,7 @@ $colwidth:102px;
         .m-row{
             margin-bottom:2px;
             margin-right:2px;
-            height:50px;
+            height:80px;
             border:1px solid red;
             list-style:none;
         }
@@ -30,7 +30,7 @@ $colwidth:102px;
             margin-bottom:2px;
             margin-right:2px;
             width:$colwidth - 4px;
-            height:50px;
+            height:80px;
             border:1px solid black;
             list-style:none;
         }

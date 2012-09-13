@@ -44,7 +44,12 @@ CNT4.ui = {
         $('#js-generate-board').on('click', function(){
             CNT4.board.create(5,6);
         });
-        CNT4.board.create(6,6);
+        $('#js-fullscreen').on('click', function(){
+            CNT4.ui.goFullScreen('container');
+            return false;
+        });
+
+        CNT4.board.create(5,5);
     },
     enableDrag : function(){
         $('.m-disc[data-draggable="true"]').draggable({
@@ -75,6 +80,28 @@ CNT4.ui = {
                 });
             }
         });
+    },
+    goFullScreen : function(id){
+        elem = document.getElementById(id);
+
+        if ((document.fullScreenElement && document.fullScreenElement !== null) ||    // alternative standard method
+              (!document.mozFullScreen && !document.webkitIsFullScreen)) {               // current working methods
+            if (document.documentElement.requestFullScreen) {
+              document.documentElement.requestFullScreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+              document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullScreen) {
+              document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+          } else {
+            if (document.cancelFullScreen) {
+              document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+              document.webkitCancelFullScreen();
+            }
+          }
     }
 }
 
@@ -155,9 +182,12 @@ CNT4.game = {
         if(this.isWinnerHorizontal(lastPiece, board, player)){
             alert(player + "wins horizontal")
         }
-        if(this.isWinnerDiagonal(lastPiece, board, player)){
-            alert(player + "wins Diag")
+        if(this.isWinnerDiagoNWSE(lastPiece, board, player)){
+            alert(player + "wins Diag 1")
         }
+        // if(this.isWinnerDiagoNESW(lastPiece, board, player)){
+        //     alert(player + "wins Diag 2")
+        // }
     },
     isWinnerVertical : function(lastPiece, board, player) {
         var count = 0;
@@ -192,26 +222,26 @@ CNT4.game = {
         }
         return false;
     },
-    isWinnerDiagonal: function(lastPiece, board, player){
+    isWinnerDiagoNWSE: function(lastPiece, board, player){
         var m = board.length,
             n = board[0].length,
             a = board,
-            count = 0;
+            count = 0,
+            diago = new Array();
 
-        var out = new Array();
         for (var i = 1 - m; i < n; i++) {
-            var group = new Array();
+            var arr = new Array();
             for (var j = 0; j < m; j++) {
                 if ((i + j) >= 0 && (i + j) < n) {
-                    group.push(a[j][i + j]);
+                    arr.push(a[j][i + j]);
                 }
             }
-            out.push(group);
+            diago.push(arr);
         }
 
-        $.each(out, function(i, l){
-            $.each(out[i], function(j, k){
-                if(out[i][j] === player){
+        $.each(diago, function(i, l){
+            $.each(diago[i], function(j, k){
+                if(diago[i][j] === player){
                     count++;
                 }else{
                     count = 0;
@@ -227,7 +257,44 @@ CNT4.game = {
             return true; // Is a Winner
         }
         return false;
+    },
+    isWinnerDiagoNESW: function(lastPiece, board, player){
+        var m = board.length,
+            n = board[0].length,
+            a = board,
+            count = 0,
+            diago = new Array();
 
+        for (var i = 1 - m; i < n; i++) {
+            var arr = new Array(); // Create an array for each possible diagonal
+            for (var j = 0; j < m; j++) {
+                if ((i + j) >= 0 && (i + j) < n) {
+                    arr.push(a[j][i + j]);
+                }
+            }
+            diago.push(arr);
+        }
+
+        console.log(diago);
+
+        $.each(diago, function(i, l){
+            $.each(diago[i], function(j, k){
+                if(diago[i][j] === player){
+                    count++;
+                }else{
+                    count = 0;
+                }
+            });
+            if(count>=4){
+                return false; // Break the loop
+            }else{
+                count = 0;
+            }
+        });
+        if(count>=4){
+            return true; // Is a Winner
+        }
+        return false;
     }
 }
 
