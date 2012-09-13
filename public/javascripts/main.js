@@ -147,17 +147,22 @@ CNT4.game = {
         this.check(CNT4.infos.state.board.map, x, y, player);
     },
     check : function(board, lastX, lastY, player){
-        if(this.isWinnerVertical({x: lastX, y:lastY}, board, player)){
+        var lastPiece = {x: lastX, y:lastY};
+
+        if(this.isWinnerVertical(lastPiece, board, player)){
             alert(player + "wins vertical")
         }
-        if(this.isWinnerHorizontal({x: lastX, y:lastY}, board, player)){
+        if(this.isWinnerHorizontal(lastPiece, board, player)){
             alert(player + "wins horizontal")
+        }
+        if(this.isWinnerDiagonal(lastPiece, board, player)){
+            alert(player + "wins Diag")
         }
     },
     isWinnerVertical : function(lastPiece, board, player) {
         var count = 0;
 
-        // Top Bottom
+        // Top Bottom |
         $.each(board[lastPiece.x], function(i, l){
             if(l === player){
                 count++;
@@ -171,15 +176,58 @@ CNT4.game = {
     },
     isWinnerHorizontal: function(lastPiece, board, player){
         var count = 0;
+        // Left Right ---
         $.each(board, function(i, l){
             if(l[lastPiece.y] === player){
                 count++;
+            }else{
+                count = 0;
+            }
+            if(count>=4){
+                return false;
             }
         });
         if(count>=4){
             return true;
         }
-        console.log(count)
+        return false;
+    },
+    isWinnerDiagonal: function(lastPiece, board, player){
+        var m = board.length,
+            n = board[0].length,
+            a = board,
+            count = 0;
+
+        var out = new Array();
+        for (var i = 1 - m; i < n; i++) {
+            var group = new Array();
+            for (var j = 0; j < m; j++) {
+                if ((i + j) >= 0 && (i + j) < n) {
+                    group.push(a[j][i + j]);
+                }
+            }
+            out.push(group);
+        }
+
+        $.each(out, function(i, l){
+            $.each(out[i], function(j, k){
+                if(out[i][j] === player){
+                    count++;
+                }else{
+                    count = 0;
+                }
+            });
+            if(count>=4){
+                return false; // Break the loop
+            }else{
+                count = 0;
+            }
+        });
+        if(count>=4){
+            return true; // Is a Winner
+        }
+        return false;
+
     }
 }
 
