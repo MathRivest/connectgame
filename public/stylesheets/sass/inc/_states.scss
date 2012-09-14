@@ -1,6 +1,24 @@
-[data-draggable="true"]{
-    cursor:pointer;
-    border:2px solid #fff;
+
+.m-disc{
+    &[data-player="1"]{
+        background-color:$player1color;
+        &.ui-draggable-disabled{
+            background-color:$player1colordisabled
+        }
+    }
+    &[data-player="2"]{
+        background-color:$player2color;
+        &.ui-draggable-disabled{
+            background-color:$player2colordisabled
+        }
+    }
+    &[data-draggable]{
+        cursor:pointer;
+        &.ui-draggable-dragging{}
+        &.ui-draggable-disabled{
+            cursor:default;
+        }
+    }
 }
 
 .m-zone{

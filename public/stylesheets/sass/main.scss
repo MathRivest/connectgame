@@ -1,5 +1,17 @@
+/* -Variables -------------------------------------------------------- */
+    $player1color: rgba(255, 0, 0, 1);
+    $player1colordisabled: rgba(255, 0, 0, 0.3);
 
+    $player2color: rgba(0, 0, 0, 1);
+    $player2colordisabled: rgba(0, 0, 0, 0.3);
+
+    $baselinksColor: rgba(0, 0, 0, 1);
+    $baselinksColorHover: rgba(255, 0, 0, 1);
+
+/* -Requirements ----------------------------------------------------- */
     @import "compass/css3";
+    @import "compass/css3/transition";
+    @import "compass/typography/links";
     @import "compass/utilities/general/clearfix";
 
 /* -Normalize -------------------------------------------------------- */

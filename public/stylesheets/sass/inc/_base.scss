@@ -1,1 +1,4 @@
 h1{margin-top:0;}
+a{
+    @include link-colors($baselinksColor, $baselinksColorHover, $baselinksColor, $baselinksColor, $baselinksColor);
+}

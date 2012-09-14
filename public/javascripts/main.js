@@ -20,7 +20,8 @@ CNT4.infos = {
         board : {
             columns: "",
             rows: ""
-        }
+        },
+        playerTurn : 1
     },
     game : {
         id : "123",
@@ -33,6 +34,7 @@ CNT4.infos = {
 
 
 $(function() {
+    CNT4.ui.support();
     CNT4.ui.init();
 });
 
@@ -44,6 +46,7 @@ CNT4.ui = {
         $('#js-generate-board').on('click', function(){
             CNT4.board.create(5,6);
         });
+
         $('#js-fullscreen').on('click', function(){
             CNT4.ui.goFullScreen('container');
             return false;
@@ -52,7 +55,7 @@ CNT4.ui = {
         CNT4.board.create(5,5);
     },
     enableDrag : function(){
-        $('.m-disc[data-draggable="true"]').draggable({
+        $('.m-disc[data-draggable]').draggable({
             revert : 'invalid',
             revertDuration : 300,
             stack : '.container',
@@ -64,7 +67,7 @@ CNT4.ui = {
     },
     enableDrop : function(){
         $('.m-zone').droppable({
-            accept : '.m-disc[data-draggable="true"]',
+            accept : '.m-disc[data-draggable]',
             activeClass : "s-active",
             hoverClass : "s-hover",
             drop : function(event, ui){ // When the user drop the piece
@@ -80,6 +83,18 @@ CNT4.ui = {
                 });
             }
         });
+    },
+    updateDrag : function(){
+        var playerTurn = CNT4.game.getCurrentTurn();
+        if(playerTurn === 1){
+            $('.m-disc[data-player="1"]').draggable('enable');
+            $('.m-disc[data-player="2"]').draggable('disable');
+            console.log("1 is enable, 2 is disabled")
+        }else{
+            $('.m-disc[data-player="2"]').draggable('enable');
+            $('.m-disc[data-player="1"]').draggable('disable');
+            console.log("2 is enable, 1 is disabled")
+        }
     },
     goFullScreen : function(id){
         elem = document.getElementById(id);
@@ -102,6 +117,30 @@ CNT4.ui = {
               document.webkitCancelFullScreen();
             }
           }
+    },
+    support : function(){
+        if(!Modernizr.websockets || !Modernizr.webworkers || !Modernizr.postmessage){
+            /*var $websocket = $("#websockets"),
+                $webworkers = $("#webworkers"),
+                $postmessage = $("#postmessage");
+
+            if(Modernizr.websockets){
+                $websocket.addClass("s-supported");
+            }else{
+                $websocket.addClass("s-unsupported");
+            }
+            if(Modernizr.webworkers){
+                $webworkers.addClass("s-supported");
+            }else{
+                $webworkers.addClass("s-unsupported");
+            }
+            if(Modernizr.postmessage){
+                $postmessage.addClass("s-supported");
+            }else{
+                $postmessage.addClass("s-unsupported");
+            }*/
+            $('#modal-support').modal({backdrop:'static'});
+        }
     }
 }
 
@@ -139,7 +178,7 @@ CNT4.board = {
             player ++;
             pieces = '';
             for (x=0; x<playerMoves; x++){
-                pieces += '<div class="m-disc" data-draggable="true" data-player="' + player + '" data-piece="' + x + '">Drag</div>';
+                pieces += '<div class="m-disc" data-draggable data-player="' + player + '" data-piece="' + x + '">Drag</div>';
             }
             $(this).append(pieces);
         });
@@ -154,6 +193,7 @@ CNT4.board = {
 
         /* Enable everything for the UI here*/
         CNT4.ui.enableDrag();
+        CNT4.ui.updateDrag();
         CNT4.ui.enableDrop();
     },
     getLastAvailRow : function(elem, x){
@@ -172,6 +212,8 @@ CNT4.game = {
         CNT4.board.setLastRow(elem, x, player); // Set the last available row as played
         CNT4.infos.state.board.map[x][y] = player; // Update the game state
         this.check(CNT4.infos.state.board.map, x, y, player);
+
+        this.setCurrentTurn(player);
     },
     check : function(board, lastX, lastY, player){
         var lastPiece = {x: lastX, y:lastY};
@@ -258,7 +300,7 @@ CNT4.game = {
         }
         return false;
     },
-    isWinnerDiagoNESW: function(lastPiece, board, player){
+    isWinnerDiagoNESW : function(lastPiece, board, player){
         var m = board.length,
             n = board[0].length,
             a = board,
@@ -295,6 +337,17 @@ CNT4.game = {
             return true; // Is a Winner
         }
         return false;
+    },
+    getCurrentTurn : function(){
+        return CNT4.infos.state.playerTurn;
+    },
+    setCurrentTurn : function(player){
+        if(player === 1){
+            CNT4.infos.state.playerTurn = 2;
+        }else if(player === 2){
+            CNT4.infos.state.playerTurn = 1;
+        }
+        CNT4.ui.updateDrag();
     }
 }
 

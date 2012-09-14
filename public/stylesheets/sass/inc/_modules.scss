@@ -58,7 +58,7 @@ $colwidth:102px;
 }
 
 .m-disc{
-    background:blue;
+    background:rgb(0, 0, 255);
     padding:15px;
     width:50px;
     height:50px;
@@ -66,9 +66,6 @@ $colwidth:102px;
     @include border-radius(4em);
     color:#fff;
     text-align:center;
-    &.ui-draggable-dragging{
-
-    }
 }
 
 
