@@ -11,3 +11,9 @@
     @include transition-duration(0.3s);
     @include transition-timing-function(ease-out);
 }
+
+.m-disc{
+    @include transition-property(background-color);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-out);
+}

@@ -1,6 +1,10 @@
-[data-draggable="true"]{
+[data-draggable]{
     cursor:pointer;
-    border:2px solid #fff;
+    &.ui-draggable-dragging{}
+    &.ui-draggable-disabled{
+        cursor:default;
+        background-color:rgba(0, 0, 255, 0.28);
+    }
 }
 
 .m-zone{
