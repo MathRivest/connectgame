@@ -28,8 +28,6 @@ block content
                 span Y:
                 #y
 
-                
-
                 form(method='post', action='/username')
                     input(type='text', name='username')
                     input(type='submit', value='set username')
@@ -42,3 +40,13 @@ block content
                 p
                     //a#js-generate-board.m-button(href="#") New Game
             .modal-footer
+
+        #modal-support.modal.fade.hide
+            .modal-header 
+                h1 Sorry, we are not supporting your browser yet!
+            .modal-body 
+                //ul
+                    li#websockets Web Sockets
+                    li#webworkers Web Workers
+                    li#postmessage Cross-window Messaging
+                p Please use the latest version of Chrome, Safari, Firefox or Internet Explorer

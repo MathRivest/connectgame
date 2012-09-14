@@ -34,6 +34,7 @@ CNT4.infos = {
 
 
 $(function() {
+    CNT4.ui.support();
     CNT4.ui.init();
 });
 
@@ -116,6 +117,30 @@ CNT4.ui = {
               document.webkitCancelFullScreen();
             }
           }
+    },
+    support : function(){
+        if(!Modernizr.websockets || !Modernizr.webworkers || !Modernizr.postmessage){
+            /*var $websocket = $("#websockets"),
+                $webworkers = $("#webworkers"),
+                $postmessage = $("#postmessage");
+
+            if(Modernizr.websockets){
+                $websocket.addClass("s-supported");
+            }else{
+                $websocket.addClass("s-unsupported");
+            }
+            if(Modernizr.webworkers){
+                $webworkers.addClass("s-supported");
+            }else{
+                $webworkers.addClass("s-unsupported");
+            }
+            if(Modernizr.postmessage){
+                $postmessage.addClass("s-supported");
+            }else{
+                $postmessage.addClass("s-unsupported");
+            }*/
+            $('#modal-support').modal({backdrop:'static'});
+        }
     }
 }
 
