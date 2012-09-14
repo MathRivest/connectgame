@@ -3,11 +3,14 @@
  */
 
 var express = require("express")
-    , routes = require('./routes');
+    , routes = require('./routes')
+    , GameProvider = require('./gameprovider-memory').GameProvider;
+
 var app = express()
     , http = require('http')
     , server = http.createServer(app)
     , io = require('socket.io').listen(server);
+
 
 // Required by session() middleware
 // pass the secret for signed cookies
@@ -18,7 +21,6 @@ app.use(express.cookieParser('keyboard cat'));
 app.use(express.session());
 
 // Configuration
-
 app.configure(function () {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
@@ -38,34 +40,30 @@ app.configure('production', function () {
     app.use(express.errorHandler());
 });
 
+//db
+/*var databaseUrl = 'connect4'; // "username:password@example.com/mydb"
+var collections = ["game", "players"];
+var db = require("mongojs").connect(databaseUrl, collections);*/
+
+
 // Routes
-
-
 app.get('/', routes.index);
 app.post('/username', routes.username);
 
 
-/*app.post('/username', function (req, res) {
-    req.session.username = req.body.username;
-    console.log(req.session.username);
-    res.redirect('/');
-    }
-);*/
+app.listen(3000);
+console.log("Express server listening on port %d in %s mode", 3000, app.settings.env);
 
-
-    app.listen(3001);
-    console.log("Express server listening on port %d in %s mode", 3001, app.settings.env);
-
-    io.configure(function () {
-        io.set('authorization', function (handshakeData, callback) {
-            callback(null, true); // error first callback style
-        });
+io.configure(function () {
+    io.set('authorization', function (handshakeData, callback) {
+        callback(null, true); // error first callback style
     });
+});
 
-    io.sockets.on('connection', function (socket) {
-        socket.emit('welcome', { msg:'Welcome to the connect 4 game' });
-        socket.on('newmessage', function (data) {
-            console.log(data);
-            socket.emit('newresponse', data);
-        });
+io.sockets.on('connection', function (socket) {
+    socket.emit('welcome', { msg:'Welcome to the connect 4 game' });
+    socket.on('newmessage', function (data) {
+        console.log(data);
+        socket.emit('newresponse', data);
     });
+});
