@@ -3,7 +3,17 @@
  */
 
 exports.index = function (req, res) {
-    console.log(db);
+    var gameProvider= new GameProvider();
+
+    gameProvider.findAll(function(error, docs){
+        if (error)
+        {
+            throw error;
+        }
+        games = docs;
+    });
+    console.log(games);
+
     if (req.session.views) {
         ++req.session.views;
     } else {
@@ -16,13 +26,13 @@ exports.index = function (req, res) {
         username = false;
     }
     console.log(req.session.views);
+
     res.render('index', {
             title:'Connect 4',
             viewed:req.session.views,
             username:username,
-            games: articleProvider.findAll(function(error, docs){
-                return docs;
-    }) })
+            games: games
+    });
 }
 ;
 
