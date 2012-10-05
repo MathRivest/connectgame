@@ -356,7 +356,7 @@ h1 {
   margin-top: 0;
 }
 
-/* line 2, sass/inc/_base.scss */
+/* line 3, sass/inc/_base.scss */
 a {
   color: black;
 }
@@ -375,6 +375,11 @@ a:hover {
 /* line 27, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 a:active {
   color: black;
+}
+
+/* line 8, sass/inc/_base.scss */
+label {
+  display: block;
 }
 
 /* -Buttons ---------------------------------------------------------- */
@@ -522,12 +527,91 @@ a:active {
 /* line 112, sass/inc/_modules.scss */
 .modal .modal-body {
   overflow-y: auto;
-  height: 230px;
+  min-height: 230px;
   max-height: 400px;
 }
 /* line 117, sass/inc/_modules.scss */
 .modal small {
   font-size: 12px;
+}
+/* line 119, sass/inc/_modules.scss */
+.modal#modal-features .modal-body {
+  max-height: 800px;
+}
+
+/* line 126, sass/inc/_modules.scss */
+.m-slider {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffbb;
+}
+/* line 131, sass/inc/_modules.scss */
+.m-slider ul, .m-slider ol {
+  padding: 0;
+}
+/* line 132, sass/inc/_modules.scss */
+.m-slider li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 137, sass/inc/_modules.scss */
+.m-slider .slides {
+  /* Hide the slides before the JS is loaded. Avoids image jumping */
+}
+/* line 138, sass/inc/_modules.scss */
+.m-slider .slides > li {
+  display: none;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+}
+/* line 143, sass/inc/_modules.scss */
+.m-slider .slides img {
+  width: 100%;
+  display: block;
+}
+/* line 144, sass/inc/_modules.scss */
+.m-slider .slides:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+/* line 145, sass/inc/_modules.scss */
+html[xmlns] .m-slider .slides {
+  display: block;
+}
+/* line 146, sass/inc/_modules.scss */
+* html .m-slider .slides {
+  height: 1%;
+}
+/* line 148, sass/inc/_modules.scss */
+.m-slider .flex-control-nav {
+  overflow: hidden;
+}
+/* line 150, sass/inc/_modules.scss */
+.m-slider .flex-control-nav li {
+  float: left;
+}
+/* line 153, sass/inc/_modules.scss */
+.m-slider .flex-control-nav a {
+  cursor: pointer;
+}
+/* line 157, sass/inc/_modules.scss */
+.m-slider .flex-direction-nav {
+  overflow: hidden;
+}
+/* line 159, sass/inc/_modules.scss */
+.m-slider .flex-direction-nav .flex-prev, .m-slider .flex-direction-nav .flex-next {
+  float: left;
+  background: red;
+}
+/* line 163, sass/inc/_modules.scss */
+.m-slider .flex-direction-nav .flex-next {
+  float: right;
 }
 
 /* -States Rules ----------------------------------------------------- */
@@ -574,16 +658,16 @@ a:active {
   -ms-transition-property: opacity;
   -o-transition-property: opacity;
   transition-property: opacity;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -ms-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-out;
-  -moz-transition-timing-function: ease-out;
-  -ms-transition-timing-function: ease-out;
-  -o-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -ms-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
 }
 /* line 6, sass/inc/_anim.scss */
 .fade.in {

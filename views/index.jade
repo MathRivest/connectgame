@@ -8,7 +8,6 @@ block content
             p #{username}
             p #{games}
 
-            a#js-generate-board.m-button(href="#") New Game
             a#js-fullscreen.m-button(href="#") Fullscreen
         //input#myfield(type="text")
         //a#send(href="#") Send
@@ -33,21 +32,4 @@ block content
                     input(type='text', name='username')
                     input(type='submit', value='set username')
 
-
-        #modal-new-game.modal.fade.hide
-            .modal-header 
-                h1 Create a new game
-            .modal-body This is my modal 
-                p
-                    //a#js-generate-board.m-button(href="#") New Game
-            .modal-footer
-
-        #modal-support.modal.fade.hide
-            .modal-header 
-                h1 Sorry, we are not supporting your browser yet!
-            .modal-body 
-                //ul
-                    li#websockets Web Sockets
-                    li#webworkers Web Workers
-                    li#postmessage Cross-window Messaging
-                p Please use the latest version of Chrome, Safari, Firefox or Internet Explorer
+    include inc/modals
