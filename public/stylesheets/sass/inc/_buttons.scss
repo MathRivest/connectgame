@@ -1,0 +1,25 @@
+
+
+.m-button{
+    display:inline-block;
+    padding:0 24px;
+    line-height:34px;
+    @include background-image(linear-gradient(#ffff00, #f4f400));
+    @include box-shadow(rgba(0,0,0,0.2) 0 2px 8px);
+    @include border-radius(3px); 
+    border:1px solid rgba(0,0,0,0.4);
+    text-decoration:none;
+
+    @include transition-property(border-color, box-shadow, color);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(linear);
+
+    &:hover{
+        @include box-shadow(rgba(0,0,0,0.4) 0 2px 8px);
+        border:1px solid rgba(0,0,0,0.6);
+    }
+    &:active{
+        position:relative;
+        top:1px;
+    }
+}

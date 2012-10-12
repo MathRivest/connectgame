@@ -43,7 +43,7 @@ CNT4.ui = {
     //CNT4.connect();
     init : function(){
 
-        $('#modal-new-game').modal({backdrop:'static'});
+        //$('#modal-new-game').modal({backdrop:'static'});
         //$('#modal-waiting').modal({backdrop:'static'});
         //$('#modal-support').modal({backdrop:'static'});
         //$('#modal-features').modal();

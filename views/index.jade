@@ -2,19 +2,12 @@ extends layout
 block content
     #container
         header.hdr
-            h1= title
-            p Welcome to #{title} TEST2 #{viewed}
-
-            p #{username}
-            p #{games}
-
             a#js-fullscreen.m-button(href="#") Fullscreen
-        //input#myfield(type="text")
-        //a#send(href="#") Send
-        //p#cnt.m-chat This is gonna be replaced
+
 
 
         .content
+            h1.m-logo= title
             .m-player-zone.l-left.l-red(data-player="1") 
                 h2 Red Zone
 
@@ -28,8 +21,18 @@ block content
                 span Y:
                 #y
 
-                form(method='post', action='/username')
-                    input(type='text', name='username')
-                    input(type='submit', value='set username')
+
+        p Welcome to #{title} TEST2 #{viewed}
+
+        p #{username}
+        p #{games}
+
+        //input#myfield(type="text")
+        //a#send(href="#") Send
+        //p#cnt.m-chat This is gonna be replaced
+
+        form(method='post', action='/username')
+            input(type='text', name='username')
+            input(type='submit', value='set username')
 
     include inc/modals

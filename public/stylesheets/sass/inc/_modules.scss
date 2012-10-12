@@ -1,4 +1,14 @@
 
+.m-logo{
+    display:block;
+    height:33px;
+    width:246px;
+    text-indent:-9999px;
+    @include iconSprite;
+    background-position:0 -76px;
+    margin:0 auto;
+}
+
 
 $colwidth:102px;
 .m-board{
