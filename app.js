@@ -4,6 +4,7 @@
 
 var express = require("express")
     , routes = require('./routes')
+
     , global_socket = {};
 
 
@@ -14,7 +15,8 @@ var express = require("express")
 
 var app = express()
     , server = app.listen(3002)
-    , io = require('socket.io').listen(server);
+    , io = require('socket.io').listen(server)
+    , GameProvider = require('./gameprovider-memory').GameProvider;
 
 io.sockets.on('connection', function (socket) {
     socket.on('session_start', function (session_id) {
@@ -22,6 +24,7 @@ io.sockets.on('connection', function (socket) {
     })
 
 });
+
 
 // Required by session() middleware
 // pass the secret for signed cookies
@@ -56,11 +59,9 @@ app.configure('production', function () {
 // Routes
 app.get('/', routes.index);
 app.post('/username', routes.username);
+
 app.post('/join-game', routes.join_game);
 
 
 //app.listen(3002);
 console.log("Express server listening on port %d in %s mode", 3002, app.settings.env);
-
-
-

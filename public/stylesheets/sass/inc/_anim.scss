@@ -1,8 +1,8 @@
 .fade {
     opacity: 0;
     @include transition-property(opacity);
-    @include transition-duration(0.3s);
-    @include transition-timing-function(ease-out);
+    @include transition-duration(0.2s);
+    @include transition-timing-function(ease-in);
     &.in{opacity: 1;} 
 }
 

@@ -2,25 +2,16 @@ extends layout
 block content
     #container
         header.hdr
-            h1= title
-            p Welcome to #{title} TEST2 #{viewed}
-
-            p #{username}
-            p
-            a#js-generate-board.m-button(href="#") New Game
             a#js-fullscreen.m-button(href="#") Fullscreen
 
 
 
         .content
-            - each game in games
-                div.gamez
-                    span #{game._id}
-                //        a(href="/join-game/"+game._id)  join this game
-            .m-player-zone.l-left.l-red(data-player="1")
+            h1.m-logo= title
+            .m-player-zone.l-left.l-red(data-player="1") 
                 h2 Red Zone
 
-            .m-player-zone.l-right.l-black(data-player="2")
+            .m-player-zone.l-right.l-black(data-player="2") 
                 h2 Black Zone
 
             #game.m-board
@@ -29,29 +20,6 @@ block content
                 #x
                 span Y:
                 #y
-
-                form(method='post', action='/username')
-                    input(type='text', name='username')
-                    input(type='submit', value='set username')
-
-
-        #modal-new-game.modal.fade.hide
-            .modal-header
-                h1 Create a new game
-            .modal-body This is my modal
-                p
-                    a#js-generate-board.m-button(href="#") New Game
-            .modal-footer
-
-        #modal-support.modal.fade.hide
-            .modal-header
-                h1 Sorry, we are not supporting your browser yet!
-            .modal-body
-                //ul
-                    li#websockets Web Sockets
-                    li#webworkers Web Workers
-                    li#postmessage Cross-window Messaging
-                p Please use the latest version of Chrome, Safari, Firefox or Internet Explorer
 
     script
         var socket = io.connect('/');
@@ -65,3 +33,19 @@ block content
             console.log('Attempting to re-connect to the server');
         });
         // Custom Messages
+
+
+    p Welcome to #{title} TEST2 #{viewed}
+
+    p #{username}
+    p #{games}
+
+        //input#myfield(type="text")
+        //a#send(href="#") Send
+        //p#cnt.m-chat This is gonna be replaced
+
+        form(method='post', action='/username')
+            input(type='text', name='username')
+            input(type='submit', value='set username')
+
+    include inc/modals

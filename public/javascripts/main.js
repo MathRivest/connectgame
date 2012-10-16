@@ -1,6 +1,6 @@
 
 
-
+// Set maxed col 
 // Check if there is a winner
 // Work with Arnaud for real time stuff
 // 
@@ -12,8 +12,8 @@ var CNT4 = CNT4 || {};
 CNT4.infos = {
     default : {
         board : {
-            columns: "5",
-            rows: "5"
+            columns: "7",
+            rows: "6"
         }
     },
     state : {
@@ -36,16 +36,31 @@ CNT4.infos = {
 $(function() {
     CNT4.ui.support();
     CNT4.ui.init();
-    //CNT4.connect();
 });
 
 
 CNT4.ui = {
     //CNT4.connect();
     init : function(){
+
         //$('#modal-new-game').modal({backdrop:'static'});
+        //$('#modal-waiting').modal({backdrop:'static'});
+        //$('#modal-support').modal({backdrop:'static'});
+        //$('#modal-features').modal();
+        //$('#modal-winner').modal();
+        //$('#modal-topscore').modal();
+
+
+        //CNT4.ui.features();
         $('#js-generate-board').on('click', function(){
             CNT4.board.create(5,6);
+            $('#modal-new-game').modal('hide');
+            return false;
+        });
+        $('#js-generate-default-board').on('click', function(){
+            CNT4.board.create();
+            $('#modal-new-game').modal('hide');
+            return false;
         });
 
         $('#js-fullscreen').on('click', function(){
@@ -53,7 +68,6 @@ CNT4.ui = {
             return false;
         });
 
-        CNT4.board.create(5,5);
     },
     enableDrag : function(){
         $('.m-disc[data-draggable]').draggable({
@@ -96,6 +110,9 @@ CNT4.ui = {
             $('.m-disc[data-player="1"]').draggable('disable');
             console.log("2 is enable, 1 is disabled")
         }
+    },
+    animateMove : function(){
+        console.log("create anim for move")
     },
     goFullScreen : function(id){
         elem = document.getElementById(id);
@@ -142,15 +159,29 @@ CNT4.ui = {
             }*/
             $('#modal-support').modal({backdrop:'static'});
         }
+    },
+    features : function(){
+        $('#modal-features').modal();
+
+        $('#js-features-slider').flexslider({
+            animation: "fade",
+            animationSpeed: 300
+        });
     }
 }
 
 CNT4.board = {
     $boardContainer : $('#game'),
     create : function(columns, rows){
-        var columnsNb = columns, 
-            columnClass = 'm-column',
-            rowsNb = rows,
+        if(!columns || !rows){
+            var columnsNb = CNT4.infos.default.board.columns,
+                rowsNb = CNT4.infos.default.board.rows;
+         }else{
+            var columnsNb = columns,
+                rowsNb = rows;
+         }
+
+        var columnClass = 'm-column',
             rowClass = 'm-row'
             board = '',
             zones = '<ul class="m-zones">',
@@ -176,6 +207,7 @@ CNT4.board = {
         zones += '</ul>';
 
         $(".m-player-zone").each(function(){ // For each player zone, add a piece that is draggable
+            $(this).find(".m-disc").remove();
             player ++;
             pieces = '';
             for (x=0; x<playerMoves; x++){
@@ -213,7 +245,7 @@ CNT4.game = {
         CNT4.board.setLastRow(elem, x, player); // Set the last available row as played
         CNT4.infos.state.board.map[x][y] = player; // Update the game state
         this.check(CNT4.infos.state.board.map, x, y, player);
-
+        CNT4.ui.animateMove();
         this.setCurrentTurn(player);
     },
     check : function(board, lastX, lastY, player){
@@ -225,9 +257,9 @@ CNT4.game = {
         if(this.isWinnerHorizontal(lastPiece, board, player)){
             alert(player + "wins horizontal")
         }
-        if(this.isWinnerDiagoNWSE(lastPiece, board, player)){
-            alert(player + "wins Diag 1")
-        }
+        // if(this.isWinnerDiagoNWSE(lastPiece, board, player)){
+        //     alert(player + "wins Diag 1")
+        // }
         // if(this.isWinnerDiagoNESW(lastPiece, board, player)){
         //     alert(player + "wins Diag 2")
         // }
@@ -355,26 +387,46 @@ CNT4.game = {
 
 CNT4.connect = function(){
 
-    alert("We are trying to connect!");
+/*
+    Sender:
+
+        When the game start: 
+            Trigger the start event
+                Send the board infos
+
+        When a player do a move:
+            Trigger the move event
+                Send the map
+                     the move infos
+                     the player
+
+        When a piece is moving:
+            Trigger dragging event  
+                Send the x-y
+                     the player currently dragging
+                     the piece number
+
+    Receiver:
+
+        When the game start:
+            Receive the start event
+                Generate the board
+
+        When a player do a move:
+            Receive the move event
+                Do the move
+
+        When a piece is moving:
+            Receive the dragging event
+                Move the good piece
+
+
+*/
+
+
+
+    alert("We are trying to connect!")
     var socket = io.connect('/');
-    alert(session.sessionID);
-    socket.emit('session_start', '#{session.sessionID}');
-    socket.on('reconnect', function () {
-        console.log('Reconnected to the server');
-        socket.emit('username', '#{current_user.name}');
-    });
-
-    socket.on('reconnecting', function () {
-        console.log('Attempting to re-connect to the server');
-    });
-    // Custom Messages
-
-    socket.on('join', function(data) {
-        $('#notifications').append("<div class='notifications'>" +
-            "Bid: Rs." + data.amount + " for " + data.customer +
-            "</div>");
-    });
-
     socket.on('welcome', function (data) {
         //log the welcome message and replace the container message with it
         console.log(data);

@@ -1,0 +1,64 @@
+//- Modal to define size of the board
+#modal-new-game.modal.fade.hide
+    .modal-header 
+        h1 Create a new game
+    .modal-body
+            label Please enter your board size
+            input#js-field-columns(type="text", placeholder="Columns")
+            input#js-field-rows(type="text", placeholder="Rows")
+    .modal-footer
+            button#js-view-score.m-button Top Score
+            button#js-generate-board.m-button New Game
+            button#js-generate-default-board.m-button Original size
+
+//- Modal when waiting for a player
+#modal-waiting.modal.fade.hide
+    .modal-header 
+        h1 Waiting for an opponent
+    .modal-body
+
+    .modal-footer
+
+
+//- Modal when requirements are not met
+#modal-support.modal.fade.hide
+    .modal-header 
+        h1 Sorry, we are not supporting your browser yet!
+    .modal-body 
+        //-ul
+            li#websockets Web Sockets
+            li#webworkers Web Workers
+            li#postmessage Cross-window Messaging
+        p Please use the latest version of Chrome, Safari, Firefox or Internet Explorer
+
+
+//- Modal for showing the technologie
+#modal-features.modal.fade.hide
+    .modal-header 
+        h1 What we used
+    .modal-body 
+        #js-features-slider.m-slider
+            ul.slides
+                li Node.js
+                li MongoDB
+                li Express and Jade
+                li Sass & Compass
+                li Websockets
+
+
+//- Modal when waiting for a player
+#modal-winner.modal.fade.hide
+    .modal-header 
+        h1 Winner
+    .modal-body
+
+    .modal-footer
+
+
+//- Modal when waiting for a player
+#modal-topscore.modal.fade.hide
+    .modal-header 
+        h1 Top score
+    .modal-body
+
+    .modal-footer

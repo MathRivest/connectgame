@@ -1,7 +1,11 @@
 .hdr{
-    padding:20px;
-    @include box-shadow(rgba(0, 0, 0, 0.3) 0 3px 7px);
+    padding:18px 24px;
+    height:72px - 36px;
+    @include box-shadow(rgba(0, 0, 0, 0.15) 0 3px 7px);
+    @include noiseYellowBackground;
+    .m-logo{float:left;}
 }
+
 .content{
     padding:20px;
 }

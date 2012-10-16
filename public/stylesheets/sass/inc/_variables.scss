@@ -1,0 +1,32 @@
+/* -Variables -------------------------------------------------------- */
+
+    $experimental-support-for-svg: true;
+
+    $player1color: rgba(255, 0, 0, 1);
+    $player1colordisabled: rgba(255, 0, 0, 0.3);
+
+    $player2color: rgba(0, 0, 0, 1);
+    $player2colordisabled: rgba(0, 0, 0, 0.3);
+
+    $baselinksColor: rgba(0, 0, 0, 0.6);
+    $baselinksColorHover: rgba(0, 0, 0, 1);
+
+    $fontStackBase:Georgia, Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
+
+
+
+/* - Mixins ---------------------------------------------------------- */
+
+
+@mixin noiseYellowBackground(){
+    background: inline-image('../images/bg-yellow_noise.png') repeat;
+}
+
+@mixin noiseGreyBackground(){
+    background: inline-image('../images/bg-grey_noise.png') repeat;
+}
+
+
+@mixin iconSprite(){
+    background: inline-image('../images/s-connect4.png') no-repeat;
+}
