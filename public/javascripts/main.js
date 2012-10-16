@@ -36,6 +36,7 @@ CNT4.infos = {
 $(function() {
     CNT4.ui.support();
     CNT4.ui.init();
+    //CNT4.connect();
 });
 
 
@@ -354,8 +355,26 @@ CNT4.game = {
 
 CNT4.connect = function(){
 
-    alert("We are trying to connect!")
+    alert("We are trying to connect!");
     var socket = io.connect('/');
+    alert(session.sessionID);
+    socket.emit('session_start', '#{session.sessionID}');
+    socket.on('reconnect', function () {
+        console.log('Reconnected to the server');
+        socket.emit('username', '#{current_user.name}');
+    });
+
+    socket.on('reconnecting', function () {
+        console.log('Attempting to re-connect to the server');
+    });
+    // Custom Messages
+
+    socket.on('join', function(data) {
+        $('#notifications').append("<div class='notifications'>" +
+            "Bid: Rs." + data.amount + " for " + data.customer +
+            "</div>");
+    });
+
     socket.on('welcome', function (data) {
         //log the welcome message and replace the container message with it
         console.log(data);

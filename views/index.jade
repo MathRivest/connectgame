@@ -6,20 +6,21 @@ block content
             p Welcome to #{title} TEST2 #{viewed}
 
             p #{username}
-            p #{games}
-
+            p
             a#js-generate-board.m-button(href="#") New Game
             a#js-fullscreen.m-button(href="#") Fullscreen
-        //input#myfield(type="text")
-        //a#send(href="#") Send
-        //p#cnt.m-chat This is gonna be replaced
+
 
 
         .content
-            .m-player-zone.l-left.l-red(data-player="1") 
+            - each game in games
+                div.gamez
+                    span #{game._id}
+                //        a(href="/join-game/"+game._id)  join this game
+            .m-player-zone.l-left.l-red(data-player="1")
                 h2 Red Zone
 
-            .m-player-zone.l-right.l-black(data-player="2") 
+            .m-player-zone.l-right.l-black(data-player="2")
                 h2 Black Zone
 
             #game.m-board
@@ -35,19 +36,32 @@ block content
 
 
         #modal-new-game.modal.fade.hide
-            .modal-header 
+            .modal-header
                 h1 Create a new game
-            .modal-body This is my modal 
+            .modal-body This is my modal
                 p
-                    //a#js-generate-board.m-button(href="#") New Game
+                    a#js-generate-board.m-button(href="#") New Game
             .modal-footer
 
         #modal-support.modal.fade.hide
-            .modal-header 
+            .modal-header
                 h1 Sorry, we are not supporting your browser yet!
-            .modal-body 
+            .modal-body
                 //ul
                     li#websockets Web Sockets
                     li#webworkers Web Workers
                     li#postmessage Cross-window Messaging
                 p Please use the latest version of Chrome, Safari, Firefox or Internet Explorer
+
+    script
+        var socket = io.connect('/');
+
+        socket.emit('session_start', '#{session_id}');
+        //socket.on('reconnect', function () {
+        //    console.log('Reconnected to the server');
+        //});
+
+        socket.on('reconnecting', function () {
+            console.log('Attempting to re-connect to the server');
+        });
+        // Custom Messages
