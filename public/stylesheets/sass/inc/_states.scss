@@ -2,30 +2,30 @@
 .m-disc{
     &[data-player="1"]{
         background-color:$player1color;
-        &.ui-draggable-disabled{
-            background-color:$player1colordisabled
-        }
+        &:before{@include background-image(linear-gradient(#fe3232, $player1color)); }
     }
     &[data-player="2"]{
         background-color:$player2color;
-        &.ui-draggable-disabled{
-            background-color:$player2colordisabled
-        }
+        &:before{@include background-image(linear-gradient(#3232fe, $player2color)); }
+        
     }
     &[data-draggable]{
-        cursor:pointer;
-        &.ui-draggable-dragging{}
+        cursor: -webkit-grab; cursor: -moz-grab;
+        &.ui-draggable-dragging, &:active{cursor: -webkit-grabbing; cursor: -moz-grabbing;}
         &.ui-draggable-disabled{
             cursor:default;
         }
+    }
+    &.ui-draggable-disabled{
+        opacity:0.3;
     }
 }
 
 .m-zone{
     &.s-active{
-        background-color:#f5f566!important;
+        background-color:#ffff00!important;
     }
     &.s-hover{
-        border-style:dotted!important;
+        background-color:#efefef!important;
     }
 }

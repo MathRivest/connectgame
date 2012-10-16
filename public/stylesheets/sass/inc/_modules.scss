@@ -4,31 +4,49 @@
     height:33px;
     width:246px;
     text-indent:-9999px;
-    @include iconSprite;
+    @extend %iconsSprite;
     background-position:0 -76px;
-    margin:0 auto;
+    margin:0 auto 36px;
 }
 
+.m-game-wrapper{
+    text-align:center;
+}
 
-$colwidth:102px;
 .m-board{
     display:none;
     overflow:hidden;
+    width:60%;
     margin:0 auto;
-    text-align:center;
-    font-size:36px;
-    line-height:80px;
+    @include box-shadow(rgba(0, 0, 0, 0.3) 0 3px 10px);
     .m-column{
         float:left;
-        width:$colwidth;
+        width:$colwidth + 20px;
         padding:0;
         margin:0;
+        @extend %noiseYellowBackground;
         .m-row{
-            margin-bottom:2px;
-            margin-right:2px;
-            height:80px;
-            border:1px solid red;
+            position:relative;
+            @include box-sizing(border-box);
+            padding:20px;
+            margin:10px;
+            width:$colwidth;
+            height:$colwidth;
+            background:#0d0d00;
+            @include border-radius(4em);
             list-style:none;
+            text-indent:-999px;
+            &:before{
+                content:"";
+                position:absolute;
+                top:0;
+                left:0;
+                height:90%;
+                width:90%;
+                margin:5%;
+                @include border-radius(4em);
+                @include background-image(linear-gradient(right top, transparent, #333326));
+            }
         }
     }
     .m-zones{
@@ -37,18 +55,20 @@ $colwidth:102px;
         margin:0;
         .m-zone{
             float:left;
-            margin-bottom:2px;
-            margin-right:2px;
-            width:$colwidth - 4px;
-            height:80px;
-            border:1px solid black;
+            @include box-sizing(border-box);
+            width:$colwidth + 20px;
+            height:25px;
+            border-right:1px solid $borderColor;
+            border-top:1px solid $borderColor;
+            border-bottom:1px solid $borderColor;
+            background:#efefef;
             list-style:none;
         }
+        .m-zone:first-child{border-left:1px solid $borderColor;}
     }
 }
 
 .m-player-zone{
-    //background:red;
     width:20%;
     &.l-left{
         float:left;
@@ -64,21 +84,75 @@ $colwidth:102px;
             float:right;
         }
     }
-    h2{}
 }
 
 .m-disc{
-    background:rgb(0, 0, 255);
-    padding:15px;
-    width:50px;
-    height:50px;
-    line-height:50px;
+    z-index:1000;
+    position:relative;
+    @include box-sizing(border-box);
+    padding:20px;
+    margin:0 10px 10px 0;
+    width:$colwidth;
+    height:$colwidth;
+    background:#0d0d00;
     @include border-radius(4em);
+    list-style:none;
+    //text-indent:-999px;
     color:#fff;
-    text-align:center;
+    &:before{
+        content:"";
+        position:absolute;
+        top:0;
+        left:0;
+        height:90%;
+        width:90%;
+        margin:5%;
+        @include border-radius(4em);
+        //@include background-image(linear-gradient(transparent, #333326));
+    }
 }
 
 
+
+
+.m-field-container{
+    padding:2px 0;
+    margin-bottom:12px;
+    input{
+        width:100%;
+        margin-bottom:4px;
+    }
+    &.l-large{
+        width:100%;
+    }
+    &.l-small{
+        width:48%;
+        &.l-fright{
+            input,label{}
+        }
+    }
+}
+
+
+.m-player{
+    margin:0 40px;
+    width:150px;
+    text-align:center;
+    .player-icon{
+        margin-bottom:3px;
+        height:120px;
+        border:1px solid $borderColor;
+    }
+    .player-name{}
+    .modal &{
+        &.l-first{
+            float:left;
+        }
+        &.l-second{
+            float:right;
+        }
+    }
+}
 
 
 .modal-backdrop {
@@ -101,27 +175,59 @@ $colwidth:102px;
     top: 50%;
     left: 50%;
     z-index: 1050;
-    width: 800px;
-    padding:20px;
-    margin: -250px 0 0 -420px;
-    overflow: auto;
-    background:#fff;
+    width: 488px;
+    padding:24px;
+    margin: -250px 0 0 -274px;
+    @extend %noiseGreyBackground;
     border: 1px solid rgba(0, 0, 0, 0.3);
     @include box-shadow(rgba(0, 0, 0, 0.3) 0 3px 7px);
     -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
-    
     .modal-header{
-        width:100%;
-        margin:0 auto;
+        position:relative;
+        @extend %noiseYellowBackground;
+        @include box-shadow(rgba(0, 0, 0, 0.15) 0 3px 7px);
+        padding:6px 0;
+        margin:0 -40px 36px;
+        text-align:center;
+        h1{
+            margin:0;
+            font:{
+                size:24px;
+                weight:normal;
+                style:italic;
+            }
+        }
+        &:before, &:after{
+            position:absolute;
+            content:"";
+            width:0;
+            height:0;
+            bottom:-16px;
+        }
+        &:before{
+            left:-1px;
+            border-top:8px solid rgba(0,0,0,0.6);
+            border-right:8px solid rgba(0,0,0,0.6);
+            border-bottom:8px solid transparent;
+            border-left:8px solid transparent;
+        }
+        &:after{
+            right:-1px;
+            border-bottom:8px solid transparent;
+            border-right:8px solid transparent;
+            border-top:8px solid rgba(0,0,0,0.6);
+            border-left:8px solid rgba(0,0,0,0.6);
+        }
     }
     .modal-footer{
-        @extend .modal-header;
+        padding:24px 0 6px 0;
+        border-top:1px solid $borderColor;
     }
     .modal-body {
         overflow-y: auto;
-        min-height:230px;
+        min-height:180px;
         max-height: 400px;
     }
     small{font-size:12px;}

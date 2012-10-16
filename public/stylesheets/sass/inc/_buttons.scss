@@ -1,25 +1,106 @@
 
+.i{
+    position:relative;
+    &:before{
+        position:absolute;
+        left:12px;
+        top:0;
+        content:"";
+        @extend %iconsSprite;
+        height:26px;
+        width:30px;
+    }
+    &.i-right{
+        &:before{
+            left:auto;
+            right:12px;
+        }
+    }
+    &.l-small:before{left:6px;}
+    &.i-restart:before{
+        width:24px;
+        background-position:-128px 0;
+    }
+    &.i-trophy:before{
+        width:22px;
+        background-position:-169px 0;
+    }
+    &.i-info:before{
+        width:27px;
+        background-position:-85px 0;
+        cursor: help;
+    }
+    &.i-fullscreen:before{
+        width:27px;
+        background-position:-338px 0;
+    }
+    &.i-fw:before{
+        width:20px;
+        background-position:0 0;
+    }
+}
+
 
 .m-button{
     display:inline-block;
+    @include box-sizing(content-box);
     padding:0 24px;
-    line-height:34px;
+    margin-right:18px;
+    line-height:32px;
     @include background-image(linear-gradient(#ffff00, #f4f400));
-    @include box-shadow(rgba(0,0,0,0.2) 0 2px 8px);
-    @include border-radius(3px); 
-    border:1px solid rgba(0,0,0,0.4);
+    @include box-shadow(rgba(0,0,0,0.2) 0 2px 4px);
+    //@include border-radius(3px); 
+    border:1px solid rgba(0,0,0,0.5);
+    font-size:14px;
     text-decoration:none;
 
-    @include transition-property(border-color, box-shadow, color);
-    @include transition-duration(0.25s);
-    @include transition-timing-function(linear);
-
-    &:hover{
-        @include box-shadow(rgba(0,0,0,0.4) 0 2px 8px);
-        border:1px solid rgba(0,0,0,0.6);
+    &.i{
+        padding-left:48px;
+        &:before{
+            opacity:0.8!important;
+        }
+        &.i-right{
+            padding-left:24px;
+            padding-right:48px;
+        }
     }
+    &.l-small{
+        padding:0 6px;
+        width:26px;
+        text-indent:-9999px;
+    }
+    &:hover, &:focus{
+        @include box-shadow(rgba(0,0,0,0.4) 0 2px 6px);
+        border:1px solid rgba(0,0,0,0.9);
+    } 
     &:active{
         position:relative;
         top:1px;
+        @include box-shadow(rgba(0,0,0,0.2) 0 2px 8px);
+    }
+    &.l-fright{margin-right:0;}
+
+    &.l-grey{@include background-image(linear-gradient(#d9d9d9, #d1d1d1));}
+    &.i-trophy:before       {top:4px;}
+    &.i-restart:before      {top:3px;}
+    &.i-info:before         {top:3px;}
+    &.i-fullscreen:before   {top:3px; left:7px}
+    &.i-fw:before           {top:7px;}
+
+    &.l-disabled{
+        cursor:default;
+        &:active{position:relative!important; top:0;}
+    }
+}
+
+#js-fullscreen{
+    z-index:1000;
+    position:fixed;
+    bottom:18px;
+    right:18px;
+    margin:0;
+    &:active{
+        position:static!important;
+        bottom:17px;
     }
 }

@@ -13,12 +13,24 @@
 }
 
 .m-disc{
-    @include transition-property(background-color);
-    @include transition-duration(0.3s);
+    @include transition-property(opacity);
+    @include transition-duration(0.4s);
     @include transition-timing-function(ease-out);
 }
 a{
     @include transition-property(color);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(linear);
+}
+
+.m-button{
+    @include transition-property(border-color, color, box-shadow);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(linear);
+}
+
+input, label{
+    @include transition-property(all);
     @include transition-duration(0.25s);
     @include transition-timing-function(linear);
 }

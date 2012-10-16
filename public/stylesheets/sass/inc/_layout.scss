@@ -2,10 +2,15 @@
     padding:18px 24px;
     height:72px - 36px;
     @include box-shadow(rgba(0, 0, 0, 0.15) 0 3px 7px);
-    @include noiseYellowBackground;
+    @extend %noiseYellowBackground;
     .m-logo{float:left;}
 }
 
 .content{
-    padding:20px;
+    padding:36px 18px 18px 18px;
 }
+
+.l-fleft{float:left;}
+.l-fright{float:right;}
+
+.l-tcenter{text-align:center;}
