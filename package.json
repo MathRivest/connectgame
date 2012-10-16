@@ -6,5 +6,6 @@
       "express": "3.0.x"
     , "jade": ">= 0.0.1"
     , "socket.io": ">= 0.9.10"
+    , "mongodb": "1.x.x"
   }
 }

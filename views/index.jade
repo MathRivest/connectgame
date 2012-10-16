@@ -22,11 +22,24 @@ block content
                 span Y:
                 #y
 
+    script
+        var socket = io.connect('/');
 
-        p Welcome to #{title} TEST2 #{viewed}
+        socket.emit('session_start', '#{session_id}');
+        //socket.on('reconnect', function () {
+        //    console.log('Reconnected to the server');
+        //});
 
-        p #{username}
-        p #{games}
+        socket.on('reconnecting', function () {
+            console.log('Attempting to re-connect to the server');
+        });
+        // Custom Messages
+
+
+    p Welcome to #{title} TEST2 #{viewed}
+
+    p #{username}
+    p #{games}
 
         //input#myfield(type="text")
 
