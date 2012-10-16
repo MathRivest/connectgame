@@ -64,4 +64,4 @@ app.post('/join-game', routes.join_game);
 
 
 //app.listen(3002);
-console.log("Express server listening on port %d in %s mode", 3002, app.settings.env);
+console.log("Express server listening on port %d in %s mode", 3001, app.settings.env);

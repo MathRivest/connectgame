@@ -122,11 +122,9 @@ CNT4.ui = {
         if(playerTurn === 1){
             $('.m-disc[data-player="1"]').draggable('enable');
             $('.m-disc[data-player="2"]').draggable('disable');
-            console.log("1 is enable, 2 is disabled")
         }else{
             $('.m-disc[data-player="2"]').draggable('enable');
             $('.m-disc[data-player="1"]').draggable('disable');
-            console.log("2 is enable, 1 is disabled")
         }
     },
     goFullScreen : function(id){
@@ -278,32 +276,38 @@ CNT4.game = {
     },
     isWinnerVertical : function(lastPiece, board, player) {
         var count = 0;
+        
 
         // Top Bottom |
         $.each(board[lastPiece.x], function(i, l){
             if(l === player){
                 count++;
             }
+            console.log(l);
         });
 
         if(count>=4){
             return true;
         }
+
         return false;
     },
     isWinnerHorizontal: function(lastPiece, board, player){
         var count = 0;
+        var opPlayer = (player == 1) ? 2 : 1;
+
         // Left Right ---
         $.each(board, function(i, l){
             if(l[lastPiece.y] === player){
                 count++;
-            }else{
+            }else if(l[lastPiece.y] === opPlayer){
                 count = 0;
             }
             if(count>=4){
                 return false;
             }
         });
+        console.log(count);
         if(count>=4){
             return true;
         }
