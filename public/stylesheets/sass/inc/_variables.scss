@@ -2,31 +2,42 @@
 
     $experimental-support-for-svg: true;
 
-    $player1color: rgba(255, 0, 0, 1);
+    $player1color: #cd0101;
     $player1colordisabled: rgba(255, 0, 0, 0.3);
 
-    $player2color: rgba(0, 0, 0, 1);
-    $player2colordisabled: rgba(0, 0, 0, 0.3);
+    $player2color: #0202ce;
+    $player2colordisabled: rgba(0, 0, 255, 0.3);
 
-    $baselinksColor: rgba(0, 0, 0, 0.6);
+    $baseTextColor: #343400;
+    $baselinksColor: rgba(0, 0, 0, 0.8);
     $baselinksColorHover: rgba(0, 0, 0, 1);
 
     $fontStackBase:Georgia, Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
 
+    $borderColor: #9c9c9c;
+    $borderColorActive: #505050;
 
+    $fieldBgColor:#efefef;
+    $fieldBgColorActive:#fefefe;
+
+    $colwidth:60px;
+
+    $colwidthMedium:45px;
+
+    $colwidthSmall:30px;
 
 /* - Mixins ---------------------------------------------------------- */
 
 
-@mixin noiseYellowBackground(){
+/* - Helpers --------------------------------------------------------- */
+%noiseYellowBackground{
     background: inline-image('../images/bg-yellow_noise.png') repeat;
 }
 
-@mixin noiseGreyBackground(){
+%noiseGreyBackground{
     background: inline-image('../images/bg-grey_noise.png') repeat;
 }
 
-
-@mixin iconSprite(){
+%iconsSprite{
     background: inline-image('../images/s-connect4.png') no-repeat;
 }

@@ -2,17 +2,18 @@ extends layout
 block content
     #container
         header.hdr
-            a#js-fullscreen.m-button(href="#") Fullscreen
-
+            button.m-button.i.i-restart(data-target='#modal-new-game') Start again
+            button.m-button.i.i-info.l-small(data-target='#modal-features') Informations
+            button.m-button.i.i-trophy.l-fright(data-target='#modal-topscore') View top score
 
 
         .content
             h1.m-logo= title
             .m-player-zone.l-left.l-red(data-player="1") 
-                h2 Red Zone
+                h2 Player 1
 
             .m-player-zone.l-right.l-black(data-player="2") 
-                h2 Black Zone
+                h2 Player 2
 
             #game.m-board
             #infos
@@ -35,9 +36,9 @@ block content
         // Custom Messages
 
 
-
         form(method='post', action='/username')
             input(type='text', name='username')
             input(type='submit', value='set username')
 
+            a#js-fullscreen.m-button.l-small.l-grey.i.i-fullscreen(href="#") Fullscreen
     include inc/modals

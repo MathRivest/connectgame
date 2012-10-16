@@ -14,7 +14,7 @@ var express = require("express")
     , io = require('socket.io').listen(server);*/
 
 var app = express()
-    , server = app.listen(3002)
+    , server = app.listen(3001)
     , io = require('socket.io').listen(server)
     , GameProvider = require('./gameprovider-memory').GameProvider;
 

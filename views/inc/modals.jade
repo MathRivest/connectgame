@@ -3,33 +3,46 @@
     .modal-header 
         h1 Create a new game
     .modal-body
-            label Please enter your board size
-            input#js-field-columns(type="text", placeholder="Columns")
-            input#js-field-rows(type="text", placeholder="Rows")
+        .m-field-container.l-large
+            input#js-field-name(type="text", maxlength="25",autofocus="autofocus", tabindex="1")
+            label(for="js-field-name") Name
+        .m-field-container.l-small.l-fleft
+            input#js-field-columns(type="number", min="4", max="8", value="6", tabindex="2")
+            label(for="js-field-columns") Columns
+        .m-field-container.l-small.l-fright
+            input#js-field-rows(type="number", min="4", max="8", value="5", tabindex="3")
+            label(for="js-field-rows") Rows
+
     .modal-footer
-            button#js-view-score.m-button Top Score
-            button#js-generate-board.m-button New Game
-            button#js-generate-default-board.m-button Original size
+        button#js-view-score.m-button.i.i-trophy(data-target='#modal-topscore') View top score
+        button#js-step-1.m-button.i.i-fw.i-right.l-fright.l-grey.l-disabled(tabindex="4") Next
 
 //- Modal when waiting for a player
 #modal-waiting.modal.fade.hide
     .modal-header 
         h1 Waiting for an opponent
     .modal-body
+        .m-player.l-first
+            .player-icon
+            .player-name#js-username-1 Player 1
+
+        .m-player.l-second
+            .player-icon
+            .player-name#js-username-2 Player 2
 
     .modal-footer
+        button#js-step-1.m-button.i.i-fw.i-right.l-fright.l-grey.l-disabled Next
 
 
 //- Modal when requirements are not met
 #modal-support.modal.fade.hide
     .modal-header 
         h1 Sorry, we are not supporting your browser yet!
-    .modal-body 
-        //-ul
-            li#websockets Web Sockets
-            li#webworkers Web Workers
-            li#postmessage Cross-window Messaging
-        p Please use the latest version of Chrome, Safari, Firefox or Internet Explorer
+    .modal-body
+        p.l-tcenter Please use the latest version of Chrome<br/><br/>
+            a(href="https://www.google.com/intl/en/chrome/browser/", target="_blank")
+                img(src="/images/l-chrome.png")<br/>
+
 
 
 //- Modal for showing the technologie
@@ -53,6 +66,7 @@
     .modal-body
 
     .modal-footer
+        button.m-button.i.i-restart(data-target='#modal-new-game') Start again
 
 
 //- Modal when waiting for a player
@@ -62,3 +76,4 @@
     .modal-body
 
     .modal-footer
+        button.m-button.i.i-restart(data-target='#modal-new-game') Start again

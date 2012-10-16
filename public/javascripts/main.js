@@ -43,7 +43,7 @@ CNT4.ui = {
     //CNT4.connect();
     init : function(){
 
-        //$('#modal-new-game').modal({backdrop:'static'});
+        //$('#modal-new-game').modal({backdrop:'static', keyboard: false});
         //$('#modal-waiting').modal({backdrop:'static'});
         //$('#modal-support').modal({backdrop:'static'});
         //$('#modal-features').modal();
@@ -51,22 +51,39 @@ CNT4.ui = {
         //$('#modal-topscore').modal();
 
 
+        CNT4.board.create(8,8);
         //CNT4.ui.features();
-        $('#js-generate-board').on('click', function(){
-            CNT4.board.create(5,6);
-            $('#modal-new-game').modal('hide');
-            return false;
-        });
-        $('#js-generate-default-board').on('click', function(){
-            CNT4.board.create();
-            $('#modal-new-game').modal('hide');
-            return false;
-        });
 
         $('#js-fullscreen').on('click', function(){
             CNT4.ui.goFullScreen('container');
             return false;
         });
+
+        $('[data-target]').on('click', function(){
+            var target = $(this).data('target');
+            CNT4.ui.openModal(target);
+            return false;
+        });
+
+
+        // Adjust board size on resize
+        var small = window.matchMedia("(max-width: 768px)");
+        var medium = window.matchMedia("(max-width: 1280px)");
+
+
+        var handleMediaChange = function (mediaQueryList) {
+            resizeBoard();
+        }
+
+        var resizeBoard = function(){
+            var $game = $("#game"),
+                boardWidth = $game.find('ul.m-column').width() * $game.find('ul.m-column').length; 
+            $game.width(boardWidth);
+        }
+
+        small.addListener(handleMediaChange);
+        medium.addListener(handleMediaChange);
+
 
     },
     enableDrag : function(){
@@ -89,12 +106,13 @@ CNT4.ui = {
                 $(this).addClass('s-dropped'); // Add do something to the drop zone
 
                 var x = $(this).data('zone'),
-                    elem = $(this);
+                    $zone = $(this);
 
                 ui.draggable.fadeOut(200, function(){
-                    player = $(this).parent(".m-player-zone").data('player');
-                    $(this).remove();
-                    CNT4.game.doMove(elem, x, player);
+                    var $piece = $(this),
+                        player = $piece.parent(".m-player-zone").data('player');
+                    //$(this).remove();
+                    CNT4.game.doMove($zone, x, player, $piece);
                 });
             }
         });
@@ -110,9 +128,6 @@ CNT4.ui = {
             $('.m-disc[data-player="1"]').draggable('disable');
             console.log("2 is enable, 1 is disabled")
         }
-    },
-    animateMove : function(){
-        console.log("create anim for move")
     },
     goFullScreen : function(id){
         elem = document.getElementById(id);
@@ -137,27 +152,10 @@ CNT4.ui = {
           }
     },
     support : function(){
-        if(!Modernizr.websockets || !Modernizr.webworkers || !Modernizr.postmessage){
-            /*var $websocket = $("#websockets"),
-                $webworkers = $("#webworkers"),
-                $postmessage = $("#postmessage");
-
-            if(Modernizr.websockets){
-                $websocket.addClass("s-supported");
-            }else{
-                $websocket.addClass("s-unsupported");
-            }
-            if(Modernizr.webworkers){
-                $webworkers.addClass("s-supported");
-            }else{
-                $webworkers.addClass("s-unsupported");
-            }
-            if(Modernizr.postmessage){
-                $postmessage.addClass("s-supported");
-            }else{
-                $postmessage.addClass("s-unsupported");
-            }*/
-            $('#modal-support').modal({backdrop:'static'});
+        if(!Modernizr.websockets){
+            $('#modal-support').modal({backdrop:'static', keyboard: false});
+        }else{
+            //$('#modal-new-game').modal({backdrop:'static', keyboard: false});
         }
     },
     features : function(){
@@ -167,6 +165,16 @@ CNT4.ui = {
             animation: "fade",
             animationSpeed: 300
         });
+    },
+    openModal : function(target){
+        if($('.modal:visible').length>0){
+            var currentModal = $('.modal:visible').attr('id');
+            $("#" + currentModal).modal('hide').on('hidden', function(){
+                $(target).modal({backdrop:'static', keyboard: false});
+            });
+        }else{
+            $(target).modal({backdrop:'static', keyboard: false});
+        }
     }
 }
 
@@ -211,7 +219,7 @@ CNT4.board = {
             player ++;
             pieces = '';
             for (x=0; x<playerMoves; x++){
-                pieces += '<div class="m-disc" data-draggable data-player="' + player + '" data-piece="' + x + '">Drag</div>';
+                pieces += '<div class="m-disc" data-draggable data-player="' + player + '" data-piece="' + x + '">&nbsp;</div>';
             }
             $(this).append(pieces);
         });
@@ -233,19 +241,23 @@ CNT4.board = {
         var lastAvailRow = elem.parents('#game').find('[data-col="' + x + '"] [data-row]').not('[data-played-by]').filter(':last').data('row'); // Select the column and then the last row that was not played and get the number
         return lastAvailRow;
     },
-    setLastRow : function(elem, x, player){
+    setLastRow : function(elem, x, player, piece){
         var lastAvailRow = elem.parents('#game').find('[data-col="' + x + '"] [data-row]').not('[data-played-by]').filter(':last');
-        lastAvailRow.attr('data-played-by', player).text(player);
+        lastAvailRow.attr('data-played-by', player).html(piece);
+        piece.draggable('destroy').css({
+            "position" : "absolute",
+            "left" : 0,
+            "top" : 0
+        }).fadeIn();
     }
 }
 
 CNT4.game = {
-    doMove : function(elem, x, player){
+    doMove : function(elem, x, player, piece){
         var y = CNT4.board.getLastAvailRow(elem, x); // Get last row available to do the move
-        CNT4.board.setLastRow(elem, x, player); // Set the last available row as played
+        CNT4.board.setLastRow(elem, x, player, piece); // Set the last available row as played
         CNT4.infos.state.board.map[x][y] = player; // Update the game state
         this.check(CNT4.infos.state.board.map, x, y, player);
-        CNT4.ui.animateMove();
         this.setCurrentTurn(player);
     },
     check : function(board, lastX, lastY, player){
