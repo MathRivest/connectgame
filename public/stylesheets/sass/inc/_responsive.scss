@@ -1,0 +1,63 @@
+@media (max-width: 1280px) {
+
+    h2{margin-bottom:12px;}
+
+    .m-button{
+        padding:0 6px!important;
+        width:26px;
+        text-indent:-9999px;
+        &.i-trophy:before       {left:8px;}
+        &.i-restart:before      {left:8px;}
+        &.i-fw:before           {left: 10px;}
+    }
+
+    .m-board{
+        .m-column{
+            width:$colwidthMedium + 10px;
+            .m-row{
+                padding:10px;
+                margin:5px;
+                width:$colwidthMedium;
+                height:$colwidthMedium;
+            }
+        }
+        .m-zones{
+            .m-zone{
+                width:$colwidthMedium + 10px;
+            }
+        }
+    }
+
+    .m-disc{
+        padding:10px;
+        margin:0 5px 5px 0;
+        width:$colwidthMedium;
+        height:$colwidthMedium;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+
+    .m-board{
+        .m-column{
+            width:$colwidthSmall + 10px;
+            .m-row{
+                width:$colwidthSmall;
+                height:$colwidthSmall;
+            }
+        }
+        .m-zones{
+            .m-zone{
+                width:$colwidthSmall + 10px;
+            }
+        }
+    }
+
+    .m-disc{
+        width:$colwidthSmall;
+        height:$colwidthSmall;
+    }
+
+}
