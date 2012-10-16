@@ -3,24 +3,20 @@
  */
 
 var express = require("express")
+    , GameProvider = require('./gameprovider-memory').GameProvider
     , routes = require('./routes')
-
     , global_socket = {};
 
 
-/*var app = express()
-    , http = require('http')
-    , server = http.createServer(app)
-    , io = require('socket.io').listen(server);*/
-
 var app = express()
-    , server = app.listen(3001)
+    , server = app.listen(3002)
     , io = require('socket.io').listen(server)
-    , GameProvider = require('./gameprovider-memory').GameProvider;
+    ;
 
 io.sockets.on('connection', function (socket) {
     socket.on('session_start', function (session_id) {
         global_socket[session_id] = socket;
+        console.log(global_socket);
     })
 
 });
