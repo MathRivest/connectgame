@@ -9,10 +9,13 @@ var express = require("express")
 
 
 var app = express()
-    , server = app.listen(3001)
+    , server = app.listen(3002)
     , io = require('socket.io').listen(server)
     ;
 
+/**
+ * sockets stuff
+ */
 io.sockets.on('connection', function (socket) {
     var g = require('./gameprovider-mongodb').gameDB
     socket.on('session_start', function (session_id) {
@@ -97,6 +100,8 @@ io.sockets.on('connection', function (socket) {
     })
 
 });
+
+
 // Required by session() middleware
 // pass the secret for signed cookies
 // (required by session())
@@ -128,10 +133,8 @@ io.sockets.on('connection', function (socket) {
 
 // Routes
         app.get('/', routes.index);
-        app.post('/username', routes.username);
+//        app.post('/username', routes.username);
 
-        app.post('/join-game', routes.join_game);
+//        app.post('/join-game', routes.join_game);
 
-
-//app.listen(3002);
-        console.log("Express server listening on port %d in %s mode", 3001, app.settings.env);
+        console.log("Express server listening on port %d in %s mode", 3002, app.settings.env);
