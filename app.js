@@ -39,7 +39,7 @@ io.sockets.on('connection', function (socket) {
                             socket.set('hasGame', 1, function () {});
                             socket.emit('gameJoined',{game: game._id, pnum: 2, players:game.players});
                             socket.join(game._id);
-                            socket.in(game._id).emit('gameStarts', {game: game._id});
+                            socket.in(game._id).emit('gameStarts', {game: game._id, players:game.players});
                             console.log('socket joined game with 1 player: '+ game._id);
                             break;
 
