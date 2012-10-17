@@ -25,7 +25,7 @@ block content
     script
         var socket = io.connect('/');
 
-        socket.emit('session_start', '#{session_id}');
+        //socket.emit('username', '#{session_id}');
         //socket.on('reconnect', function () {
         //    console.log('Reconnected to the server');
         //});
@@ -33,10 +33,14 @@ block content
         socket.on('reconnecting', function () {
             console.log('Attempting to re-connect to the server');
         });
+        socket.on('received', function (msg) {
+                    console.log('Attempting to re-connect to the server');
+                    alert(msg);
+                });
         // Custom Messages
 
 
-    form(method='post', action='/username')
+    form(method='post', action='/username', onsubmit="socket.emit('username', this.username.value);return false;")
         input(type='text', name='username')
         input(type='submit', value='set username')
 
