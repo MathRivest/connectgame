@@ -12,38 +12,30 @@
         button#js-step-1.m-button.i.i-fw.i-right.l-fright(tabindex="4") Next
             //.l-grey.l-disabled
 
-//- Modal to define size of the board
-#modal-board.modal.fade.hide
-    .modal-header 
-        h1 Choose a name
-    .modal-body
-        .m-field-container.l-small.l-fleft
-            input#js-field-columns(type="number", min="4", max="8", value="6", tabindex="2")
-            label(for="js-field-columns") Columns
-        .m-field-container.l-small.l-fright
-            input#js-field-rows(type="number", min="4", max="8", value="5", tabindex="3")
-            label(for="js-field-rows") Rows
-
-    .modal-footer
-        button#js-step-1.m-button.i.i-fw.i-right.l-fright(tabindex="4") Next
-            //.l-grey.l-disabled
-
 //- Modal when waiting for a player
 #modal-waiting.modal.fade.hide
     .modal-header 
         h1 Waiting for your opponent
     .modal-body
+
         .m-player.l-first
             .player-icon
                 .silouette
             .player-name#js-username-1 
-                .i.i-waiting
+                .m-icon.i.i-waiting &nbsp;
 
         .m-player.l-second
             .player-icon
                 .silouette
             .player-name#js-username-2 
                 .m-icon.i.i-waiting &nbsp;
+
+        .m-field-container.l-small.l-fleft
+            input#js-field-columns(type="number", min="4", max="8", value="6", tabindex="2")
+            label(for="js-field-columns") Columns
+        .m-field-container.l-small.l-fright
+            input#js-field-rows(type="number", min="4", max="8", value="5", tabindex="3")
+            label(for="js-field-rows") Rows
 
     .modal-footer
         button#js-step-2.m-button.i.i-fw.i-right.l-fright.l-grey.l-disabled Next

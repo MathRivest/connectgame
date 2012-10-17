@@ -449,6 +449,25 @@ CNT4.connect = function(){
 
 */
 
+    $('#js-field-name').keypress(function() {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $('#js-step-1').trigger('click');
+        }
+    });
+
+    var socket = io.connect('/');
+
+    socket.on('reconnecting', function () {
+        console.log('Attempting to re-connect to the server');
+    });
+    socket.on('received', function (msg) {
+        console.log('Attempting to re-connect to the server');
+        alert(msg);
+    });
+    // Custom Messages
+
+
 
 
     $('#js-step-1').on('click', function(){
@@ -456,18 +475,14 @@ CNT4.connect = function(){
         if(fname == ""){
             $("#js-field-name").trigger("focus");
         }else{
-            $.get('/username', {username : fname}, function(data){
-                var data = 1;
-                if(1 == data){
-                    CNT4.ui.openModal("#modal-waiting");
-                }else{
-                    CNT4.ui.openModal("#modal-waiting");
-                }
-            });
+            socket.emit('username', { username: fname });
             CNT4.ui.openModal("#modal-waiting");
             $("#js-username-1").text(fname);
         }
+    });
 
+    socket.on('gameJoined', function (data) {
+        console.log(data);
     });
 
 }

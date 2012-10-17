@@ -3,171 +3,171 @@
 /* -Variables -------------------------------------------------------- */
 /* - Mixins ---------------------------------------------------------- */
 /* - Helpers --------------------------------------------------------- */
-/* line 33, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_variables.scss */
+/* line 33, sass/inc/_variables.scss */
 .hdr, .m-board .m-column, .modal .modal-header {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAIAAADajyQQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkY3QkI2QjExNEIzMTFFMkEzQzhCODVGMTQwQUEyRkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkY3QkI2QjIxNEIzMTFFMkEzQzhCODVGMTQwQUEyRkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RjdCQjZBRjE0QjMxMUUyQTNDOEI4NUYxNDBBQTJGQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2RjdCQjZCMDE0QjMxMUUyQTNDOEI4NUYxNDBBQTJGQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PiKZLz4AABM1SURBVHjaXJvZkus4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') repeat;
 }
 
-/* line 37, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_variables.scss */
+/* line 37, sass/inc/_variables.scss */
 body, .modal {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABKCAIAAACXR4UbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDEwNDAyQ0YxNEI1MTFFMjhFMTU4NDU0NjEzRjIzQzkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDEwNDAyRDAxNEI1MTFFMjhFMTU4NDU0NjEzRjIzQzkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0MTA0MDJDRDE0QjUxMUUyOEUxNTg0NTQ2MTNGMjNDOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0MTA0MDJDRTE0QjUxMUUyOEUxNTg0NTQ2MTNGMjNDOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjA72JsAAA+ySURBVHjaZNvXdtvM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') repeat;
 }
 
-/* line 41, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_variables.scss */
+/* line 41, sass/inc/_variables.scss */
 .i:before, .m-logo {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWoAAABtCAYAAACIqivvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkY3QkI2QjUxNEIzMTFFMkEzQzhCODVGMTQwQUEyRkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkY3QkI2QjYxNEIzMTFFMkEzQzhCODVGMTQwQUEyRkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RjdCQjZCMzE0QjMxMUUyQTNDOEI4NUYxNDBBQTJGQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2RjdCQjZCNDE0QjMxMUUyQTNDOEI4NUYxNDBBQTJGQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pujdw48AABX+SURBVHja7J0NmB1V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') no-repeat;
 }
 
 /* -Normalize -------------------------------------------------------- */
 /* normalize.css v1.0.1 | MIT License | git.io/normalize */
-/* line 2, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 2, sass/inc/_normalize.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
   display: block;
 }
 
-/* line 3, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 3, sass/inc/_normalize.scss */
 audio, canvas, video {
   display: inline-block;
   *display: inline;
   *zoom: 1;
 }
 
-/* line 4, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 4, sass/inc/_normalize.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/* line 5, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 5, sass/inc/_normalize.scss */
 [hidden] {
   display: none;
 }
 
-/* line 6, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 6, sass/inc/_normalize.scss */
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
-/* line 7, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 7, sass/inc/_normalize.scss */
 html, button, input, select, textarea {
   font-family: sans-serif;
 }
 
-/* line 8, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 8, sass/inc/_normalize.scss */
 body {
   margin: 0;
 }
 
-/* line 9, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 9, sass/inc/_normalize.scss */
 a:focus {
   outline: thin dotted;
 }
 
-/* line 10, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 10, sass/inc/_normalize.scss */
 a:active, a:hover {
   outline: 0;
 }
 
-/* line 11, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 11, sass/inc/_normalize.scss */
 h1 {
   font-size: 2em;
   margin: .67em 0;
 }
 
-/* line 12, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 12, sass/inc/_normalize.scss */
 h2 {
   font-size: 1.5em;
   margin: .83em 0;
 }
 
-/* line 13, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 13, sass/inc/_normalize.scss */
 h3 {
   font-size: 1.17em;
   margin: 1em 0;
 }
 
-/* line 14, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 14, sass/inc/_normalize.scss */
 h4 {
   font-size: 1em;
   margin: 1.33em 0;
 }
 
-/* line 15, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 15, sass/inc/_normalize.scss */
 h5 {
   font-size: .83em;
   margin: 1.67em 0;
 }
 
-/* line 16, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 16, sass/inc/_normalize.scss */
 h6 {
   font-size: .75em;
   margin: 2.33em 0;
 }
 
-/* line 17, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 17, sass/inc/_normalize.scss */
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
-/* line 18, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 18, sass/inc/_normalize.scss */
 b, strong {
   font-weight: bold;
 }
 
-/* line 19, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 19, sass/inc/_normalize.scss */
 blockquote {
   margin: 1em 40px;
 }
 
-/* line 20, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 20, sass/inc/_normalize.scss */
 dfn {
   font-style: italic;
 }
 
-/* line 21, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 21, sass/inc/_normalize.scss */
 mark {
   background: #ff0;
   color: #000;
 }
 
-/* line 22, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 22, sass/inc/_normalize.scss */
 p, pre {
   margin: 1em 0;
 }
 
-/* line 23, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 23, sass/inc/_normalize.scss */
 code, kbd, pre, samp {
   font-family: monospace,serif;
   _font-family: 'courier new',monospace;
   font-size: 1em;
 }
 
-/* line 24, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 24, sass/inc/_normalize.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* line 25, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 25, sass/inc/_normalize.scss */
 q {
   quotes: none;
 }
 
-/* line 26, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 26, sass/inc/_normalize.scss */
 q:before, q:after {
   content: '';
   content: none;
 }
 
-/* line 27, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 27, sass/inc/_normalize.scss */
 small {
   font-size: 80%;
 }
 
-/* line 28, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 28, sass/inc/_normalize.scss */
 sub, sup {
   font-size: 75%;
   line-height: 0;
@@ -175,66 +175,66 @@ sub, sup {
   vertical-align: baseline;
 }
 
-/* line 29, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 29, sass/inc/_normalize.scss */
 sup {
   top: -0.5em;
 }
 
-/* line 30, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 30, sass/inc/_normalize.scss */
 sub {
   bottom: -0.25em;
 }
 
-/* line 31, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 31, sass/inc/_normalize.scss */
 dl, menu, ol, ul {
   margin: 1em 0;
 }
 
-/* line 32, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 32, sass/inc/_normalize.scss */
 dd {
   margin: 0 0 0 40px;
 }
 
-/* line 33, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 33, sass/inc/_normalize.scss */
 menu, ol, ul {
   padding: 0 0 0 40px;
 }
 
-/* line 34, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 34, sass/inc/_normalize.scss */
 nav ul, nav ol {
   list-style: none;
   list-style-image: none;
 }
 
-/* line 35, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 35, sass/inc/_normalize.scss */
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 36, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 36, sass/inc/_normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* line 37, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 37, sass/inc/_normalize.scss */
 figure {
   margin: 0;
 }
 
-/* line 38, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 38, sass/inc/_normalize.scss */
 form {
   margin: 0;
 }
 
-/* line 39, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 39, sass/inc/_normalize.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: .35em .625em .75em;
 }
 
-/* line 40, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 40, sass/inc/_normalize.scss */
 legend {
   border: 0;
   padding: 0;
@@ -242,7 +242,7 @@ legend {
   *margin-left: -7px;
 }
 
-/* line 41, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 41, sass/inc/_normalize.scss */
 button, input, select, textarea {
   font-size: 100%;
   margin: 0;
@@ -250,24 +250,24 @@ button, input, select, textarea {
   *vertical-align: middle;
 }
 
-/* line 42, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 42, sass/inc/_normalize.scss */
 button, input {
   line-height: normal;
 }
 
-/* line 43, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 43, sass/inc/_normalize.scss */
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
   *overflow: visible;
 }
 
-/* line 44, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 44, sass/inc/_normalize.scss */
 button[disabled], input[disabled] {
   cursor: default;
 }
 
-/* line 45, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 45, sass/inc/_normalize.scss */
 input[type="checkbox"], input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
@@ -275,7 +275,7 @@ input[type="checkbox"], input[type="radio"] {
   *width: 13px;
 }
 
-/* line 46, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 46, sass/inc/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
@@ -283,30 +283,30 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 47, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 47, sass/inc/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 48, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 48, sass/inc/_normalize.scss */
 button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 49, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 49, sass/inc/_normalize.scss */
 textarea {
   overflow: auto;
   vertical-align: top;
 }
 
-/* line 50, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 50, sass/inc/_normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 57, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 57, sass/inc/_normalize.scss */
 html,
 button,
 input,
@@ -315,25 +315,25 @@ textarea {
   color: #222;
 }
 
-/* line 60, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 60, sass/inc/_normalize.scss */
 body {
   font-size: 1em;
   line-height: 1.4;
 }
 
-/* line 64, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 64, sass/inc/_normalize.scss */
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
-/* line 68, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 68, sass/inc/_normalize.scss */
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
-/* line 72, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 72, sass/inc/_normalize.scss */
 hr {
   display: block;
   height: 1px;
@@ -343,24 +343,24 @@ hr {
   padding: 0;
 }
 
-/* line 80, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 80, sass/inc/_normalize.scss */
 img {
   vertical-align: middle;
 }
 
-/* line 83, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 83, sass/inc/_normalize.scss */
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
 
-/* line 88, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 88, sass/inc/_normalize.scss */
 textarea {
   resize: vertical;
 }
 
-/* line 91, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_normalize.scss */
+/* line 91, sass/inc/_normalize.scss */
 .chromeframe {
   margin: 0.2em 0;
   background: #ccc;
@@ -369,18 +369,18 @@ textarea {
 }
 
 /* -Base Rules ------------------------------------------------------- */
-/* line 1, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 1, sass/inc/_base.scss */
 *:focus {
   outline: none;
 }
 
-/* line 3, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 3, sass/inc/_base.scss */
 html {
   height: 100%;
   min-height: 100%;
 }
 
-/* line 7, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 7, sass/inc/_base.scss */
 body {
   font-family: Georgia, Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
   height: 100%;
@@ -388,17 +388,17 @@ body {
   color: #343400;
 }
 
-/* line 14, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 14, sass/inc/_base.scss */
 button, input {
   font-family: Georgia, Palatino, "Palatino Linotype", Times, "Times New Roman", serif;
 }
 
-/* line 15, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 15, sass/inc/_base.scss */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
-/* line 17, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 17, sass/inc/_base.scss */
 h2 {
   margin-bottom: 24px;
   text-align: center;
@@ -407,28 +407,28 @@ h2 {
   font-weight: normal;
 }
 
-/* line 26, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 26, sass/inc/_base.scss */
 a {
   color: rgba(0, 0, 0, 0.8);
 }
-/* line 18, /var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 18, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 a:visited {
   color: rgba(0, 0, 0, 0.8);
 }
-/* line 21, /var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 21, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 a:focus {
   color: rgba(0, 0, 0, 0.8);
 }
-/* line 24, /var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 a:hover {
   color: black;
 }
-/* line 27, /var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 a:active {
   color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 31, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 31, sass/inc/_base.scss */
 label {
   display: block;
   cursor: pointer;
@@ -436,7 +436,7 @@ label {
   color: #7d8184;
 }
 
-/* line 37, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 37, sass/inc/_base.scss */
 input {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -448,23 +448,23 @@ input {
   border: 1px solid #9c9c9c;
   color: #9c9c9c;
 }
-/* line 45, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 45, sass/inc/_base.scss */
 input:focus {
   background-color: #fefefe;
   border: 1px solid #505050;
   color: #505050;
 }
-/* line 49, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_base.scss */
+/* line 49, sass/inc/_base.scss */
 input:focus + label {
   color: #505050;
 }
 
 /* -Buttons ---------------------------------------------------------- */
-/* line 2, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 2, sass/inc/_buttons.scss */
 .i {
   position: relative;
 }
-/* line 4, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 4, sass/inc/_buttons.scss */
 .i:before {
   position: absolute;
   left: 12px;
@@ -473,58 +473,58 @@ input:focus + label {
   height: 26px;
   width: 30px;
 }
-/* line 14, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 14, sass/inc/_buttons.scss */
 .i.i-right:before {
   left: auto;
   right: 12px;
 }
-/* line 19, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 19, sass/inc/_buttons.scss */
 .i.l-small:before {
   left: 6px;
 }
-/* line 20, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 20, sass/inc/_buttons.scss */
 .i.i-restart:before {
   width: 24px;
   background-position: -128px 0;
 }
-/* line 24, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 24, sass/inc/_buttons.scss */
 .i.i-trophy:before {
   width: 22px;
   background-position: -169px 0;
 }
-/* line 28, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 28, sass/inc/_buttons.scss */
 .i.i-info:before {
   width: 27px;
   background-position: -85px 0;
   cursor: help;
 }
-/* line 33, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 33, sass/inc/_buttons.scss */
 .i.i-fullscreen:before {
   width: 27px;
   background-position: -338px 0;
 }
-/* line 37, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 37, sass/inc/_buttons.scss */
 .i.i-fw:before {
   width: 20px;
   background-position: 0 0;
 }
-/* line 41, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 41, sass/inc/_buttons.scss */
 .i.i-waiting:before {
   width: 24px;
   background-position: -211px 0;
 }
 
-/* line 47, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 47, sass/inc/_buttons.scss */
 .m-icon {
   display: inline-block;
   width: 24px;
 }
-/* line 50, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 50, sass/inc/_buttons.scss */
 .m-icon:before {
   left: 0;
 }
 
-/* line 53, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 53, sass/inc/_buttons.scss */
 .m-button {
   display: inline-block;
   -webkit-box-sizing: content-box;
@@ -547,33 +547,33 @@ input:focus + label {
   font-size: 14px;
   text-decoration: none;
 }
-/* line 66, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 66, sass/inc/_buttons.scss */
 .m-button.i {
   padding-left: 48px;
 }
-/* line 68, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 68, sass/inc/_buttons.scss */
 .m-button.i:before {
   opacity: 0.8!important;
 }
-/* line 71, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 71, sass/inc/_buttons.scss */
 .m-button.i.i-right {
   padding-left: 24px;
   padding-right: 48px;
 }
-/* line 76, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 76, sass/inc/_buttons.scss */
 .m-button.l-small {
   padding: 0 6px;
   width: 26px;
   text-indent: -9999px;
 }
-/* line 81, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 81, sass/inc/_buttons.scss */
 .m-button:hover, .m-button:focus {
   -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 2px 6px;
   -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 2px 6px;
   box-shadow: rgba(0, 0, 0, 0.4) 0 2px 6px;
   border: 1px solid rgba(0, 0, 0, 0.9);
 }
-/* line 85, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 85, sass/inc/_buttons.scss */
 .m-button:active {
   position: relative;
   top: 1px;
@@ -581,11 +581,11 @@ input:focus + label {
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;
 }
-/* line 90, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 90, sass/inc/_buttons.scss */
 .m-button.l-fright {
   margin-right: 0;
 }
-/* line 92, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 92, sass/inc/_buttons.scss */
 .m-button.l-grey {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q5ZDlkOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2QxZDFkMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -595,38 +595,38 @@ input:focus + label {
   background-image: -o-linear-gradient(#d9d9d9, #d1d1d1);
   background-image: linear-gradient(#d9d9d9, #d1d1d1);
 }
-/* line 93, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 93, sass/inc/_buttons.scss */
 .m-button.i-trophy:before {
   top: 4px;
 }
-/* line 94, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 94, sass/inc/_buttons.scss */
 .m-button.i-restart:before {
   top: 3px;
 }
-/* line 95, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 95, sass/inc/_buttons.scss */
 .m-button.i-info:before {
   top: 3px;
 }
-/* line 96, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 96, sass/inc/_buttons.scss */
 .m-button.i-fullscreen:before {
   top: 3px;
   left: 7px;
 }
-/* line 97, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 97, sass/inc/_buttons.scss */
 .m-button.i-fw:before {
   top: 7px;
 }
-/* line 99, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 99, sass/inc/_buttons.scss */
 .m-button.l-disabled {
   cursor: default;
 }
-/* line 101, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 101, sass/inc/_buttons.scss */
 .m-button.l-disabled:active {
   position: relative!important;
   top: 0;
 }
 
-/* line 105, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 105, sass/inc/_buttons.scss */
 #js-fullscreen {
   z-index: 1041;
   position: fixed;
@@ -634,14 +634,14 @@ input:focus + label {
   right: 18px;
   margin: 0;
 }
-/* line 111, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_buttons.scss */
+/* line 111, sass/inc/_buttons.scss */
 #js-fullscreen:active {
   position: static!important;
   bottom: 17px;
 }
 
 /* -Layout Rules ----------------------------------------------------- */
-/* line 1, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_layout.scss */
+/* line 1, sass/inc/_layout.scss */
 .hdr {
   padding: 18px 24px;
   height: 36px;
@@ -649,33 +649,33 @@ input:focus + label {
   -moz-box-shadow: rgba(0, 0, 0, 0.15) 0 3px 7px;
   box-shadow: rgba(0, 0, 0, 0.15) 0 3px 7px;
 }
-/* line 6, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_layout.scss */
+/* line 6, sass/inc/_layout.scss */
 .hdr .m-logo {
   float: left;
 }
 
-/* line 9, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_layout.scss */
+/* line 9, sass/inc/_layout.scss */
 .content {
   padding: 36px 18px 18px 18px;
 }
 
-/* line 13, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_layout.scss */
+/* line 13, sass/inc/_layout.scss */
 .l-fleft {
   float: left;
 }
 
-/* line 14, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_layout.scss */
+/* line 14, sass/inc/_layout.scss */
 .l-fright {
   float: right;
 }
 
-/* line 16, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_layout.scss */
+/* line 16, sass/inc/_layout.scss */
 .l-tcenter {
   text-align: center;
 }
 
 /* -Modules Rules ---------------------------------------------------- */
-/* line 2, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 2, sass/inc/_modules.scss */
 .m-logo {
   display: block;
   height: 33px;
@@ -685,12 +685,12 @@ input:focus + label {
   margin: 0 auto 36px;
 }
 
-/* line 12, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 12, sass/inc/_modules.scss */
 .m-game-wrapper {
   text-align: center;
 }
 
-/* line 16, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 16, sass/inc/_modules.scss */
 .m-board {
   display: none;
   overflow: hidden;
@@ -700,14 +700,14 @@ input:focus + label {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
 }
-/* line 22, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 22, sass/inc/_modules.scss */
 .m-board .m-column {
   float: left;
   width: 80px;
   padding: 0;
   margin: 0;
 }
-/* line 28, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 28, sass/inc/_modules.scss */
 .m-board .m-column .m-row {
   position: relative;
   -webkit-box-sizing: border-box;
@@ -726,7 +726,7 @@ input:focus + label {
   list-style: none;
   text-indent: -999px;
 }
-/* line 39, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 39, sass/inc/_modules.scss */
 .m-board .m-column .m-row:before {
   content: "";
   position: absolute;
@@ -748,14 +748,14 @@ input:focus + label {
   background-image: -o-linear-gradient(right top, transparent, #333326);
   background-image: linear-gradient(right top, transparent, #333326);
 }
-/* line 52, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 52, sass/inc/_modules.scss */
 .m-board .m-zones {
   overflow: hidden;
   *zoom: 1;
   padding: 0;
   margin: 0;
 }
-/* line 56, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 56, sass/inc/_modules.scss */
 .m-board .m-zones .m-zone {
   float: left;
   -webkit-box-sizing: border-box;
@@ -769,35 +769,35 @@ input:focus + label {
   background: #efefef;
   list-style: none;
 }
-/* line 67, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 67, sass/inc/_modules.scss */
 .m-board .m-zones .m-zone:first-child {
   border-left: 1px solid #9c9c9c;
 }
 
-/* line 71, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 71, sass/inc/_modules.scss */
 .m-player-zone {
   width: 20%;
 }
-/* line 73, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 73, sass/inc/_modules.scss */
 .m-player-zone.l-left {
   float: left;
   text-align: left;
 }
-/* line 76, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 76, sass/inc/_modules.scss */
 .m-player-zone.l-left .m-disc {
   float: left;
 }
-/* line 80, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 80, sass/inc/_modules.scss */
 .m-player-zone.l-right {
   float: right;
   text-align: right;
 }
-/* line 83, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 83, sass/inc/_modules.scss */
 .m-player-zone.l-right .m-disc {
   float: right;
 }
 
-/* line 89, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 89, sass/inc/_modules.scss */
 .m-disc {
   z-index: 1000;
   position: relative;
@@ -817,7 +817,7 @@ input:focus + label {
   list-style: none;
   color: #fff;
 }
-/* line 102, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 102, sass/inc/_modules.scss */
 .m-disc:before {
   content: "";
   position: absolute;
@@ -833,52 +833,53 @@ input:focus + label {
   border-radius: 4em;
 }
 
-/* line 118, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 118, sass/inc/_modules.scss */
 .m-field-container {
   padding: 2px 0;
   margin-bottom: 12px;
 }
-/* line 121, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 121, sass/inc/_modules.scss */
 .m-field-container input {
   width: 100%;
   margin-bottom: 4px;
 }
-/* line 125, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 125, sass/inc/_modules.scss */
 .m-field-container.l-large {
   width: 100%;
 }
-/* line 128, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 128, sass/inc/_modules.scss */
 .m-field-container.l-small {
   width: 48%;
 }
 
-/* line 137, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 137, sass/inc/_modules.scss */
 .m-player {
   margin: 0 40px 18px;
   width: 150px;
   text-align: center;
 }
-/* line 141, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 141, sass/inc/_modules.scss */
 .m-player .player-icon {
   margin-bottom: 5px;
   height: 120px;
   border: 1px solid #9c9c9c;
 }
-/* line 148, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 148, sass/inc/_modules.scss */
 .modal .m-player.l-first {
   float: left;
 }
-/* line 151, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 151, sass/inc/_modules.scss */
 .modal .m-player.l-second {
   float: right;
 }
-/* line 155, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 155, sass/inc/_modules.scss */
 .m-player .silouette {
   position: relative;
   height: 120px;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.4);
 }
-/* line 159, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 160, sass/inc/_modules.scss */
 .m-player .silouette:before {
   position: absolute;
   top: 15px;
@@ -892,7 +893,7 @@ input:focus + label {
   -o-border-radius: 4em;
   border-radius: 4em;
 }
-/* line 168, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 169, sass/inc/_modules.scss */
 .m-player .silouette:after {
   position: absolute;
   top: 70px;
@@ -906,16 +907,36 @@ input:focus + label {
   -o-border-radius: 4em;
   border-radius: 4em;
 }
-/* line 178, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
-.m-player.l-first .silouette:before, .m-player.l-first .silouette:after {
+/* line 179, sass/inc/_modules.scss */
+.m-player.l-first .silouette:before {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlMzIzMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2NkMDEwMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fe3232), color-stop(100%, #cd0101));
+  background-image: -webkit-linear-gradient(#fe3232, #cd0101);
+  background-image: -moz-linear-gradient(#fe3232, #cd0101);
+  background-image: -o-linear-gradient(#fe3232, #cd0101);
+  background-image: linear-gradient(#fe3232, #cd0101);
+}
+/* line 182, sass/inc/_modules.scss */
+.m-player.l-first .silouette:after {
   background: #cd0101;
 }
-/* line 181, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
-.m-player.l-second .silouette:before, .m-player.l-second .silouette:after {
+/* line 185, sass/inc/_modules.scss */
+.m-player.l-second .silouette:before {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMyMzJmZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyMDJjZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3232fe), color-stop(100%, #0202ce));
+  background-image: -webkit-linear-gradient(#3232fe, #0202ce);
+  background-image: -moz-linear-gradient(#3232fe, #0202ce);
+  background-image: -o-linear-gradient(#3232fe, #0202ce);
+  background-image: linear-gradient(#3232fe, #0202ce);
+}
+/* line 188, sass/inc/_modules.scss */
+.m-player.l-second .silouette:after {
   background: #0202ce;
 }
 
-/* line 187, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 194, sass/inc/_modules.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -925,18 +946,18 @@ input:focus + label {
   z-index: 1040;
   background-color: #000000;
 }
-/* line 195, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 202, sass/inc/_modules.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 197, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 204, sass/inc/_modules.scss */
 .modal-backdrop, .modal-backdrop.fade.in {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
 
-/* line 202, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 209, sass/inc/_modules.scss */
 .modal {
   position: fixed;
   top: 50%;
@@ -953,7 +974,7 @@ input:focus + label {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 216, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 223, sass/inc/_modules.scss */
 .modal .modal-header {
   position: relative;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 3px 7px;
@@ -963,14 +984,14 @@ input:focus + label {
   margin: 0 -40px 36px;
   text-align: center;
 }
-/* line 223, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 230, sass/inc/_modules.scss */
 .modal .modal-header h1 {
   margin: 0;
   font-size: 24px;
   font-weight: normal;
   font-style: italic;
 }
-/* line 231, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 238, sass/inc/_modules.scss */
 .modal .modal-header:before, .modal .modal-header:after {
   position: absolute;
   content: "";
@@ -978,7 +999,7 @@ input:focus + label {
   height: 0;
   bottom: -16px;
 }
-/* line 238, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 245, sass/inc/_modules.scss */
 .modal .modal-header:before {
   left: -1px;
   border-top: 8px solid rgba(0, 0, 0, 0.6);
@@ -986,7 +1007,7 @@ input:focus + label {
   border-bottom: 8px solid transparent;
   border-left: 8px solid transparent;
 }
-/* line 245, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 252, sass/inc/_modules.scss */
 .modal .modal-header:after {
   right: -1px;
   border-bottom: 8px solid transparent;
@@ -994,59 +1015,59 @@ input:focus + label {
   border-top: 8px solid rgba(0, 0, 0, 0.6);
   border-left: 8px solid rgba(0, 0, 0, 0.6);
 }
-/* line 253, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 260, sass/inc/_modules.scss */
 .modal .modal-footer {
   padding: 24px 0 6px 0;
   border-top: 1px solid #9c9c9c;
 }
-/* line 257, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 264, sass/inc/_modules.scss */
 .modal .modal-body {
   overflow-y: auto;
   min-height: 100px;
   max-height: 400px;
 }
-/* line 262, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 269, sass/inc/_modules.scss */
 .modal small {
   font-size: 12px;
 }
-/* line 264, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 271, sass/inc/_modules.scss */
 .modal#modal-features .modal-body {
   max-height: 800px;
 }
 
-/* line 271, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 278, sass/inc/_modules.scss */
 .m-slider {
   position: relative;
   margin: 0;
   padding: 0;
   background-color: #ffffbb;
 }
-/* line 276, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 283, sass/inc/_modules.scss */
 .m-slider ul, .m-slider ol {
   padding: 0;
 }
-/* line 277, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 284, sass/inc/_modules.scss */
 .m-slider li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-/* line 282, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 289, sass/inc/_modules.scss */
 .m-slider .slides {
   /* Hide the slides before the JS is loaded. Avoids image jumping */
 }
-/* line 283, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 290, sass/inc/_modules.scss */
 .m-slider .slides > li {
   display: none;
   width: 100%;
   -webkit-backface-visibility: hidden;
 }
-/* line 288, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 295, sass/inc/_modules.scss */
 .m-slider .slides img {
   width: 100%;
   display: block;
 }
-/* line 289, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 296, sass/inc/_modules.scss */
 .m-slider .slides:after {
   content: ".";
   display: block;
@@ -1055,46 +1076,46 @@ input:focus + label {
   line-height: 0;
   height: 0;
 }
-/* line 290, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 297, sass/inc/_modules.scss */
 html[xmlns] .m-slider .slides {
   display: block;
 }
-/* line 291, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 298, sass/inc/_modules.scss */
 * html .m-slider .slides {
   height: 1%;
 }
-/* line 293, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 300, sass/inc/_modules.scss */
 .m-slider .flex-control-nav {
   overflow: hidden;
 }
-/* line 295, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 302, sass/inc/_modules.scss */
 .m-slider .flex-control-nav li {
   float: left;
 }
-/* line 298, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 305, sass/inc/_modules.scss */
 .m-slider .flex-control-nav a {
   cursor: pointer;
 }
-/* line 302, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 309, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav {
   overflow: hidden;
 }
-/* line 304, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 311, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav .flex-prev, .m-slider .flex-direction-nav .flex-next {
   float: left;
   background: red;
 }
-/* line 308, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_modules.scss */
+/* line 315, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav .flex-next {
   float: right;
 }
 
 /* -States Rules ----------------------------------------------------- */
-/* line 3, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 3, sass/inc/_states.scss */
 .m-disc[data-player="1"] {
   background-color: #cd0101;
 }
-/* line 5, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 5, sass/inc/_states.scss */
 .m-disc[data-player="1"]:before {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlMzIzMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2NkMDEwMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -1104,11 +1125,11 @@ html[xmlns] .m-slider .slides {
   background-image: -o-linear-gradient(#fe3232, #cd0101);
   background-image: linear-gradient(#fe3232, #cd0101);
 }
-/* line 7, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 7, sass/inc/_states.scss */
 .m-disc[data-player="2"] {
   background-color: #0202ce;
 }
-/* line 9, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 9, sass/inc/_states.scss */
 .m-disc[data-player="2"]:before {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMyMzJmZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyMDJjZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -1118,36 +1139,36 @@ html[xmlns] .m-slider .slides {
   background-image: -o-linear-gradient(#3232fe, #0202ce);
   background-image: linear-gradient(#3232fe, #0202ce);
 }
-/* line 12, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 12, sass/inc/_states.scss */
 .m-disc[data-draggable] {
   cursor: -webkit-grab;
   cursor: -moz-grab;
 }
-/* line 14, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 14, sass/inc/_states.scss */
 .m-disc[data-draggable].ui-draggable-dragging, .m-disc[data-draggable]:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
 }
-/* line 15, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 15, sass/inc/_states.scss */
 .m-disc[data-draggable].ui-draggable-disabled {
   cursor: default;
 }
-/* line 19, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 19, sass/inc/_states.scss */
 .m-disc.ui-draggable-disabled {
   opacity: 0.3;
 }
 
-/* line 25, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 25, sass/inc/_states.scss */
 .m-zone.s-active {
   background-color: #ffff00!important;
 }
-/* line 28, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_states.scss */
+/* line 28, sass/inc/_states.scss */
 .m-zone.s-hover {
   background-color: #efefef!important;
 }
 
 /* -Animations Rules ------------------------------------------------- */
-/* line 1, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_anim.scss */
+/* line 1, sass/inc/_anim.scss */
 .fade {
   opacity: 0;
   -webkit-transition-property: opacity;
@@ -1163,12 +1184,12 @@ html[xmlns] .m-slider .slides {
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
-/* line 6, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_anim.scss */
+/* line 6, sass/inc/_anim.scss */
 .fade.in {
   opacity: 1;
 }
 
-/* line 9, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_anim.scss */
+/* line 9, sass/inc/_anim.scss */
 .m-zone {
   -webkit-transition-property: background-color;
   -moz-transition-property: background-color;
@@ -1184,7 +1205,7 @@ html[xmlns] .m-slider .slides {
   transition-timing-function: ease-out;
 }
 
-/* line 15, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_anim.scss */
+/* line 15, sass/inc/_anim.scss */
 .m-disc {
   -webkit-transition-property: opacity;
   -moz-transition-property: opacity;
@@ -1200,7 +1221,7 @@ html[xmlns] .m-slider .slides {
   transition-timing-function: ease-out;
 }
 
-/* line 20, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_anim.scss */
+/* line 20, sass/inc/_anim.scss */
 a {
   -webkit-transition-property: color;
   -moz-transition-property: color;
@@ -1216,7 +1237,7 @@ a {
   transition-timing-function: linear;
 }
 
-/* line 26, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_anim.scss */
+/* line 26, sass/inc/_anim.scss */
 .m-button {
   -webkit-transition-property: border-color, color, box-shadow;
   -moz-transition-property: border-color, color, box-shadow;
@@ -1232,7 +1253,7 @@ a {
   transition-timing-function: linear;
 }
 
-/* line 32, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_anim.scss */
+/* line 32, sass/inc/_anim.scss */
 input, label {
   -webkit-transition-property: all;
   -moz-transition-property: all;
@@ -1250,47 +1271,47 @@ input, label {
 
 /* -Responsivness ---------------------------------------------------- */
 @media (max-width: 1280px) {
-  /* line 3, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 3, sass/inc/_responsive.scss */
   h2 {
     margin-bottom: 12px;
   }
 
-  /* line 5, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 5, sass/inc/_responsive.scss */
   .m-button {
     padding: 0 6px!important;
     width: 26px;
     text-indent: -9999px;
   }
-  /* line 9, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 9, sass/inc/_responsive.scss */
   .m-button.i-trophy:before {
     left: 8px;
   }
-  /* line 10, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 10, sass/inc/_responsive.scss */
   .m-button.i-restart:before {
     left: 8px;
   }
-  /* line 11, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 11, sass/inc/_responsive.scss */
   .m-button.i-fw:before {
     left: 10px;
   }
 
-  /* line 15, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 15, sass/inc/_responsive.scss */
   .m-board .m-column {
     width: 55px;
   }
-  /* line 17, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 17, sass/inc/_responsive.scss */
   .m-board .m-column .m-row {
     padding: 10px;
     margin: 5px;
     width: 45px;
     height: 45px;
   }
-  /* line 25, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 25, sass/inc/_responsive.scss */
   .m-board .m-zones .m-zone {
     width: 55px;
   }
 
-  /* line 31, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 31, sass/inc/_responsive.scss */
   .m-disc {
     padding: 10px;
     margin: 0 5px 5px 0;
@@ -1299,28 +1320,28 @@ input, label {
   }
 }
 @media (max-width: 768px) {
-  /* line 44, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 44, sass/inc/_responsive.scss */
   .m-board .m-column {
     width: 40px;
   }
-  /* line 46, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 46, sass/inc/_responsive.scss */
   .m-board .m-column .m-row {
     width: 30px;
     height: 30px;
   }
-  /* line 52, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 52, sass/inc/_responsive.scss */
   .m-board .m-zones .m-zone {
     width: 40px;
   }
 
-  /* line 58, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_responsive.scss */
+  /* line 58, sass/inc/_responsive.scss */
   .m-disc {
     width: 30px;
     height: 30px;
   }
 }
 /* -Helpers ---------------------------------------------------------- */
-/* line 2, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 2, sass/inc/_helpers.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -1328,7 +1349,7 @@ input, label {
   *text-indent: -9999px;
 }
 
-/* line 9, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 9, sass/inc/_helpers.scss */
 .ir:before {
   content: "";
   display: block;
@@ -1336,18 +1357,18 @@ input, label {
   height: 100%;
 }
 
-/* line 16, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 16, sass/inc/_helpers.scss */
 .hide {
   display: none;
 }
 
-/* line 17, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 17, sass/inc/_helpers.scss */
 .hidden {
   display: none !important;
   visibility: hidden;
 }
 
-/* line 22, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 22, sass/inc/_helpers.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1359,7 +1380,7 @@ input, label {
   width: 1px;
 }
 
-/* line 34, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 34, sass/inc/_helpers.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -1370,24 +1391,24 @@ input, label {
   width: auto;
 }
 
-/* line 43, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 43, sass/inc/_helpers.scss */
 .invisible {
   visibility: hidden;
 }
 
-/* line 48, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 48, sass/inc/_helpers.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
   display: table;
 }
 
-/* line 53, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 53, sass/inc/_helpers.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 55, /home/TWISTIMAGE/mathieu.rivest/twistlabs/connectgame/public/stylesheets/sass/inc/_helpers.scss */
+/* line 55, sass/inc/_helpers.scss */
 .clearfix {
   *zoom: 1;
 }
