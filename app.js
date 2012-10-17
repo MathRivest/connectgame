@@ -37,7 +37,7 @@ io.sockets.on('connection', function (socket) {
                             game.players.push(username);
                             collection.update({_id:game._id}, {$set:{players:game.players}});
                             socket.set('hasGame', 1, function () {});
-                            socket.emit('gameJoined',{game: game._id, pnum: 2});
+                            socket.emit('gameJoined',{game: game._id, pnum: 2, players:game.players});
                             socket.join(game._id);
                             socket.in(game._id).emit('gameStarts', {game: game._id});
                             console.log('socket joined game with 1 player: '+ game._id);
@@ -58,7 +58,7 @@ io.sockets.on('connection', function (socket) {
                             game.players.push(username);
                             collection.update({_id:game._id}, {$set:{players:game.players}});
                             socket.set('hasGame', 1, function () {});
-                            socket.emit('gameJoined',{game: game._id, pnum: 1});
+                            socket.emit('gameJoined',{game: game._id, pnum: 1, players:game.players});
                             socket.join(game._id);
                             console.log('socket joined game with 0 player: '+ game._id);
                             break;
