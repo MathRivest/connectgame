@@ -135,11 +135,11 @@
 
 
 .m-player{
-    margin:0 40px;
+    margin:0 40px 18px;
     width:150px;
     text-align:center;
     .player-icon{
-        margin-bottom:3px;
+        margin-bottom:5px;
         height:120px;
         border:1px solid $borderColor;
     }
@@ -151,6 +151,42 @@
         &.l-second{
             float:right;
         }
+    }
+    .silouette{
+        position:relative;
+        height:120px;
+        overflow:hidden;
+        background-color:rgba(255,255,255, 0.4);
+        &:before{
+            position:absolute;
+            top:15px;
+            left:48px;
+            content:"";
+            width:50px;
+            height:50px;
+            @include border-radius(4em);
+        }
+        &:after{
+            position:absolute;
+            top:70px;
+            left:28px;
+            content:"";
+            width:90px;
+            height:100px;
+            @include border-radius(4em);
+        }
+    }
+    &.l-first .silouette:before{
+        @include background-image(linear-gradient(#fe3232, $player1color));
+    }
+    &.l-first .silouette:after{
+        background:$player1color;
+    }
+    &.l-second .silouette:before{
+        @include background-image(linear-gradient(#3232fe, $player2color));
+    }
+    &.l-second .silouette:after{
+        background:$player2color;
     }
 }
 
@@ -227,7 +263,7 @@
     }
     .modal-body {
         overflow-y: auto;
-        min-height:180px;
+        min-height:100px;
         max-height: 400px;
     }
     small{font-size:12px;}

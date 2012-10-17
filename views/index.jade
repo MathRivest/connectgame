@@ -23,26 +23,12 @@ block content
                 #y
 
     script
-        var socket = io.connect('/');
-
-        //socket.emit('username', '#{session_id}');
-        //socket.on('reconnect', function () {
-        //    console.log('Reconnected to the server');
-        //});
-
-        socket.on('reconnecting', function () {
-            console.log('Attempting to re-connect to the server');
-        });
-        socket.on('received', function (msg) {
-                    console.log('Attempting to re-connect to the server');
-                    alert(msg);
-                });
-        // Custom Messages
 
 
     form(method='post', action='/username', onsubmit="socket.emit('username', this.username.value);return false;")
         input(type='text', name='username')
         input(type='submit', value='set username')
 
-            a#js-fullscreen.m-button.l-small.l-grey.i.i-fullscreen(href="#") Fullscreen
+    a#js-fullscreen.m-button.l-small.l-grey.i.i-fullscreen(href="#") Fullscreen
+
     include inc/modals

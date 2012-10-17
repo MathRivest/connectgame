@@ -34,15 +34,15 @@ CNT4.infos = {
 
 
 $(function() {
-    CNT4.ui.support();
     CNT4.ui.init();
+    CNT4.connect();
 });
 
 
 CNT4.ui = {
     //CNT4.connect();
     init : function(){
-
+        this.support();
         //$('#modal-new-game').modal({backdrop:'static', keyboard: false});
         //$('#modal-waiting').modal({backdrop:'static'});
         //$('#modal-support').modal({backdrop:'static'});
@@ -51,7 +51,7 @@ CNT4.ui = {
         //$('#modal-topscore').modal();
 
 
-        CNT4.board.create(8,8);
+        //CNT4.board.create(8,8);
         //CNT4.ui.features();
 
         $('#js-fullscreen').on('click', function(){
@@ -122,11 +122,9 @@ CNT4.ui = {
         if(playerTurn === 1){
             $('.m-disc[data-player="1"]').draggable('enable');
             $('.m-disc[data-player="2"]').draggable('disable');
-            console.log("1 is enable, 2 is disabled")
         }else{
             $('.m-disc[data-player="2"]').draggable('enable');
             $('.m-disc[data-player="1"]').draggable('disable');
-            console.log("2 is enable, 1 is disabled")
         }
     },
     goFullScreen : function(id){
@@ -155,7 +153,7 @@ CNT4.ui = {
         if(!Modernizr.websockets){
             $('#modal-support').modal({backdrop:'static', keyboard: false});
         }else{
-            //$('#modal-new-game').modal({backdrop:'static', keyboard: false});
+            $('#modal-new-game').modal({backdrop:'static', keyboard: false});
         }
     },
     features : function(){
@@ -177,6 +175,10 @@ CNT4.ui = {
         }
     }
 }
+
+
+
+
 
 CNT4.board = {
     $boardContainer : $('#game'),
@@ -252,6 +254,9 @@ CNT4.board = {
     }
 }
 
+
+
+
 CNT4.game = {
     doMove : function(elem, x, player, piece){
         var y = CNT4.board.getLastAvailRow(elem, x); // Get last row available to do the move
@@ -263,36 +268,45 @@ CNT4.game = {
     check : function(board, lastX, lastY, player){
         var lastPiece = {x: lastX, y:lastY};
 
-        if(this.isWinnerVertical(lastPiece, board, player)){
-            alert(player + "wins vertical")
-        }
-        if(this.isWinnerHorizontal(lastPiece, board, player)){
-            alert(player + "wins horizontal")
-        }
+        if(this.isWinnerVertical(lastPiece, board, player)){}
+        if(this.isWinnerHorizontal(lastPiece, board, player)){}
+
         // if(this.isWinnerDiagoNWSE(lastPiece, board, player)){
         //     alert(player + "wins Diag 1")
         // }
         // if(this.isWinnerDiagoNESW(lastPiece, board, player)){
         //     alert(player + "wins Diag 2")
         // }
+
+        if(this.isWinnerVertical(lastPiece, board, player) || this.isWinnerHorizontal(lastPiece, board, player)){
+            CNT4.ui.openModal("#modal-winner");
+        }
     },
     isWinnerVertical : function(lastPiece, board, player) {
         var count = 0;
+        var opPlayer = (player == 1) ? 2 : 1;
 
         // Top Bottom |
         $.each(board[lastPiece.x], function(i, l){
             if(l === player){
                 count++;
+            }else{
+                count = 0;
+            }
+            if(count>=4){
+                return false;
             }
         });
-
         if(count>=4){
             return true;
         }
+
         return false;
     },
     isWinnerHorizontal: function(lastPiece, board, player){
         var count = 0;
+        var opPlayer = (player == 1) ? 2 : 1;
+
         // Left Right ---
         $.each(board, function(i, l){
             if(l[lastPiece.y] === player){
@@ -435,30 +449,40 @@ CNT4.connect = function(){
 
 */
 
+    $('#js-field-name').keypress(function() {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $('#js-step-1').trigger('click');
+        }
+    });
 
-
-    alert("We are trying to connect!")
     var socket = io.connect('/');
-    socket.on('welcome', function (data) {
-        //log the welcome message and replace the container message with it
+
+    socket.on('reconnecting', function () {
+        console.log('Attempting to re-connect to the server');
+    });
+    socket.on('received', function (msg) {
+        console.log('Attempting to re-connect to the server');
+        alert(msg);
+    });
+    // Custom Messages
+
+
+
+
+    $('#js-step-1').on('click', function(){
+        var fname = $("#js-field-name").val();
+        if(fname == ""){
+            $("#js-field-name").trigger("focus");
+        }else{
+            socket.emit('username', { username: fname });
+            CNT4.ui.openModal("#modal-waiting");
+            $("#js-username-1").text(fname);
+        }
+    });
+
+    socket.on('gameJoined', function (data) {
         console.log(data);
-        $("#cnt").text(data.msg);
-        //bind the send button 
-        $("#send").click(function(){
-            var msg = $("#myfield").val();
-            socket.emit('newmessage', { msg: msg });
-            console.log("Sending: " + msg)
-            return false;
-        });
-    });
-
-    socket.on('newresponse', function(data){
-        console.log("Received: " + data.msg)
-        $("#cnt").prepend("<p>Server response: " + data.msg);
-    });
-
-    socket.on('connect', function(){
-        $(".m-chat").addClass("s-connected");
     });
 
 }

@@ -1,11 +1,35 @@
 //- Modal to define size of the board
 #modal-new-game.modal.fade.hide
     .modal-header 
-        h1 Create a new game
+        h1 Choose a name
     .modal-body
         .m-field-container.l-large
             input#js-field-name(type="text", maxlength="25",autofocus="autofocus", tabindex="1", name="username")
             label(for="js-field-name") Name
+
+    .modal-footer
+        button#js-view-score.m-button.i.i-trophy(data-target='#modal-topscore') View top score
+        button#js-step-1.m-button.i.i-fw.i-right.l-fright(tabindex="4") Next
+            //.l-grey.l-disabled
+
+//- Modal when waiting for a player
+#modal-waiting.modal.fade.hide
+    .modal-header 
+        h1 Waiting for your opponent
+    .modal-body
+
+        .m-player.l-first
+            .player-icon
+                .silouette
+            .player-name#js-username-1 
+                .m-icon.i.i-waiting &nbsp;
+
+        .m-player.l-second
+            .player-icon
+                .silouette
+            .player-name#js-username-2 
+                .m-icon.i.i-waiting &nbsp;
+
         .m-field-container.l-small.l-fleft
             input#js-field-columns(type="number", min="4", max="8", value="6", tabindex="2")
             label(for="js-field-columns") Columns
@@ -14,24 +38,7 @@
             label(for="js-field-rows") Rows
 
     .modal-footer
-        button#js-view-score.m-button.i.i-trophy(data-target='#modal-topscore') View top score
-        button#js-step-1.m-button.i.i-fw.i-right.l-fright.l-grey.l-disabled(tabindex="4") Next
-
-//- Modal when waiting for a player
-#modal-waiting.modal.fade.hide
-    .modal-header 
-        h1 Waiting for an opponent
-    .modal-body
-        .m-player.l-first
-            .player-icon
-            .player-name#js-username-1 Player 1
-
-        .m-player.l-second
-            .player-icon
-            .player-name#js-username-2 Player 2
-
-    .modal-footer
-        button#js-step-1.m-button.i.i-fw.i-right.l-fright.l-grey.l-disabled Next
+        button#js-step-2.m-button.i.i-fw.i-right.l-fright.l-grey.l-disabled Next
 
 
 //- Modal when requirements are not met
@@ -67,6 +74,7 @@
 
     .modal-footer
         button.m-button.i.i-restart(data-target='#modal-new-game') Start again
+        button.m-button.i.i-info.l-small.l-fright(data-target='#modal-features') Informations
 
 
 //- Modal when waiting for a player
