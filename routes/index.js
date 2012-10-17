@@ -106,6 +106,7 @@ exports.username = function (req, res) {
             console.log('has game: ' + req.session.hasGame);
 
             if (game.players.length == 2) {
+
                 res.redirect('/play');
             }
             res.redirect('/wait');
