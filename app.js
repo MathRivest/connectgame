@@ -27,23 +27,24 @@ io.sockets.on('connection', function (socket) {
     socket.on('username', function (username) {
         console.log('recevied msg username '+ username);
         g.collection('games', function (err, collection) {
-            //socket.set('hasGame', 0, function () {});
+            socket.set('hasGame', 0, function () {});
             socket.set('username', username, function () { });
             //console.log(socket.get('hasGame', function () {}));
 
             //refactor: find the first game with nbplayers < 2 and assign to socket
             collection.find().toArray(function (err, items) {
                 socket.get('hasGame', function (err, joined) {
-                    if (!err && !joined) {
+                    if (!err && !joined)
+                    {
                         for (i in items) {
                             game = items[i];
                             if (game.players.length == 1) {
                                 game.players.push(username);
                                 collection.update({_id:game._id}, {$set:{players:game.players}});
                                 socket.set('hasGame', 1, function () {});
-                                socket.emit('gameJoined',{game: game._id, pnum: 2});
+                                socket.emit('gameJoined',{game: game._id, pnum: 2, players:game.players});
                                 socket.join(game._id);
-                                socket.in(game._id).emit('gameStarts', {game: game._id});
+                                socket.in(game._id).emit('gameStarts', {game: game._id, players:game.players});
                                 console.log('socket joined game with 1 player: '+ game._id);
                                 break;
 
@@ -52,14 +53,12 @@ io.sockets.on('connection', function (socket) {
 
                         }
                     }
-                    else {
-                        console.log('socket has joined game already');
-                    }
 
                 })
 
                 socket.get('hasGame', function (err, joined) {
-                    if (!err && !joined) {
+                    if (!err && !joined)
+                    {
                         for (i in items) {
                             game = items[i];
                             if (game.players.length == 0) {
@@ -67,16 +66,13 @@ io.sockets.on('connection', function (socket) {
                                 game.players.push(username);
                                 collection.update({_id:game._id}, {$set:{players:game.players}});
                                 socket.set('hasGame', 1, function () {});
-                                socket.emit('gameJoined',{game: game._id, pnum: 1});
+                                socket.emit('gameJoined',{game: game._id, pnum: 1, players:game.players});
                                 socket.join(game._id);
                                 console.log('socket joined game with 0 player: '+ game._id);
                                 break;
                             }
 
                         }
-                    }
-                    else {
-                        console.log('socket has joined game already');
                     }
 
                 })
@@ -138,3 +134,4 @@ io.sockets.on('connection', function (socket) {
 //        app.post('/join-game', routes.join_game);
 
         console.log("Express server listening on port %d in %s mode", 3002, app.settings.env);
+

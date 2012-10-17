@@ -468,21 +468,24 @@ CNT4.connect = function(){
     // Custom Messages
 
 
-
-
     $('#js-step-1').on('click', function(){
         var fname = $("#js-field-name").val();
         if(fname == ""){
             $("#js-field-name").trigger("focus");
         }else{
-            socket.emit('username', { username: fname });
-            CNT4.ui.openModal("#modal-waiting");
-            $("#js-username-1").text(fname);
+            socket.emit('username', fname);
+            
         }
     });
 
     socket.on('gameJoined', function (data) {
         console.log(data);
+        if(2 === data.pnum){
+            $("#js-username-2").text();
+        }else{
+            $("#js-username-1").text();
+        }
+        CNT4.ui.openModal("#modal-waiting");
     });
 
 }
