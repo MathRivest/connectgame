@@ -449,13 +449,7 @@ CNT4.connect = function(){
 
 */
 
-    $('#js-field-name').keypress(function() {
-        if ( event.which == 13 ) {
-           event.preventDefault();
-           $('#js-step-1').trigger('click');
-        }
-    });
-
+    /*First connection*/
     var socket = io.connect('/');
 
     socket.on('reconnecting', function () {
@@ -463,10 +457,15 @@ CNT4.connect = function(){
     });
     socket.on('received', function (msg) {
         console.log('Attempting to re-connect to the server');
-        alert(msg);
     });
-    // Custom Messages
 
+    /*Step 1*/
+    $('#js-field-name').keypress(function() {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $('#js-step-1').trigger('click');
+        }
+    });
 
     $('#js-step-1').on('click', function(){
         var fname = $("#js-field-name").val();
@@ -474,18 +473,34 @@ CNT4.connect = function(){
             $("#js-field-name").trigger("focus");
         }else{
             socket.emit('username', fname);
-            
         }
     });
 
     socket.on('gameJoined', function (data) {
-        console.log(data);
+
         if(2 === data.pnum){
-            $("#js-username-2").text();
-        }else{
-            $("#js-username-1").text();
+            $("#js-username-2").text(data.players[data.pnum-1]);
+            $("#js-username-1").text(data.players[data.pnum-2]);
+        }else if(1 === data.pnum){
+            $("#js-username-1").text(data.players[data.pnum-1]);
         }
         CNT4.ui.openModal("#modal-waiting");
     });
 
+
+    /*Step 2*/
+    $("#js-step-2").on('click', function(){
+        var customColNb = $('#js-field-columns').val(),
+            customRowNb = $('#js-field-rows').val();
+
+        $('#modal-waiting').modal('hide');
+        CNT4.board.create(customColNb,customColNb);
+
+        return false;
+    });
+
+    socket.on('gameStarts', function (data) {
+        console.log(data);
+        $('#js-step-2').removeClass('l-grey l-disabled');
+    });
 }
