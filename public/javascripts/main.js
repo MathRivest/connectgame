@@ -118,14 +118,14 @@ CNT4.ui = {
         });
     },
     updateDrag : function(){
-        var playerTurn = CNT4.game.getCurrentTurn();
-        if(playerTurn === 1){
+        if(CNT4.infos.game.player == 1){
             $('.m-disc[data-player="1"]').draggable('enable');
             $('.m-disc[data-player="2"]').draggable('disable');
         }else{
             $('.m-disc[data-player="2"]').draggable('enable');
             $('.m-disc[data-player="1"]').draggable('disable');
         }
+
     },
     goFullScreen : function(id){
         elem = document.getElementById(id);
@@ -226,8 +226,8 @@ CNT4.board = {
             $(this).append(pieces);
         });
 
-        CNT4.infos.state.board.columns = columns; // Update the game state with the new values
-        CNT4.infos.state.board.rows = rows; // Update the game state with the new values
+        CNT4.infos.state.board.columns = columnsNb; // Update the game state with the new values
+        CNT4.infos.state.board.rows = rowsNb; // Update the game state with the new values
         CNT4.infos.state.board.map = game; // Update the game state with the game array representation
 
         this.$boardContainer.html(board).prepend(zones); // Add the HTML to the game
@@ -476,31 +476,51 @@ CNT4.connect = function(){
         }
     });
 
+    var playerNb = 1;
     socket.on('gameJoined', function (data) {
+        playerNb = data.pnum;
+        if(2 === playerNb){
+            // Add names when player 2 joins, 2 names are already available
+            $("#js-username-2").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-1]);
+            $("#js-username-1").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-2]);
 
-        if(2 === data.pnum){
-            $("#js-username-2").text(data.players[data.pnum-1]);
-            $("#js-username-1").text(data.players[data.pnum-2]);
+            // Hide controls for player 2
+            $('#modal-waiting .js-fields-board-size, #js-step-2').hide();
         }else if(1 === data.pnum){
-            $("#js-username-1").text(data.players[data.pnum-1]);
+            // Add name for player one only
+            $("#js-username-1").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-1]);
         }
+
+        // Update global infos
+        CNT4.infos.game.id = data.game;
+        CNT4.infos.game.player = data.pnum;
+
+        // Fire up the waiting page
         CNT4.ui.openModal("#modal-waiting");
     });
 
 
     /*Step 2*/
     $("#js-step-2").on('click', function(){
-        var customColNb = $('#js-field-columns').val(),
-            customRowNb = $('#js-field-rows').val();
-
-        $('#modal-waiting').modal('hide');
-        CNT4.board.create(customColNb,customColNb);
-
+        var board = {
+            cols: $('#js-field-columns').val(),
+            rows: $('#js-field-rows').val()
+        }
+        socket.emit('gameStarts', board, CNT4.infos.game.id);
         return false;
     });
 
-    socket.on('gameStarts', function (data) {
-        console.log(data);
+    socket.on('gameReady', function (data) {
+        // Add name for player two only
+
+        if(!$("#js-username-2").parents('.m-player').hasClass('s-ready')){
+            $("#js-username-2").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-1]);
+        }
         $('#js-step-2').removeClass('l-grey l-disabled');
+    });
+
+    socket.on('gameStarts', function (data) {
+        $('#modal-waiting').modal('hide');
+        CNT4.board.create(data.col, data.row);
     });
 }
