@@ -9,7 +9,7 @@ var express = require("express")
 
 
 var app = express()
-    , server = app.listen(3002)
+    , server = app.listen(3001)
     , io = require('socket.io').listen(server)
     ;
 
@@ -102,15 +102,16 @@ io.sockets.on('connection', function (socket) {
     });
 
     //somebody won
-    socket.on('gameOver', function (username, game_id) {
-        socket.broadcast.to(game_id).emit('gameOver', board);
-        g.collection('games', function (err, collection) {
+    socket.on('gameOver', function (data, game_id) {
+        //socket.broadcast.to(game_id).emit('gameOver', data);
+        io.sockets.in(game_id).emit('gameOver', data);
+        /*g.collection('games', function (err, collection) {
             collection.findOne({_id:game_id}, function (err, game) {
                 if (!err) {
                     collection.update({_id:game._id}, {$set:{winner:username}});
                 }
             })
-        })
+        })*/
     });
 
     //send where the coin is to the other player

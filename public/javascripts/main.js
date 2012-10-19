@@ -97,9 +97,28 @@ CNT4.ui = {
             revertDuration : 300,
             stack : '.container',
             drag: function(event, ui){
-                $("#x").text(ui.position.top);
-                $("#y").text(ui.position.left);
+                // Send the coordinates through the socket
+                // player currently dragging
+                // piece number
+                // coordinates
+                var disc = {
+                    nb : $(this).data('piece'),
+                    player : $(this).data('player'),
+                    position : ui.position,
+                    release : 1
+                }
+                CNT4.connect.drag(disc);
+            },
+            stop: function(event, ui) {
+                var disc = {
+                    nb : $(this).data('piece'),
+                    player : $(this).data('player'),
+                    position : ui.position,
+                    release : 0
+                }
+                CNT4.connect.drag(disc);
             }
+
         });
     },
     enableDrop : function(){
@@ -270,7 +289,26 @@ CNT4.game = {
         this.check(CNT4.infos.state.board.map, x, y, player);
         this.setCurrentTurn(player);
 
-        CNT4.connect.drop("test");
+//Send the map
+//the move infos
+//the player 
+        //console.log(piece);
+        var moveInfos = {
+            board : CNT4.infos.state.board.map,
+            coordinates : {
+                x : x,
+                y : y
+            },
+            player : player,
+            disc : {
+                    nb : piece.data('piece'),
+                    player : piece.data('player'),
+                }
+            }
+
+        if(player == CNT4.infos.game.player){
+            CNT4.connect.drop(moveInfos);
+        }
 
     },
     check : function(board, lastX, lastY, player){
@@ -287,7 +325,7 @@ CNT4.game = {
         // }
 
         if(this.isWinnerVertical(lastPiece, board, player) || this.isWinnerHorizontal(lastPiece, board, player)){
-            CNT4.ui.openModal("#modal-winner");
+            CNT4.connect.gameOver();
         }
     },
     isWinnerVertical : function(lastPiece, board, player) {
@@ -518,6 +556,7 @@ CNT4.connect = {
                     rows: $('#js-field-rows').val()
                 }
                 socket.emit('gameStarts', board, CNT4.infos.game.id);
+
             }
             return false;
         });
@@ -539,15 +578,50 @@ CNT4.connect = {
         });
 
         socket.on('receivePos', function (data) {
-            console.log(data);
+            //console.log(data);
+            $piece = $('[data-player='+data.player+'][data-piece='+data.nb+']');
+            if(data.release == 1){
+                $piece.css({
+                    'position' : 'relative',
+                    'top': data.position.top,
+                    'left': data.position.left
+                });
+            }else{
+                $piece.css({
+                    'position' : 'relative',
+                    'top': "0",
+                    'left': "0"
+                });
+            }
         });
+
+        socket.on('receiveMove', function (data) {
+            var $piece = $('[data-player='+data.disc.player+'][data-piece='+data.disc.nb+']'),
+                elem = $('[data-zone='+data.coordinates.y+']');
+            CNT4.game.doMove(elem, data.coordinates.x, data.disc.nb, $piece);
+        });
+
+        socket.on('gameOver', function (data) {
+            console.log("game over");
+            CNT4.ui.openModal("#modal-winner");
+        });
+
+
+    },
+    drag : function(data){
+        socket.emit('sendPos', data, CNT4.infos.game.id);
     },
     drop : function(data){
-        socket.emit('sendPos', data, CNT4.infos.game.id);
+        socket.emit('sendMove', data, CNT4.infos.game.id);
+    },
+    gameOver : function(data){
+        socket.emit('gameOver');
     }
 
 
+
 }
+
 
 
 
