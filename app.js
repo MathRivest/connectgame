@@ -9,7 +9,7 @@ var express = require("express")
 
 
 var app = express()
-    , server = app.listen(3001)
+    , server = app.listen(3002)
     , io = require('socket.io').listen(server)
     ;
 
@@ -24,28 +24,31 @@ io.sockets.on('connection', function (socket) {
         global_socket[session_id].emit('received', {msg:'msg'});
     });
 
+    //user identified himself
     socket.on('username', function (username) {
-        console.log('recevied msg username '+ username);
+        console.log('recevied msg username ' + username);
         g.collection('games', function (err, collection) {
-            socket.set('hasGame', 0, function () {});
-            socket.set('username', username, function () { });
+            socket.set('hasGame', 0, function () {
+            });
+            socket.set('username', username, function () {
+            });
             //console.log(socket.get('hasGame', function () {}));
 
             //refactor: find the first game with nbplayers < 2 and assign to socket
             collection.find().toArray(function (err, items) {
                 socket.get('hasGame', function (err, joined) {
-                    if (!err && !joined)
-                    {
+                    if (!err && !joined) {
                         for (i in items) {
                             game = items[i];
                             if (game.players.length == 1) {
                                 game.players.push(username);
                                 collection.update({_id:game._id}, {$set:{players:game.players}});
-                                socket.set('hasGame', 1, function () {});
-                                socket.emit('gameJoined',{game: game._id, pnum: 2, players:game.players});
+                                socket.set('hasGame', 1, function () {
+                                });
+                                socket.emit('gameJoined', {game:game._id, pnum:2, players:game.players});
                                 socket.join(game._id);
-                                io.sockets.in(game._id).emit('gameReady', {game: game._id, players:game.players});
-                                console.log('socket joined game with 1 player: '+ game._id);
+                                io.sockets.in(game._id).emit('gameReady', {game:game._id, players:game.players});
+                                console.log('socket joined game with 1 player: ' + game._id);
                                 break;
 
                             }
@@ -57,18 +60,18 @@ io.sockets.on('connection', function (socket) {
                 })
 
                 socket.get('hasGame', function (err, joined) {
-                    if (!err && !joined)
-                    {
+                    if (!err && !joined) {
                         for (i in items) {
                             game = items[i];
                             if (game.players.length == 0) {
 
                                 game.players.push(username);
                                 collection.update({_id:game._id}, {$set:{players:game.players}});
-                                socket.set('hasGame', 1, function () {});
-                                socket.emit('gameJoined',{game: game._id, pnum: 1, players:game.players});
+                                socket.set('hasGame', 1, function () {
+                                });
+                                socket.emit('gameJoined', {game:game._id, pnum:1, players:game.players});
                                 socket.join(game._id);
-                                console.log('socket joined game with 0 player: '+ game._id);
+                                console.log('socket joined game with 0 player: ' + game._id);
                                 break;
                             }
 
@@ -82,21 +85,25 @@ io.sockets.on('connection', function (socket) {
         });
     });
 
-    socket.on('gameStarts', function(board, game_id){
+    //2 players in game
+    socket.on('gameStarts', function (board, game_id) {
         io.sockets.in(game_id).emit('gameStarts', board);
         //io.sockets.emit('gameStarts', board);
     });
 
-    socket.on('sendPos', function(data, game_id){
+    //send coordinates
+    socket.on('sendPos', function (data, game_id) {
         socket.broadcast.to(game_id).emit('receivePos', data);
     });
 
-    socket.on('sendMove', function(data, game_id){
+    //send where the coin is to the other player
+    socket.on('sendMove', function (data, game_id) {
         socket.broadcast.to(game_id).emit('receiveMove', data);
     });
 
-    socket.on('gameOver', function(username, game_id){
-        io.sockets.in(game_id).emit('gameOver', board);
+    //somebody won
+    socket.on('gameOver', function (username, game_id) {
+        socket.broadcast.to(game_id).emit('gameOver', board);
         g.collection('games', function (err, collection) {
             collection.findOne({_id:game_id}, function (err, game) {
                 if (!err) {
@@ -104,7 +111,13 @@ io.sockets.on('connection', function (socket) {
                 }
             })
         })
-    })
+    });
+
+    //send where the coin is to the other player
+    socket.on('disconnect', function (data, game_id) {
+        socket.broadcast.to(game_id).emit('gameCancelled', data);
+    });
+
 
 });
 
@@ -112,37 +125,39 @@ io.sockets.on('connection', function (socket) {
 // Required by session() middleware
 // pass the secret for signed cookies
 // (required by session())
-        app.use(express.cookieParser('keyboard cat'));
+app.use(express.cookieParser('keyboard cat'));
 
 // Populates req.session
-        app.use(express.session());
+app.use(express.session());
 
 // Configuration
-        app.configure(function () {
-            app.set('views', __dirname + '/views');
-            app.set('view engine', 'jade');
-            app.use(express.bodyParser());
-            app.use(express.methodOverride());
-            app.use(app.router);
-            app.use(express.static(__dirname + '/public'));
+app.configure(function () {
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(app.router);
+    app.use(express.static(__dirname + '/public'));
 
-        });
+});
 
-        app.configure('development', function () {
-            app.use(express.errorHandler({ dumpExceptions:true, showStack:true }));
-            app.locals.pretty = true;
-        });
+app.configure('development', function () {
+    app.use(express.errorHandler({ dumpExceptions:true, showStack:true }));
+    app.locals.pretty = true;
+});
 
-        app.configure('production', function () {
-            app.use(express.errorHandler());
-        });
+app.configure('production', function () {
+    app.use(express.errorHandler());
+});
 
 
 // Routes
-        app.get('/', routes.index);
-//        app.post('/username', routes.username);
+app.get('/', routes.index);
+/**
+ * those routes are deprecated and hav been replaced with events from sockets
 
-//        app.post('/join-game', routes.join_game);
-
-        console.log("Express server listening on port %d in %s mode", 3001, app.settings.env);
+ app.post('/username', routes.username);
+ app.post('/join-game', routes.join_game);
+ */
+console.log("Express server listening on port %d in %s mode", 3002, app.settings.env);
 

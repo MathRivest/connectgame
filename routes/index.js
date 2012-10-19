@@ -12,7 +12,11 @@ exports.index = function (req, res) {
 
         games = collection.find().toArray(function (err, items) {
 
+            leaderBoard = [];
             items.forEach(function (game) {
+                if (game.winner) {
+                    leaderBoard.push(game);
+                }
                 if (game.players.length < 2) {
                     available_games = available_games + 1;
                     console.log('available games is now: ' + available_games);
@@ -49,6 +53,7 @@ exports.index = function (req, res) {
                 viewed:req.session.views,
                 username:username,
                 games:items,
+                leaderBoard: leaderBoard,
                 session_id: req.sessionID
             });
         })

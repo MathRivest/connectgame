@@ -16,6 +16,14 @@ block content
                 h2 Player 2
 
             #game.m-board
+                - each game in leaderBoard
+                    - each players in game
+                        - if (game.winner == game.players[0])
+                            div#winner #{players[0]}
+                            div#{players[1]}
+                        - else
+                            div#winner #{players[1]}
+                            div#{players[0]}
             #infos
                 span X:
                 #x
