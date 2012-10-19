@@ -26,6 +26,11 @@ CNT4.infos = {
     game : {
         id : "123",
         player : "1"
+    },
+    messages:{
+        title_waiting_p1 : "Waiting for an opponent",
+        title_waiting_p2 : "Waiting for player 1",
+        game_ready : "Game is ready to start!"
     }
 
 }
@@ -35,7 +40,7 @@ CNT4.infos = {
 
 $(function() {
     CNT4.ui.init();
-    CNT4.connect();
+    CNT4.connect.ui();
 });
 
 
@@ -264,6 +269,9 @@ CNT4.game = {
         CNT4.infos.state.board.map[x][y] = player; // Update the game state
         this.check(CNT4.infos.state.board.map, x, y, player);
         this.setCurrentTurn(player);
+
+        CNT4.connect.drop("test");
+
     },
     check : function(board, lastX, lastY, player){
         var lastPiece = {x: lastX, y:lastY};
@@ -410,8 +418,8 @@ CNT4.game = {
     }
 }
 
-
-CNT4.connect = function(){
+var socket = io.connect('/');
+CNT4.connect = {
 
 /*
     Sender:
@@ -448,79 +456,100 @@ CNT4.connect = function(){
 
 
 */
+    ui: function(){
 
-    /*First connection*/
-    var socket = io.connect('/');
+        /*First connection*/
+        
 
-    socket.on('reconnecting', function () {
-        console.log('Attempting to re-connect to the server');
-    });
-    socket.on('received', function (msg) {
-        console.log('Attempting to re-connect to the server');
-    });
+        socket.on('reconnecting', function () {
+            console.log('Attempting to re-connect to the server');
+        });
+        socket.on('received', function (msg) {
+            console.log('Attempting to re-connect to the server');
+        });
 
-    /*Step 1*/
-    $('#js-field-name').keypress(function() {
-        if ( event.which == 13 ) {
-           event.preventDefault();
-           $('#js-step-1').trigger('click');
-        }
-    });
+        /*Step 1*/
+        $('#js-field-name').keypress(function() {
+            if ( event.which == 13 ) {
+               event.preventDefault();
+               $('#js-step-1').trigger('click');
+            }
+        });
 
-    $('#js-step-1').on('click', function(){
-        var fname = $("#js-field-name").val();
-        if(fname == ""){
-            $("#js-field-name").trigger("focus");
-        }else{
-            socket.emit('username', fname);
-        }
-    });
+        $('#js-step-1').on('click', function(){
+            var fname = $("#js-field-name").val();
+            if(fname == ""){
+                $("#js-field-name").trigger("focus");
+            }else{
+                socket.emit('username', fname);
+            }
+        });
 
-    var playerNb = 1;
-    socket.on('gameJoined', function (data) {
-        playerNb = data.pnum;
-        if(2 === playerNb){
-            // Add names when player 2 joins, 2 names are already available
-            $("#js-username-2").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-1]);
-            $("#js-username-1").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-2]);
+        var playerNb = 1;
+        socket.on('gameJoined', function (data) {
+            playerNb = data.pnum;
+            if(2 === playerNb){
+                // Add names when player 2 joins, 2 names are already available
+                $("#js-username-2").text(data.players[playerNb-1]).parents('.m-player').addClass('s-ready');
+                $("#js-username-1").text(data.players[playerNb-2]).parents('.m-player').addClass('s-ready');
+                $("#js-waiting-title").text(CNT4.infos.messages.title_waiting_p2);
+                // Hide controls for player 2
+                $('#modal-waiting .js-fields-board-size, #js-step-2').hide();
+            }else if(1 === data.pnum){
+                // Add name for player one only
+                $("#js-username-1").text(data.players[playerNb-1]).parents('.m-player').addClass('s-ready');
+                $("#js-waiting-title").text(CNT4.infos.messages.title_waiting_p1);
+            }
 
-            // Hide controls for player 2
-            $('#modal-waiting .js-fields-board-size, #js-step-2').hide();
-        }else if(1 === data.pnum){
-            // Add name for player one only
-            $("#js-username-1").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-1]);
-        }
+            // Update global infos
+            CNT4.infos.game.id = data.game;
+            CNT4.infos.game.player = data.pnum;
 
-        // Update global infos
-        CNT4.infos.game.id = data.game;
-        CNT4.infos.game.player = data.pnum;
-
-        // Fire up the waiting page
-        CNT4.ui.openModal("#modal-waiting");
-    });
+            // Fire up the waiting page
+            CNT4.ui.openModal("#modal-waiting");
+        });
 
 
-    /*Step 2*/
-    $("#js-step-2").on('click', function(){
-        var board = {
-            cols: $('#js-field-columns').val(),
-            rows: $('#js-field-rows').val()
-        }
-        socket.emit('gameStarts', board, CNT4.infos.game.id);
-        return false;
-    });
+        /*Step 2*/
+        $("#js-step-2").on('click', function(){
+            if(!$(this).hasClass('l-disabled')){
+                var board = {
+                    cols: $('#js-field-columns').val(),
+                    rows: $('#js-field-rows').val()
+                }
+                socket.emit('gameStarts', board, CNT4.infos.game.id);
+            }
+            return false;
+        });
 
-    socket.on('gameReady', function (data) {
-        // Add name for player two only
+        socket.on('gameReady', function (data) {
+            // Add name for player two only
+            if(!$("#js-username-2").parents('.m-player').hasClass('s-ready')){
+                $("#js-username-2").text(data.players[1]).parents('.m-player').addClass('s-ready');
+            }
+            $("#js-waiting-title").fadeOut(200, function(){
+                $(this).text(CNT4.infos.messages.game_ready).fadeIn(200);
+            })
+            $('#js-step-2').removeClass('l-grey l-disabled');
+        });
 
-        if(!$("#js-username-2").parents('.m-player').hasClass('s-ready')){
-            $("#js-username-2").parents('.m-player').addClass('s-ready').find('.player-name').text(data.players[playerNb-1]);
-        }
-        $('#js-step-2').removeClass('l-grey l-disabled');
-    });
+        socket.on('gameStarts', function (data) {
+            $('#modal-waiting').modal('hide');
+            CNT4.board.create(data.cols, data.rows);
+        });
 
-    socket.on('gameStarts', function (data) {
-        $('#modal-waiting').modal('hide');
-        CNT4.board.create(data.col, data.row);
-    });
+        socket.on('receivePos', function (data) {
+            console.log(data);
+        });
+    },
+    drop : function(data){
+        socket.emit('sendPos', data, CNT4.infos.game.id);
+    }
+
+
 }
+
+
+
+
+

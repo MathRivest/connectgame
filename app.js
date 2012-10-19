@@ -87,11 +87,16 @@ io.sockets.on('connection', function (socket) {
         //io.sockets.emit('gameStarts', board);
     });
 
-    socket.on('sendMove', function(coordinates, game_id){
-        io.sockets.in(game_id).broadcast.emit('receiveMove', {coordinates:coordinates});
+    socket.on('sendPos', function(data, game_id){
+        socket.broadcast.to(game_id).emit('receivePos', data);
+    });
+
+    socket.on('sendMove', function(data, game_id){
+        socket.broadcast.to(game_id).emit('receiveMove', data);
     });
 
     socket.on('gameOver', function(username, game_id){
+        io.sockets.in(game_id).emit('gameOver', board);
         g.collection('games', function (err, collection) {
             collection.findOne({_id:game_id}, function (err, game) {
                 if (!err) {

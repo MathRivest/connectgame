@@ -15,7 +15,7 @@
 //- Modal when waiting for a player
 #modal-waiting.modal.fade.hide
     .modal-header 
-        h1 Waiting for your opponent
+        h1#js-waiting-title Waiting for your opponent
     .modal-body
 
         .m-player.l-first
@@ -71,7 +71,10 @@
     .modal-header 
         h1 Winner
     .modal-body
-
+        ul
+            li 
+                span.player1.s-winner player 1 goes here
+                span.player2 player 2 goes here
     .modal-footer
         button.m-button.i.i-restart(data-target='#modal-new-game') Start again
         button.m-button.i.i-info.l-small.l-fright(data-target='#modal-features') Informations

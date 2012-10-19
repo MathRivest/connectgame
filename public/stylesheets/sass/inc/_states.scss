@@ -29,3 +29,11 @@
         background-color:#efefef!important;
     }
 }
+
+.m-player{
+    &.s-ready{
+        .silouette{
+            opacity:1;
+        }
+    }
+}

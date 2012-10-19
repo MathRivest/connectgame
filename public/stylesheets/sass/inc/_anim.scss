@@ -34,3 +34,11 @@ input, label{
     @include transition-duration(0.25s);
     @include transition-timing-function(linear);
 }
+
+.m-player{
+    .silouette{
+        @include transition-property(opacity);
+        @include transition-duration(0.4s);
+        @include transition-timing-function(ease-out);
+    }
+}
