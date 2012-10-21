@@ -135,29 +135,16 @@
 
 
 .m-player{
-    margin:0 40px 18px;
+    margin:0 auto 18px;
     width:150px;
     text-align:center;
-    .player-icon{
-        margin-bottom:5px;
-        height:120px;
-        border:1px solid $borderColor;
-    }
     .player-name{}
-    .modal &{
-        &.l-first{
-            float:left;
-        }
-        &.l-second{
-            float:right;
-        }
-    }
     .silouette{
         position:relative;
         height:120px;
+        margin-bottom:5px;
         overflow:hidden;
-        background-color:rgba(255,255,255, 0.4);
-        opacity:0.2;
+        &.s-faded{opacity:0.2}
         &:before{
             position:absolute;
             top:15px;
@@ -177,6 +164,7 @@
             @include border-radius(4em);
         }
     }
+
     &.l-first .silouette:before{
         @include background-image(linear-gradient(#fe3232, $player1color));
     }
@@ -189,8 +177,32 @@
     &.l-second .silouette:after{
         background:$player2color;
     }
+    &.l-small{
+        width:75px;
+        float:none!important;
+        .silouette{
+            height:60px;
+            &:before{
+                top:7px;
+                left:24px;
+                width:25px;
+                height:25px;
+            }
+            &:after{
+                top:35px;
+                left:14px;
+                width:45px;
+                height:50px;
+            }
+        }
+    }
+    //Modal specific
+    #modal-waiting &{margin:0 40px 18px;}
 }
 
+.m-winner-table{
+
+}
 
 .modal-backdrop {
     position: fixed;
@@ -280,7 +292,6 @@
     position:relative;
     margin: 0;
     padding: 0;
-    background-color:#ffffbb;
     ul, ol{padding:0;}
     li{
         list-style:none;
@@ -291,30 +302,44 @@
         >li {
             display: none;
             width:100%;
+        height:300px;
             -webkit-backface-visibility: hidden;
         } /* Hide the slides before the JS is loaded. Avoids image jumping */
         img {width: 100%; display: block;}
-        &:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
-        html[xmlns] & {display: block;} 
+        &:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+        html[xmlns] & {display: block;}
         * html & {height: 1%;}
     }
     .flex-control-nav{
-        overflow:hidden;
+        position:absolute;
+        bottom:10%;
+        width:100%;
+        margin-top:-13px;
+        text-align:center;
         li {
-            float:left;
+            display:inline-block;
         }
         a{
             cursor:pointer;
         }
     }
     .flex-direction-nav{
-        overflow:hidden;
+        position:absolute;
+        top:50%;
+        width:100%;
+        margin-top:-13px;
         .flex-prev{
             float:left;
-            background:red;
+            display:block;
+            width:26px;
+            height:26px;
+            text-indent:-9999px;
+            @extend %iconsSprite;
+            background-position: -296px 0;
         }
         .flex-next{
             @extend .flex-prev;
+            background-position: -254px 0;
             float:right;
         }
     }

@@ -58,7 +58,7 @@
     line-height:32px;
     @include background-image(linear-gradient(#ffff00, #f4f400));
     @include box-shadow(rgba(0,0,0,0.2) 0 2px 4px);
-    //@include border-radius(3px); 
+    //@include border-radius(3px);
     border:1px solid rgba(0,0,0,0.5);
     font-size:14px;
     text-decoration:none;
@@ -81,7 +81,7 @@
     &:hover, &:focus{
         @include box-shadow(rgba(0,0,0,0.4) 0 2px 6px);
         border:1px solid rgba(0,0,0,0.9);
-    } 
+    }
     &:active{
         position:relative;
         top:1px;
@@ -102,14 +102,15 @@
     }
 }
 
-#js-fullscreen{
+#js-fullscreen, #b-infos{
     z-index:1041;
     position:fixed;
     bottom:18px;
-    right:18px;
     margin:0;
     &:active{
         position:static!important;
         bottom:17px;
     }
 }
+#b-infos{left:18px; }
+#js-fullscreen{right:18px; }

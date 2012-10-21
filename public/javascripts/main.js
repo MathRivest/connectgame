@@ -1,38 +1,32 @@
-
-
-// Set maxed col 
-// Check if there is a winner
-// Work with Arnaud for real time stuff
-// 
-
-
-
 var CNT4 = CNT4 || {};
 
 CNT4.infos = {
     default : {
         board : {
-            columns: "7",
-            rows: "6"
+            columns : "7",
+            rows : "6"
         }
     },
     state : {
         board : {
-            columns: "",
-            rows: ""
+            columns : "",
+            rows : ""
         },
         playerTurn : 1
     },
     game : {
         id : "123",
-        player : "1"
+        player : "1",
+        names : {
+            player1 : "",
+            player2 : ""
+        }
     },
     messages:{
-        title_waiting_p1 : "Waiting for an opponent",
-        title_waiting_p2 : "Waiting for player 1",
+        waiting_p1 : "Waiting for an opponent",
+        waiting_p2 : "Waiting for player 1",
         game_ready : "Game is ready to start!"
     }
-
 }
 
 
@@ -47,28 +41,17 @@ $(function() {
 CNT4.ui = {
     //CNT4.connect();
     init : function(){
-        this.support();
+        //this.support();
         //$('#modal-new-game').modal({backdrop:'static', keyboard: false});
         //$('#modal-waiting').modal({backdrop:'static'});
         //$('#modal-support').modal({backdrop:'static'});
-        //$('#modal-features').modal();
+        $('#modal-features').modal();
         //$('#modal-winner').modal();
         //$('#modal-topscore').modal();
 
 
         //CNT4.board.create(8,8);
-        //CNT4.ui.features();
-
-        $('#js-fullscreen').on('click', function(){
-            CNT4.ui.goFullScreen('container');
-            return false;
-        });
-
-        $('[data-target]').on('click', function(){
-            var target = $(this).data('target');
-            CNT4.ui.openModal(target);
-            return false;
-        });
+        CNT4.ui.features();
 
 
         // Adjust board size on resize
@@ -82,13 +65,26 @@ CNT4.ui = {
 
         var resizeBoard = function(){
             var $game = $("#game"),
-                boardWidth = $game.find('ul.m-column').width() * $game.find('ul.m-column').length; 
+                boardWidth = $game.find('ul.m-column').width() * $game.find('ul.m-column').length;
             $game.width(boardWidth);
         }
 
         small.addListener(handleMediaChange);
         medium.addListener(handleMediaChange);
 
+
+
+        $('#js-fullscreen').on('click', function(){
+            CNT4.ui.goFullScreen('container');
+            return false;
+        });
+
+        $('[data-target]').on('click', function(){
+            var target = $(this).data('target'),
+                el = $(this);
+            CNT4.ui.openModal(target, el);
+            return false;
+        });
 
     },
     enableDrag : function(){
@@ -141,13 +137,18 @@ CNT4.ui = {
             }
         });
     },
-    updateDrag : function(){
-        if(CNT4.infos.game.player == 1){
+    updateDrag : function(player){
+        /*if(CNT4.infos.game.player == 1){
             $('.m-disc[data-player="1"]').draggable('enable');
             $('.m-disc[data-player="2"]').draggable('disable');
         }else{
             $('.m-disc[data-player="2"]').draggable('enable');
             $('.m-disc[data-player="1"]').draggable('disable');
+        }*/
+
+        $('.m-disc').draggable('disable');
+        if(CNT4.infos.game.player == CNT4.infos.state.playerTurn){
+            $('.m-disc[data-player="'+CNT4.infos.game.player+'"]').draggable('enable');
         }
 
     },
@@ -174,11 +175,12 @@ CNT4.ui = {
           }
     },
     support : function(){
-        if(!Modernizr.websockets){
+        if(!Modernizr.websockets || !Modernizr.localstorage){
             $('#modal-support').modal({backdrop:'static', keyboard: false});
         }else{
             $('#modal-new-game').modal({backdrop:'static', keyboard: false});
         }
+
     },
     features : function(){
         $('#modal-features').modal();
@@ -188,15 +190,28 @@ CNT4.ui = {
             animationSpeed: 300
         });
     },
-    openModal : function(target){
+    openModal : function(target, el){
+        if(el){
+            if(el.is('[data-closable]')){
+                var modalConfig = {keyboard: true};
+            }
+        }else{
+            var modalConfig = {backdrop:'static', keyboard: false};
+        }
         if($('.modal:visible').length>0){
             var currentModal = $('.modal:visible').attr('id');
-            $("#" + currentModal).modal('hide').on('hidden', function(){
-                $(target).modal({backdrop:'static', keyboard: false});
+            var hidemodal = $("#" + currentModal).modal('hide').on('hidden', function(){
+                $(target).modal(modalConfig);
             });
         }else{
-            $(target).modal({backdrop:'static', keyboard: false});
+            $(target).modal(modalConfig);
         }
+    },
+    animateCSS : function(obj, animation){
+        obj.addClass("animated " + animation);
+        var wait = window.setTimeout( function(){
+            obj.removeClass(animation);
+        }, 1300);
     }
 }
 
@@ -257,10 +272,10 @@ CNT4.board = {
         this.$boardContainer.html(board).prepend(zones); // Add the HTML to the game
         boardWidth = this.$boardContainer.find('ul.' + columnClass + '').width() * columnsNb; // Calculate the width of the board
         this.$boardContainer.width(boardWidth).fadeIn(200); // Assign the width to the board and fade it in
-
+        $(".m-player-zone h2").addClass("in");
         /* Enable everything for the UI here*/
         CNT4.ui.enableDrag();
-        CNT4.ui.updateDrag();
+        CNT4.ui.updateDrag(1);
         CNT4.ui.enableDrop();
     },
     getLastAvailRow : function(elem, x){
@@ -291,7 +306,7 @@ CNT4.game = {
 
 //Send the map
 //the move infos
-//the player 
+//the player
         //console.log(piece);
         var moveInfos = {
             board : CNT4.infos.state.board.map,
@@ -325,7 +340,8 @@ CNT4.game = {
         // }
 
         if(this.isWinnerVertical(lastPiece, board, player) || this.isWinnerHorizontal(lastPiece, board, player)){
-            CNT4.connect.gameOver();
+
+            CNT4.connect.gameOver(player);
         }
     },
     isWinnerVertical : function(lastPiece, board, player) {
@@ -422,7 +438,7 @@ CNT4.game = {
             diago.push(arr);
         }
 
-        console.log(diago);
+        //console.log(diago);
 
         $.each(diago, function(i, l){
             $.each(diago[i], function(j, k){
@@ -452,7 +468,9 @@ CNT4.game = {
         }else if(player === 2){
             CNT4.infos.state.playerTurn = 1;
         }
-        CNT4.ui.updateDrag();
+        CNT4.ui.updateDrag(player);
+        //console.log(player);
+        //console.log(CNT4.infos.state.playerTurn);
     }
 }
 
@@ -462,7 +480,7 @@ CNT4.connect = {
 /*
     Sender:
 
-        When the game start: 
+        When the game start:
             Trigger the start event
                 Send the board infos
 
@@ -473,7 +491,7 @@ CNT4.connect = {
                      the player
 
         When a piece is moving:
-            Trigger dragging event  
+            Trigger dragging event
                 Send the x-y
                      the player currently dragging
                      the piece number
@@ -497,7 +515,7 @@ CNT4.connect = {
     ui: function(){
 
         /*First connection*/
-        
+
 
         socket.on('reconnecting', function () {
             console.log('Attempting to re-connect to the server');
@@ -507,6 +525,12 @@ CNT4.connect = {
         });
 
         /*Step 1*/
+
+
+        if(localStorage.getItem('username')) {
+           $('#js-field-name').val(localStorage.getItem('username'));
+        }
+
         $('#js-field-name').keypress(function() {
             if ( event.which == 13 ) {
                event.preventDefault();
@@ -520,6 +544,7 @@ CNT4.connect = {
                 $("#js-field-name").trigger("focus");
             }else{
                 socket.emit('username', fname);
+                localStorage.setItem('username', fname);
             }
         });
 
@@ -528,15 +553,18 @@ CNT4.connect = {
             playerNb = data.pnum;
             if(2 === playerNb){
                 // Add names when player 2 joins, 2 names are already available
-                $("#js-username-2").text(data.players[playerNb-1]).parents('.m-player').addClass('s-ready');
-                $("#js-username-1").text(data.players[playerNb-2]).parents('.m-player').addClass('s-ready');
-                $("#js-waiting-title").text(CNT4.infos.messages.title_waiting_p2);
+                $("#js-username-2, [data-player=2] h2").text(data.players[playerNb-1]).parents('.m-player').addClass('s-ready');
+                $("#js-username-1, [data-player=1] h2").text(data.players[playerNb-2]).parents('.m-player').addClass('s-ready');
+                $("#js-waiting-title").text(CNT4.infos.messages.waiting_p2);
+                CNT4.infos.game.names.player2 = data.players[playerNb-1];
+                CNT4.infos.game.names.player1 = data.players[playerNb-2];
                 // Hide controls for player 2
                 $('#modal-waiting .js-fields-board-size, #js-step-2').hide();
             }else if(1 === data.pnum){
                 // Add name for player one only
-                $("#js-username-1").text(data.players[playerNb-1]).parents('.m-player').addClass('s-ready');
-                $("#js-waiting-title").text(CNT4.infos.messages.title_waiting_p1);
+                $("#js-username-1, [data-player=1] h2").text(data.players[playerNb-1]).parents('.m-player').addClass('s-ready');
+                $("#js-waiting-title").text(CNT4.infos.messages.waiting_p1);
+                CNT4.infos.game.names.player1 = data.players[playerNb-1];
             }
 
             // Update global infos
@@ -562,14 +590,24 @@ CNT4.connect = {
         });
 
         socket.on('gameReady', function (data) {
-            // Add name for player two only
-            if(!$("#js-username-2").parents('.m-player').hasClass('s-ready')){
-                $("#js-username-2").text(data.players[1]).parents('.m-player').addClass('s-ready');
+            //console.log(data);
+            // Add name and effects for player 1 only
+            if(1 == CNT4.infos.game.player){
+                $("#js-username-2, [data-player=2] h2").text(data.players[1]).parents('.m-player').addClass('s-ready');
+                CNT4.ui.animateCSS($("#js-username-2").parents('.m-player'), "tada");
+
+                $('#js-step-2').removeClass('l-grey l-disabled');
+
+                var wait = window.setInterval( function(){
+                    CNT4.ui.animateCSS($('#js-step-2'), "bounce");
+                }, 6000);
+                $("#js-waiting-title").fadeOut(200, function(){
+                    $(this).text(CNT4.infos.messages.game_ready).fadeIn(200);
+                });
+            }else{
+                 $("#js-waiting-title").text(CNT4.infos.messages.waiting_p2);
             }
-            $("#js-waiting-title").fadeOut(200, function(){
-                $(this).text(CNT4.infos.messages.game_ready).fadeIn(200);
-            })
-            $('#js-step-2').removeClass('l-grey l-disabled');
+            CNT4.infos.game.names.player2 = data.players[1];
         });
 
         socket.on('gameStarts', function (data) {
@@ -598,12 +636,17 @@ CNT4.connect = {
         socket.on('receiveMove', function (data) {
             var $piece = $('[data-player='+data.disc.player+'][data-piece='+data.disc.nb+']'),
                 elem = $('[data-zone='+data.coordinates.y+']');
-            CNT4.game.doMove(elem, data.coordinates.x, data.disc.nb, $piece);
+            CNT4.game.doMove(elem, data.coordinates.x, data.disc.player, $piece);
         });
 
-        socket.on('gameOver', function (data) {
-            console.log("game over");
+        socket.on('gameOver', function (winner) {
+            console.log(winner)
+            if(2 == winner.number){
+                $('#modal-winner .m-player').addClass("l-second")
+            }
+            $('#modal-winner #js-winner-name').text(winner.username);
             CNT4.ui.openModal("#modal-winner");
+
         });
 
 
@@ -614,8 +657,13 @@ CNT4.connect = {
     drop : function(data){
         socket.emit('sendMove', data, CNT4.infos.game.id);
     },
-    gameOver : function(data){
-        socket.emit('gameOver');
+    gameOver : function(player){
+        var username = (player == 1) ? CNT4.infos.game.names.player1 : CNT4.infos.game.names.player2;
+        var winner = {
+            number : player,
+            username : username
+        }
+        socket.emit('gameOver', winner, CNT4.infos.game.id);
     }
 
 

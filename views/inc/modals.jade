@@ -1,6 +1,6 @@
 //- Modal to define size of the board
 #modal-new-game.modal.fade.hide
-    .modal-header 
+    .modal-header
         h1 Choose a name
     .modal-body
         .m-field-container.l-large
@@ -8,26 +8,23 @@
             label(for="js-field-name") Name
 
     .modal-footer
-        button#js-view-score.m-button.i.i-trophy(data-target='#modal-topscore') View top score
         button#js-step-1.m-button.i.i-fw.i-right.l-fright(tabindex="4") Next
             //.l-grey.l-disabled
 
 //- Modal when waiting for a player
 #modal-waiting.modal.fade.hide
-    .modal-header 
+    .modal-header
         h1#js-waiting-title Waiting for your opponent
     .modal-body
 
-        .m-player.l-first
-            .player-icon
-                .silouette
-            .player-name#js-username-1 
+        .m-player.l-first.l-fleft
+            .silouette.s-faded
+            .player-name#js-username-1
                 .m-icon.i.i-waiting &nbsp;
 
-        .m-player.l-second
-            .player-icon
-                .silouette
-            .player-name#js-username-2 
+        .m-player.l-second.l-fright
+            .silouette.s-faded
+            .player-name#js-username-2
                 .m-icon.i.i-waiting &nbsp;
 
         .m-field-container.l-small.l-fleft.js-fields-board-size
@@ -43,7 +40,7 @@
 
 //- Modal when requirements are not met
 #modal-support.modal.fade.hide
-    .modal-header 
+    .modal-header
         h1 Sorry, we are not supporting your browser yet!
     .modal-body
         p.l-tcenter Please use the latest version of Chrome<br/><br/>
@@ -54,9 +51,9 @@
 
 //- Modal for showing the technologie
 #modal-features.modal.fade.hide
-    .modal-header 
+    .modal-header
         h1 What we used
-    .modal-body 
+    .modal-body
         #js-features-slider.m-slider
             ul.slides
                 li Node.js
@@ -68,23 +65,43 @@
 
 //- Modal when waiting for a player
 #modal-winner.modal.fade.hide
-    .modal-header 
+    .modal-header
         h1 Winner
     .modal-body
-        ul
-            li 
-                span.player1.s-winner player 1 goes here
-                span.player2 player 2 goes here
+        .m-player.l-first
+            .silouette
+
+        #js-winner-name.h3.l-tcenter
+
     .modal-footer
         button.m-button.i.i-restart(data-target='#modal-new-game') Start again
-        button.m-button.i.i-info.l-small.l-fright(data-target='#modal-features') Informations
+        button#js-view-score.m-button.i.i-trophy(data-target='#modal-topscore') View top score
 
 
 //- Modal when waiting for a player
 #modal-topscore.modal.fade.hide
-    .modal-header 
+    .modal-header
         h1 Top score
     .modal-body
+        table
+            tr
+                td.player1
+                    .m-player.l-small.l-first
+                        .silouette
+                td.player2
+                    .m-player.l-small.l-second
+                        .silouette
+            //Loop here
+            tr
+                td.player1.s-winner Mathieu
+                td.player2 Arnaud
+            //End loop here
+            tr
+                td.player1.s-winner Arnaud
+                td.player2 Mathieu
+            tr
+                td.player1 Mathieu
+                td.player2.s-winner Arnaud
 
     .modal-footer
-        button.m-button.i.i-restart(data-target='#modal-new-game') Start again
+        button.m-button.i.i-restart.l-fright(data-target='#modal-new-game') Start again

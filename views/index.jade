@@ -3,17 +3,17 @@ block content
     #container
         header.hdr
             button.m-button.i.i-restart(data-target='#modal-new-game') Start again
-            button.m-button.i.i-info.l-small(data-target='#modal-features') Informations
+            button.m-button.l-small.i.i-info(data-target='#modal-features', data-closable) Informations
             button.m-button.i.i-trophy.l-fright(data-target='#modal-topscore') View top score
 
 
         .content
             h1.m-logo= title
-            .m-player-zone.l-left.l-red(data-player="1") 
-                h2 Player 1
+            .m-player-zone.l-left.l-red(data-player="1")
+                h2.fade
 
-            .m-player-zone.l-right.l-black(data-player="2") 
-                h2 Player 2
+            .m-player-zone.l-right.l-black(data-player="2")
+                h2.fade
 
             #game.m-board
                 - each game in leaderBoard
@@ -24,19 +24,7 @@ block content
                         - else
                             div#winner #{players[1]}
                             div#{players[0]}
-            #infos
-                span X:
-                #x
-                span Y:
-                #y
 
-    script
-
-
-    form(method='post', action='/username', onsubmit="socket.emit('username', this.username.value);return false;")
-        input(type='text', name='username')
-        input(type='submit', value='set username')
-
-    a#js-fullscreen.m-button.l-small.l-grey.i.i-fullscreen(href="#") Fullscreen
+    button#js-fullscreen.m-button.l-small.l-grey.i.i-fullscreen Fullscreen
 
     include inc/modals

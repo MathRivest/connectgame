@@ -23,6 +23,14 @@ h2{
         weight:normal;
     }
 }
+h3, .h3{
+    margin-bottom:12px;
+    font:{
+        style:italic;
+        size:18px;
+        weight:normal;
+    }
+}
 a{
     @include link-colors($baselinksColor, $baselinksColorHover, $baselinksColor, $baselinksColor, $baselinksColor);
 }
@@ -50,3 +58,15 @@ input{
     }
 }
 
+table{
+    text-align:center;
+    width:100%;
+    margin-bottom:24px;
+    td{
+        padding:4px;
+        border-bottom:1px solid $borderColorFaded;
+    }
+    tr:last-child{
+        td{border-bottom:none;}
+    }
+}
