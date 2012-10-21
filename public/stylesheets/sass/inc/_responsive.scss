@@ -60,4 +60,16 @@
         height:$colwidthSmall;
     }
 
+
+    .modal {
+        position: fixed;
+        top: 3%;
+        right: 3%;
+        left: 3%;
+        bottom: 3%;
+        width: auto;
+        min-width: 488px;
+        margin: 0;
+        .modal-body { -webkit-overflow-scrolling: touch; }
+    }
 }

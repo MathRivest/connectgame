@@ -1082,52 +1082,56 @@ table tr:last-child td {
 }
 /* line 277, sass/inc/_modules.scss */
 .modal .modal-body {
-  overflow-y: auto;
   min-height: 100px;
   max-height: 400px;
+  overflow: hidden;
 }
 /* line 282, sass/inc/_modules.scss */
 .modal small {
   font-size: 12px;
 }
-/* line 284, sass/inc/_modules.scss */
+/* line 283, sass/inc/_modules.scss */
+.modal#modal-features {
+  width: 688px;
+  margin: -350px 0 0 -374px;
+}
+/* line 286, sass/inc/_modules.scss */
 .modal#modal-features .modal-body {
   max-height: 800px;
 }
 
-/* line 291, sass/inc/_modules.scss */
+/* line 293, sass/inc/_modules.scss */
 .m-slider {
   position: relative;
-  margin: 0;
+  margin: 0 0 24px 0;
   padding: 0;
 }
-/* line 295, sass/inc/_modules.scss */
+/* line 297, sass/inc/_modules.scss */
 .m-slider ul, .m-slider ol {
   padding: 0;
 }
-/* line 296, sass/inc/_modules.scss */
+/* line 298, sass/inc/_modules.scss */
 .m-slider li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-/* line 301, sass/inc/_modules.scss */
+/* line 303, sass/inc/_modules.scss */
 .m-slider .slides {
   /* Hide the slides before the JS is loaded. Avoids image jumping */
 }
-/* line 302, sass/inc/_modules.scss */
+/* line 304, sass/inc/_modules.scss */
 .m-slider .slides > li {
   display: none;
   width: 100%;
-  height: 300px;
   -webkit-backface-visibility: hidden;
 }
-/* line 308, sass/inc/_modules.scss */
+/* line 309, sass/inc/_modules.scss */
 .m-slider .slides img {
-  width: 100%;
+  margin: 0 auto;
   display: block;
 }
-/* line 309, sass/inc/_modules.scss */
+/* line 310, sass/inc/_modules.scss */
 .m-slider .slides:after {
   content: ".";
   display: block;
@@ -1136,38 +1140,39 @@ table tr:last-child td {
   line-height: 0;
   height: 0;
 }
-/* line 310, sass/inc/_modules.scss */
+/* line 311, sass/inc/_modules.scss */
 html[xmlns] .m-slider .slides {
   display: block;
 }
-/* line 311, sass/inc/_modules.scss */
+/* line 312, sass/inc/_modules.scss */
 * html .m-slider .slides {
   height: 1%;
 }
-/* line 313, sass/inc/_modules.scss */
+/* line 314, sass/inc/_modules.scss */
 .m-slider .flex-control-nav {
+  display: none;
   position: absolute;
   bottom: 10%;
   width: 100%;
   margin-top: -13px;
   text-align: center;
 }
-/* line 319, sass/inc/_modules.scss */
+/* line 321, sass/inc/_modules.scss */
 .m-slider .flex-control-nav li {
   display: inline-block;
 }
-/* line 322, sass/inc/_modules.scss */
+/* line 324, sass/inc/_modules.scss */
 .m-slider .flex-control-nav a {
   cursor: pointer;
 }
-/* line 326, sass/inc/_modules.scss */
+/* line 328, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav {
   position: absolute;
   top: 50%;
   width: 100%;
   margin-top: -13px;
 }
-/* line 331, sass/inc/_modules.scss */
+/* line 333, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav .flex-prev, .m-slider .flex-direction-nav .flex-next {
   float: left;
   display: block;
@@ -1175,8 +1180,13 @@ html[xmlns] .m-slider .slides {
   height: 26px;
   text-indent: -9999px;
   background-position: -296px 0;
+  opacity: 0.2;
 }
-/* line 340, sass/inc/_modules.scss */
+/* line 342, sass/inc/_modules.scss */
+.m-slider .flex-direction-nav .flex-prev:hover, .m-slider .flex-direction-nav .flex-next:hover {
+  opacity: 1;
+}
+/* line 344, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav .flex-next {
   background-position: -254px 0;
   float: right;
@@ -1568,6 +1578,22 @@ input, label {
   transition-timing-function: ease-out;
 }
 
+/* line 128, sass/inc/_anim.scss */
+.flex-prev, .m-slider .flex-direction-nav .flex-next {
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
 /* -Responsivness ---------------------------------------------------- */
 @media (max-width: 1280px) {
   /* line 3, sass/inc/_responsive.scss */
@@ -1637,6 +1663,22 @@ input, label {
   .m-disc {
     width: 30px;
     height: 30px;
+  }
+
+  /* line 64, sass/inc/_responsive.scss */
+  .modal {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    left: 3%;
+    bottom: 3%;
+    width: auto;
+    min-width: 488px;
+    margin: 0;
+  }
+  /* line 73, sass/inc/_responsive.scss */
+  .modal .modal-body {
+    -webkit-overflow-scrolling: touch;
   }
 }
 /* -Helpers ---------------------------------------------------------- */

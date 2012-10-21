@@ -124,3 +124,9 @@ input, label{
         @include transition-timing-function(ease-out);
     }
 }
+
+.flex-prev{
+    @include transition-property(opacity);
+    @include transition-duration(0.2s);
+    @include transition-timing-function(ease-out);
+}

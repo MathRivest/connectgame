@@ -41,17 +41,17 @@ $(function() {
 CNT4.ui = {
     //CNT4.connect();
     init : function(){
-        //this.support();
+        this.support();
         //$('#modal-new-game').modal({backdrop:'static', keyboard: false});
         //$('#modal-waiting').modal({backdrop:'static'});
         //$('#modal-support').modal({backdrop:'static'});
-        $('#modal-features').modal();
+        //$('#modal-features').modal();
         //$('#modal-winner').modal();
         //$('#modal-topscore').modal();
 
 
         //CNT4.board.create(8,8);
-        CNT4.ui.features();
+        //CNT4.ui.features();
 
 
         // Adjust board size on resize
@@ -79,6 +79,10 @@ CNT4.ui = {
             return false;
         });
 
+        $('#js-features').on('click', function(){
+            CNT4.ui.features();
+            return false;
+        });
         $('[data-target]').on('click', function(){
             var target = $(this).data('target'),
                 el = $(this);
