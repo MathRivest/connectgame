@@ -3,13 +3,13 @@
  */
 
 var express = require("express")
-    , GameProvider = require('./gameprovider-memory').GameProvider
+    //, GameProvider = require('./gameprovider-memory').GameProvider
     , routes = require('./routes')
     , global_socket = {};
 
 
 var app = express()
-    , server = app.listen(3001)
+    , server = app.listen(3002)
     , io = require('socket.io').listen(server)
     ;
 
@@ -18,6 +18,7 @@ var app = express()
  */
 io.sockets.on('connection', function (socket) {
     var g = require('./gameprovider-mongodb').gameDB
+    var BSON = require('./gameprovider-mongodb').BSON
     socket.on('session_start', function (session_id) {
         global_socket[session_id] = socket;
         console.log(global_socket);
@@ -102,16 +103,21 @@ io.sockets.on('connection', function (socket) {
     });
 
     //somebody won
-    socket.on('gameOver', function (data, game_id) {
+    socket.on('gameOver', function (winner, game_id) {
         //socket.broadcast.to(game_id).emit('gameOver', data);
-        io.sockets.in(game_id).emit('gameOver', data);
-        /*g.collection('games', function (err, collection) {
-            collection.findOne({_id:game_id}, function (err, game) {
-                if (!err) {
-                    collection.update({_id:game._id}, {$set:{winner:username}});
+        io.sockets.in(game_id).emit('gameOver', winner);
+        g.collection('games', function (err, collection) {
+            //collection.findOne({_id:game_id}, function (err, game) {
+                if (!err && game != null) {
+                    collection.update({_id: new BSON.ObjectID(game_id)}, {$set:{winner:winner.username}});
+                    console.log('set winner: '+winner.username+ 'for game '+game_id);
                 }
-            })
-        })*/
+                else {
+                    console.log(err);
+                    console.log(game_id)
+                }
+            //})
+        })
     });
 
     //send where the coin is to the other player

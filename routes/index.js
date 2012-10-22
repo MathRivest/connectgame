@@ -14,8 +14,9 @@ exports.index = function (req, res) {
 
             leaderBoard = [];
             items.forEach(function (game) {
-                if (game.winner) {
+                if (game.winner != null) {
                     leaderBoard.push(game);
+                    console.log('leaderboard >> winner: '+game.winner);
                 }
                 if (game.players.length < 2) {
                     available_games = available_games + 1;
@@ -29,7 +30,7 @@ exports.index = function (req, res) {
             if (available_games < 5) {
                 g.collection('games', function (err, collection) {
                     for (i = available_games; i <= 5; i++) {
-                        collection.insert({ date:new Date(), players:[]})
+                        collection.insert({ date:new Date(), players:[], winner:null})
                     }
                 })
 

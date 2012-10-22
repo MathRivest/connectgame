@@ -101,6 +101,14 @@
                         .silouette
             //Loop here
             tr
+            - each game in leaderBoard
+                - each players in game
+                    - if (game.winner == game.players[0])
+                        td.player1.s-winner #{players[0]}
+                        td.player2 #{players[1]}
+                    - else
+                        td.player1 #{players[0]}
+                        td.player2.s-winner #{players[1]}
                 td.player1.s-winner Mathieu
                 td.player2 Arnaud
             //End loop here
