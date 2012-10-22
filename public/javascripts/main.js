@@ -308,6 +308,10 @@ CNT4.game = {
         this.check(CNT4.infos.state.board.map, x, y, player);
         this.setCurrentTurn(player);
 
+        console.log(y);
+        if(y == 0){
+            $('[data-zone="'+x+'"]').droppable('disable');
+        }
 //Send the map
 //the move infos
 //the player
@@ -662,8 +666,11 @@ CNT4.connect = {
             }else{
                 var winnerRow = '<tr><td class="player1 '+winnerClass+'">'+data.winner+'</td><td class="player2">'+data.loser+'</td></tr>';
             }
-
-            $('#modal-topscore #js-winner-board tbody').prepend(winnerRow);
+            var $boardBody = $('#modal-topscore #js-winner-board tbody');
+           $boardBody.prepend(winnerRow).find('tr:first').addClass('s-newrow');
+            if($boardBody.find('tr').length > 10){
+                $boardBody.find('tr:last').hide();
+            }
         });
 
 

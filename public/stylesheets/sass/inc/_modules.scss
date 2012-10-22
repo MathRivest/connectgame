@@ -201,7 +201,7 @@
 }
 
 .m-winner-table{
-
+    td{width:50%;}
 }
 
 .modal-backdrop {
@@ -276,7 +276,6 @@
     }
     .modal-body {
         min-height:100px;
-        max-height: 400px;
         overflow:hidden;
     }
     small{font-size:12px;}
@@ -292,7 +291,7 @@
 
 .m-slider {
     position:relative;
-    margin: 0 0 24px 0;
+    margin: 0 0 36px 0;
     padding: 0;
     ul, ol{padding:0;}
     li{
