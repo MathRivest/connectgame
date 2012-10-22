@@ -108,7 +108,7 @@ io.sockets.on('connection', function (socket) {
         io.sockets.in(game_id).emit('gameOver', winner);
         g.collection('games', function (err, collection) {
             //collection.findOne({_id:game_id}, function (err, game) {
-                if (!err && game != null) {
+                if (!err) {
                     collection.update({_id: new BSON.ObjectID(game_id)}, {$set:{winner:winner.username}});
                     console.log('set winner: '+winner.username+ 'for game '+game_id);
                 }
@@ -127,7 +127,7 @@ io.sockets.on('connection', function (socket) {
             winner = data.winner,
             loser = data.loser;*/
 
-        socket.emit('updateBoard', data);
+        socket.broadcast.emit('updateBoard', data);
     });
 
     //send where the coin is to the other player
