@@ -13,9 +13,11 @@ exports.index = function (req, res) {
         games = collection.find().toArray(function (err, items) {
 
             leaderBoard = [];
+            nb_leaders =0;
             items.forEach(function (game) {
-                if (game.winner != null) {
-                    leaderBoard.push(game);
+                if (game.winner != null && nb_leaders < 10) {
+                    leaderBoard.unshift(game);
+                    nb_leaders++;
                     console.log('leaderboard >> winner: '+game.winner);
                 }
                 if (game.players.length < 2) {
