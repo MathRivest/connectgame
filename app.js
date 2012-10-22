@@ -9,7 +9,7 @@ var express = require("express")
 
 
 var app = express()
-    , server = app.listen(3001)
+    , server = app.listen(3002)
     , io = require('socket.io').listen(server)
     ;
 
