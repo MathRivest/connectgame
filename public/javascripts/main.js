@@ -345,7 +345,9 @@ CNT4.game = {
 
         if(this.isWinnerVertical(lastPiece, board, player) || this.isWinnerHorizontal(lastPiece, board, player)){
 
-            CNT4.connect.gameOver(player);
+            if(player == CNT4.infos.game.player){
+                CNT4.connect.gameOver(player);
+            }
         }
     },
     isWinnerVertical : function(lastPiece, board, player) {
@@ -654,7 +656,6 @@ CNT4.connect = {
         });
 
         socket.on('updateBoard', function(data){
-            console.log("updateBoard");
             var winnerClass = 's-winner';
             if(2 == data.winnerNb){
                 var winnerRow = '<tr><td class="player1">'+data.loser+'</td><td class="player2 '+winnerClass+'">'+data.winner+'</td></tr>';
