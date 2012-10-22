@@ -738,7 +738,7 @@ table tr:last-child td {
   display: none;
   overflow: hidden;
   width: 60%;
-  margin: 0 auto;
+  margin: 0 auto 24px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 3px 10px;
@@ -818,29 +818,34 @@ table tr:last-child td {
 }
 
 /* line 71, sass/inc/_modules.scss */
+.m-rules {
+  font-style: italic;
+}
+
+/* line 75, sass/inc/_modules.scss */
 .m-player-zone {
   width: 20%;
 }
-/* line 73, sass/inc/_modules.scss */
+/* line 77, sass/inc/_modules.scss */
 .m-player-zone.l-left {
   float: left;
   text-align: left;
 }
-/* line 76, sass/inc/_modules.scss */
+/* line 80, sass/inc/_modules.scss */
 .m-player-zone.l-left .m-disc {
   float: left;
 }
-/* line 80, sass/inc/_modules.scss */
+/* line 84, sass/inc/_modules.scss */
 .m-player-zone.l-right {
   float: right;
   text-align: right;
 }
-/* line 83, sass/inc/_modules.scss */
+/* line 87, sass/inc/_modules.scss */
 .m-player-zone.l-right .m-disc {
   float: right;
 }
 
-/* line 89, sass/inc/_modules.scss */
+/* line 93, sass/inc/_modules.scss */
 .m-disc {
   z-index: 1000;
   position: relative;
@@ -860,7 +865,7 @@ table tr:last-child td {
   list-style: none;
   color: #fff;
 }
-/* line 102, sass/inc/_modules.scss */
+/* line 106, sass/inc/_modules.scss */
 .m-disc:before {
   content: "";
   position: absolute;
@@ -876,43 +881,43 @@ table tr:last-child td {
   border-radius: 4em;
 }
 
-/* line 118, sass/inc/_modules.scss */
+/* line 122, sass/inc/_modules.scss */
 .m-field-container {
   padding: 2px 0;
   margin-bottom: 12px;
 }
-/* line 121, sass/inc/_modules.scss */
+/* line 125, sass/inc/_modules.scss */
 .m-field-container input {
   width: 100%;
   margin-bottom: 4px;
 }
-/* line 125, sass/inc/_modules.scss */
+/* line 129, sass/inc/_modules.scss */
 .m-field-container.l-large {
   width: 100%;
 }
-/* line 128, sass/inc/_modules.scss */
+/* line 132, sass/inc/_modules.scss */
 .m-field-container.l-small {
   width: 48%;
 }
 
-/* line 137, sass/inc/_modules.scss */
+/* line 141, sass/inc/_modules.scss */
 .m-player {
   margin: 0 auto 18px;
   width: 150px;
   text-align: center;
 }
-/* line 142, sass/inc/_modules.scss */
+/* line 146, sass/inc/_modules.scss */
 .m-player .silouette {
   position: relative;
   height: 120px;
   margin-bottom: 5px;
   overflow: hidden;
 }
-/* line 147, sass/inc/_modules.scss */
+/* line 151, sass/inc/_modules.scss */
 .m-player .silouette.s-faded {
   opacity: 0.2;
 }
-/* line 148, sass/inc/_modules.scss */
+/* line 152, sass/inc/_modules.scss */
 .m-player .silouette:before {
   position: absolute;
   top: 15px;
@@ -926,7 +931,7 @@ table tr:last-child td {
   -o-border-radius: 4em;
   border-radius: 4em;
 }
-/* line 157, sass/inc/_modules.scss */
+/* line 161, sass/inc/_modules.scss */
 .m-player .silouette:after {
   position: absolute;
   top: 70px;
@@ -940,7 +945,7 @@ table tr:last-child td {
   -o-border-radius: 4em;
   border-radius: 4em;
 }
-/* line 168, sass/inc/_modules.scss */
+/* line 172, sass/inc/_modules.scss */
 .m-player.l-first .silouette:before {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlMzIzMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2NkMDEwMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -950,11 +955,11 @@ table tr:last-child td {
   background-image: -o-linear-gradient(#fe3232, #cd0101);
   background-image: linear-gradient(#fe3232, #cd0101);
 }
-/* line 171, sass/inc/_modules.scss */
+/* line 175, sass/inc/_modules.scss */
 .m-player.l-first .silouette:after {
   background: #cd0101;
 }
-/* line 174, sass/inc/_modules.scss */
+/* line 178, sass/inc/_modules.scss */
 .m-player.l-second .silouette:before {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMyMzJmZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAyMDJjZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -964,44 +969,44 @@ table tr:last-child td {
   background-image: -o-linear-gradient(#3232fe, #0202ce);
   background-image: linear-gradient(#3232fe, #0202ce);
 }
-/* line 177, sass/inc/_modules.scss */
+/* line 181, sass/inc/_modules.scss */
 .m-player.l-second .silouette:after {
   background: #0202ce;
 }
-/* line 180, sass/inc/_modules.scss */
+/* line 184, sass/inc/_modules.scss */
 .m-player.l-small {
   width: 75px;
   float: none!important;
 }
-/* line 183, sass/inc/_modules.scss */
+/* line 187, sass/inc/_modules.scss */
 .m-player.l-small .silouette {
   height: 60px;
 }
-/* line 185, sass/inc/_modules.scss */
+/* line 189, sass/inc/_modules.scss */
 .m-player.l-small .silouette:before {
   top: 7px;
   left: 24px;
   width: 25px;
   height: 25px;
 }
-/* line 191, sass/inc/_modules.scss */
+/* line 195, sass/inc/_modules.scss */
 .m-player.l-small .silouette:after {
   top: 35px;
   left: 14px;
   width: 45px;
   height: 50px;
 }
-/* line 200, sass/inc/_modules.scss */
+/* line 204, sass/inc/_modules.scss */
 #modal-waiting .m-player {
   margin: 0 40px 18px;
 }
 
-/* line 204, sass/inc/_modules.scss */
+/* line 208, sass/inc/_modules.scss */
 .m-winner-table td {
   width: 50%;
 }
 
-/* line 207, sass/inc/_modules.scss */
+/* line 211, sass/inc/_modules.scss */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -1011,18 +1016,18 @@ table tr:last-child td {
   z-index: 1040;
   background-color: #000000;
 }
-/* line 215, sass/inc/_modules.scss */
+/* line 219, sass/inc/_modules.scss */
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-/* line 217, sass/inc/_modules.scss */
+/* line 221, sass/inc/_modules.scss */
 .modal-backdrop, .modal-backdrop.fade.in {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
 
-/* line 222, sass/inc/_modules.scss */
+/* line 226, sass/inc/_modules.scss */
 .modal {
   position: fixed;
   top: 50%;
@@ -1039,7 +1044,7 @@ table tr:last-child td {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 236, sass/inc/_modules.scss */
+/* line 240, sass/inc/_modules.scss */
 .modal .modal-header {
   position: relative;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 3px 7px;
@@ -1049,14 +1054,14 @@ table tr:last-child td {
   margin: 0 -40px 36px;
   text-align: center;
 }
-/* line 243, sass/inc/_modules.scss */
+/* line 247, sass/inc/_modules.scss */
 .modal .modal-header h1 {
   margin: 0;
   font-size: 24px;
   font-weight: normal;
   font-style: italic;
 }
-/* line 251, sass/inc/_modules.scss */
+/* line 255, sass/inc/_modules.scss */
 .modal .modal-header:before, .modal .modal-header:after {
   position: absolute;
   content: "";
@@ -1064,7 +1069,7 @@ table tr:last-child td {
   height: 0;
   bottom: -16px;
 }
-/* line 258, sass/inc/_modules.scss */
+/* line 262, sass/inc/_modules.scss */
 .modal .modal-header:before {
   left: -1px;
   border-top: 8px solid rgba(0, 0, 0, 0.6);
@@ -1072,7 +1077,7 @@ table tr:last-child td {
   border-bottom: 8px solid transparent;
   border-left: 8px solid transparent;
 }
-/* line 265, sass/inc/_modules.scss */
+/* line 269, sass/inc/_modules.scss */
 .modal .modal-header:after {
   right: -1px;
   border-bottom: 8px solid transparent;
@@ -1080,62 +1085,62 @@ table tr:last-child td {
   border-top: 8px solid rgba(0, 0, 0, 0.6);
   border-left: 8px solid rgba(0, 0, 0, 0.6);
 }
-/* line 273, sass/inc/_modules.scss */
+/* line 277, sass/inc/_modules.scss */
 .modal .modal-footer {
   padding: 24px 0 6px 0;
   border-top: 1px solid #9c9c9c;
 }
-/* line 277, sass/inc/_modules.scss */
+/* line 281, sass/inc/_modules.scss */
 .modal .modal-body {
   min-height: 100px;
   overflow: hidden;
 }
-/* line 281, sass/inc/_modules.scss */
+/* line 285, sass/inc/_modules.scss */
 .modal small {
   font-size: 12px;
 }
-/* line 282, sass/inc/_modules.scss */
+/* line 286, sass/inc/_modules.scss */
 .modal#modal-features {
   width: 688px;
   margin: -350px 0 0 -374px;
 }
-/* line 285, sass/inc/_modules.scss */
+/* line 289, sass/inc/_modules.scss */
 .modal#modal-features .modal-body {
   max-height: 800px;
 }
 
-/* line 292, sass/inc/_modules.scss */
+/* line 296, sass/inc/_modules.scss */
 .m-slider {
   position: relative;
   margin: 0 0 36px 0;
   padding: 0;
 }
-/* line 296, sass/inc/_modules.scss */
+/* line 300, sass/inc/_modules.scss */
 .m-slider ul, .m-slider ol {
   padding: 0;
 }
-/* line 297, sass/inc/_modules.scss */
+/* line 301, sass/inc/_modules.scss */
 .m-slider li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-/* line 302, sass/inc/_modules.scss */
+/* line 306, sass/inc/_modules.scss */
 .m-slider .slides {
   /* Hide the slides before the JS is loaded. Avoids image jumping */
 }
-/* line 303, sass/inc/_modules.scss */
+/* line 307, sass/inc/_modules.scss */
 .m-slider .slides > li {
   display: none;
   width: 100%;
   -webkit-backface-visibility: hidden;
 }
-/* line 308, sass/inc/_modules.scss */
+/* line 312, sass/inc/_modules.scss */
 .m-slider .slides img {
   margin: 0 auto;
   display: block;
 }
-/* line 309, sass/inc/_modules.scss */
+/* line 313, sass/inc/_modules.scss */
 .m-slider .slides:after {
   content: ".";
   display: block;
@@ -1144,15 +1149,15 @@ table tr:last-child td {
   line-height: 0;
   height: 0;
 }
-/* line 310, sass/inc/_modules.scss */
+/* line 314, sass/inc/_modules.scss */
 html[xmlns] .m-slider .slides {
   display: block;
 }
-/* line 311, sass/inc/_modules.scss */
+/* line 315, sass/inc/_modules.scss */
 * html .m-slider .slides {
   height: 1%;
 }
-/* line 313, sass/inc/_modules.scss */
+/* line 317, sass/inc/_modules.scss */
 .m-slider .flex-control-nav {
   display: none;
   position: absolute;
@@ -1161,22 +1166,22 @@ html[xmlns] .m-slider .slides {
   margin-top: -13px;
   text-align: center;
 }
-/* line 320, sass/inc/_modules.scss */
+/* line 324, sass/inc/_modules.scss */
 .m-slider .flex-control-nav li {
   display: inline-block;
 }
-/* line 323, sass/inc/_modules.scss */
+/* line 327, sass/inc/_modules.scss */
 .m-slider .flex-control-nav a {
   cursor: pointer;
 }
-/* line 327, sass/inc/_modules.scss */
+/* line 331, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav {
   position: absolute;
   top: 50%;
   width: 100%;
   margin-top: -13px;
 }
-/* line 332, sass/inc/_modules.scss */
+/* line 336, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav .flex-prev, .m-slider .flex-direction-nav .flex-next {
   float: left;
   display: block;
@@ -1186,11 +1191,11 @@ html[xmlns] .m-slider .slides {
   background-position: -296px 0;
   opacity: 0.2;
 }
-/* line 341, sass/inc/_modules.scss */
+/* line 345, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav .flex-prev:hover, .m-slider .flex-direction-nav .flex-next:hover {
   opacity: 1;
 }
-/* line 343, sass/inc/_modules.scss */
+/* line 347, sass/inc/_modules.scss */
 .m-slider .flex-direction-nav .flex-next {
   background-position: -254px 0;
   float: right;

@@ -17,7 +17,7 @@
     display:none;
     overflow:hidden;
     width:60%;
-    margin:0 auto;
+    margin:0 auto 24px;
     @include box-shadow(rgba(0, 0, 0, 0.3) 0 3px 10px);
     .m-column{
         float:left;
@@ -66,6 +66,10 @@
         }
         .m-zone:first-child{border-left:1px solid $borderColor;}
     }
+}
+
+.m-rules{
+    font-style:italic;
 }
 
 .m-player-zone{
