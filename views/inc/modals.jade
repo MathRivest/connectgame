@@ -91,33 +91,27 @@
     .modal-header
         h1 Top score
     .modal-body
-        table
-            tr
-                td.player1
-                    .m-player.l-small.l-first
-                        .silouette
-                td.player2
-                    .m-player.l-small.l-second
-                        .silouette
-            //Loop here
-            tr
-            - each game in leaderBoard
-                - each players in game
-                    - if (game.winner == game.players[0])
-                        td.player1.s-winner #{players[0]}
-                        td.player2 #{players[1]}
-                    - else
-                        td.player1 #{players[0]}
-                        td.player2.s-winner #{players[1]}
-                td.player1.s-winner Mathieu
-                td.player2 Arnaud
-            //End loop here
-            tr
-                td.player1.s-winner Arnaud
-                td.player2 Mathieu
-            tr
-                td.player1 Mathieu
-                td.player2.s-winner Arnaud
+        table#js-winner-board
+            thead
+                tr
+                    td.player1
+                        .m-player.l-small.l-first
+                            .silouette
+                    td.player2
+                        .m-player.l-small.l-second
+                            .silouette
+            tbody
+                //Loop here
+                tr
+                    - each game in leaderBoard
+                        - if (game.winner == game.players[0])
+                            td.player1.s-winner #{players[0]}
+                            td.player2 #{players[1]}
+                        - else
+                            td.player1 #{players[0]}
+                            td.player2.s-winner #{players[1]}
+                //End loop here
+
 
     .modal-footer
         button.m-button.i.i-restart.l-fright(data-target='#modal-new-game') Start again

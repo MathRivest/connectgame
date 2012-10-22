@@ -121,6 +121,16 @@ io.sockets.on('connection', function (socket) {
     });
 
     //send where the coin is to the other player
+    socket.on('updateBoard', function (data) {
+        /*console.log(data);
+        var winnerNb = data.winnerNb,
+            winner = data.winner,
+            loser = data.loser;*/
+
+        socket.emit('updateBoard', data);
+    });
+
+    //send where the coin is to the other player
     socket.on('disconnect', function (data, game_id) {
         socket.broadcast.to(game_id).emit('gameCancelled', data);
     });
