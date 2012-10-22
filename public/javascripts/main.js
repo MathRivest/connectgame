@@ -644,13 +644,25 @@ CNT4.connect = {
         });
 
         socket.on('gameOver', function (winner) {
-            console.log(winner)
+            console.log("receiving gameOver")
             if(2 == winner.number){
                 $('#modal-winner .m-player').addClass("l-second")
             }
             $('#modal-winner #js-winner-name').text(winner.username);
             CNT4.ui.openModal("#modal-winner");
+            CNT4.connect.updateBoard(winner.number);
+        });
 
+        socket.on('updateBoard', function(data){
+            console.log("updateBoard");
+            var winnerClass = 's-winner';
+            if(2 == data.winnerNb){
+                var winnerRow = '<tr><td class="player1">'+data.loser+'</td><td class="player2 '+winnerClass+'">'+data.winner+'</td></tr>';
+            }else{
+                var winnerRow = '<tr><td class="player1 '+winnerClass+'">'+data.winner+'</td><td class="player2">'+data.loser+'</td></tr>';
+            }
+
+            $('#modal-topscore #js-winner-board tbody').prepend(winnerRow);
         });
 
 
@@ -662,13 +674,26 @@ CNT4.connect = {
         socket.emit('sendMove', data, CNT4.infos.game.id);
     },
     gameOver : function(player){
+        console.log("sending gameOver")
         var username = (player == 1) ? CNT4.infos.game.names.player1 : CNT4.infos.game.names.player2;
         var winner = {
             number : player,
             username : username
         }
         socket.emit('gameOver', winner, CNT4.infos.game.id);
+    },
+    updateBoard : function(player){
+        console.log(player);
+        var winner = (player == 1) ? CNT4.infos.game.names.player1 : CNT4.infos.game.names.player2,
+            loser = (winner == CNT4.infos.game.names.player1) ? CNT4.infos.game.names.player2: CNT4.infos.game.names.player1,
+            newLeader = {
+                winnerNb : player,
+                winner : winner,
+                loser : loser
+            }
+        socket.emit('updateBoard', newLeader);
     }
+
 
 
 
