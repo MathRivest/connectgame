@@ -308,6 +308,10 @@ CNT4.game = {
         this.check(CNT4.infos.state.board.map, x, y, player);
         this.setCurrentTurn(player);
 
+        console.log(y);
+        if(y == 0){
+            $('[data-zone="'+x+'"]').droppable('disable');
+        }
 //Send the map
 //the move infos
 //the player
